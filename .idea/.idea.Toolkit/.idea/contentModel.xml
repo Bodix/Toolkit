@@ -275,6 +275,37 @@
           <e p="SetupScreenBorders.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
+        <e p="uCodeEditor" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Common" t="Include">
+              <e p="Constants.cs" t="Include" />
+              <e p="EditorCoroutine.cs" t="Include" />
+              <e p="GUIClip.cs" t="Include" />
+              <e p="ReflectionUtils.cs" t="Include" />
+              <e p="Utility.cs" t="Include" />
+              <e p="Webview.cs" t="Include" />
+            </e>
+            <e p="Core" t="Include">
+              <e p="CmdCore.cs" t="Include" />
+              <e p="Commands.cs" t="Include" />
+              <e p="ExtensionAPI.cs" t="Include" />
+              <e p="FileSearch.cs" t="Include" />
+              <e p="FileWatcher.cs" t="Include" />
+              <e p="LocalSettings.cs" t="Include" />
+              <e p="MainWindow.cs" t="Include" />
+              <e p="MenuActions.cs" t="Include" />
+              <e p="MonoHelper.cs" t="Include" />
+              <e p="OmniSharpManager.cs" t="Include" />
+              <e p="OnLoad.cs" t="Include" />
+              <e p="PathManager.cs" t="Include" />
+              <e p="WebviewComService.cs" t="Include" />
+            </e>
+            <e p="Documents" t="Include">
+              <e p="license.txt" t="Include" />
+            </e>
+          </e>
+          <e p="UCE.asmdef" t="Include" />
+        </e>
       </e>
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Editor.csproj" t="IncludeRecursive" />
@@ -289,6 +320,7 @@
       <e p="Toolkit.Common.Runtime.csproj" t="IncludeRecursive" />
       <e p="Toolkit.Screens.csproj" t="IncludeRecursive" />
       <e p="Toolkit.sln" t="IncludeFlat" />
+      <e p="uCodeEditor.csproj" t="IncludeRecursive" />
     </e>
     <e p="C:\Users\User\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\User\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
