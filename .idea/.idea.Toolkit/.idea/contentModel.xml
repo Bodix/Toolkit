@@ -266,45 +266,46 @@
               <e p="Toolkit.Screens.asmdef" t="Include" />
             </e>
           </e>
+          <e p="uCodeEditor" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Common" t="Include">
+                <e p="Constants.cs" t="Include" />
+                <e p="EditorCoroutine.cs" t="Include" />
+                <e p="GUIClip.cs" t="Include" />
+                <e p="ReflectionUtils.cs" t="Include" />
+                <e p="Utility.cs" t="Include" />
+                <e p="Webview.cs" t="Include" />
+              </e>
+              <e p="Core" t="Include">
+                <e p="CmdCore.cs" t="Include" />
+                <e p="Commands.cs" t="Include" />
+                <e p="ExtensionAPI.cs" t="Include" />
+                <e p="FileSearch.cs" t="Include" />
+                <e p="FileWatcher.cs" t="Include" />
+                <e p="LocalSettings.cs" t="Include" />
+                <e p="MainWindow.cs" t="Include" />
+                <e p="MenuActions.cs" t="Include" />
+                <e p="MonoHelper.cs" t="Include" />
+                <e p="OmniSharpManager.cs" t="Include" />
+                <e p="OnLoad.cs" t="Include" />
+                <e p="PathManager.cs" t="Include" />
+                <e p="WebviewComService.cs" t="Include" />
+              </e>
+              <e p="Documents" t="Include">
+                <e p="license.txt" t="Include" />
+              </e>
+            </e>
+            <e p="UCE.asmdef" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="ARModelPlacer.cs" t="Include" />
           <e p="Direction.cs" t="Include" />
+          <e p="NewImageEffectShader.shader" t="Include" />
           <e p="PathUtility.cs" t="Include" />
           <e p="Screenshot.cs" t="Include" />
           <e p="SetupScreenBorders.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
-        </e>
-        <e p="uCodeEditor" t="Include">
-          <e p="Editor" t="Include">
-            <e p="Common" t="Include">
-              <e p="Constants.cs" t="Include" />
-              <e p="EditorCoroutine.cs" t="Include" />
-              <e p="GUIClip.cs" t="Include" />
-              <e p="ReflectionUtils.cs" t="Include" />
-              <e p="Utility.cs" t="Include" />
-              <e p="Webview.cs" t="Include" />
-            </e>
-            <e p="Core" t="Include">
-              <e p="CmdCore.cs" t="Include" />
-              <e p="Commands.cs" t="Include" />
-              <e p="ExtensionAPI.cs" t="Include" />
-              <e p="FileSearch.cs" t="Include" />
-              <e p="FileWatcher.cs" t="Include" />
-              <e p="LocalSettings.cs" t="Include" />
-              <e p="MainWindow.cs" t="Include" />
-              <e p="MenuActions.cs" t="Include" />
-              <e p="MonoHelper.cs" t="Include" />
-              <e p="OmniSharpManager.cs" t="Include" />
-              <e p="OnLoad.cs" t="Include" />
-              <e p="PathManager.cs" t="Include" />
-              <e p="WebviewComService.cs" t="Include" />
-            </e>
-            <e p="Documents" t="Include">
-              <e p="license.txt" t="Include" />
-            </e>
-          </e>
-          <e p="UCE.asmdef" t="Include" />
         </e>
       </e>
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />
