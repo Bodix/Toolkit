@@ -5,6 +5,54 @@
       <e p="AdvancedPlayerPrefsWindow.Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Lean" t="Include">
+          <e p="Common" t="Include">
+            <e p="Documentation" t="Include">
+              <e p="LeanGuide.cs" t="Include" />
+            </e>
+            <e p="Examples" t="Include">
+              <e p="Fonts" t="Include">
+                <e p="OFL.txt" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="LeanLinkTo.cs" t="Include" />
+                <e p="LeanUpgradeEventSystem.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="Alpha.shader" t="Include" />
+                <e p="Object.shader" t="Include" />
+                <e p="Skybox.shader" t="Include" />
+              </e>
+            </e>
+            <e p="LeanCommon.asmdef" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="LeanHelper.cs" t="Include" />
+              <e p="LeanInput.cs" t="Include" />
+              <e p="LeanInspector.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Pool" t="Include">
+            <e p="Examples" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="LeanPoolDebugger.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Extras" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="LeanPooledRigidbody.cs" t="Include" />
+                <e p="LeanPooledRigidbody2D.cs" t="Include" />
+              </e>
+            </e>
+            <e p="LeanPool.asmdef" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="IPoolable.cs" t="Include" />
+              <e p="LeanClassPool.cs" t="Include" />
+              <e p="LeanGameObjectPool.cs" t="Include" />
+              <e p="LeanPool.cs" t="Include" />
+            </e>
+          </e>
+          <e p="READ ME.txt" t="Include" />
+        </e>
         <e p="Packages" t="Include">
           <e p="Demigiant" t="Include">
             <e p="DOTween" t="Include">
@@ -207,11 +255,14 @@
             </e>
             <e p="Scripts" t="Include">
               <e p="Editor" t="Include">
+                <e p="Define.cs" t="Include" />
                 <e p="Drawers" t="Include">
                   <e p="LayerDrawer.cs" t="Include" />
                 </e>
+                <e p="EditorScreenshot.cs" t="Include" />
                 <e p="MenuItems.cs" t="Include" />
                 <e p="OpenInFileManager.cs" t="Include" />
+                <e p="ProjectConfig.cs" t="Include" />
                 <e p="Toolkit.Common.Editor.asmdef" t="Include" />
                 <e p="UnityConstantsGenerator.cs" t="Include" />
               </e>
@@ -221,9 +272,20 @@
                 </e>
                 <e p="Collections" t="Include">
                   <e p="Pool" t="Include">
+                    <e p="IPoolable.cs" t="Include" />
                     <e p="Pool.cs" t="Include" />
                   </e>
                   <e p="WeightQueue.cs" t="Include" />
+                </e>
+                <e p="Components" t="Include">
+                  <e p="DevelopmentOnly.cs" t="Include" />
+                  <e p="DisableMethod.cs" t="Include" />
+                  <e p="DontDestroyOnLoad.cs" t="Include" />
+                  <e p="Input" t="Include">
+                    <e p="InputReader.cs" t="Include" />
+                    <e p="LongPressReader.cs" t="Include" />
+                  </e>
+                  <e p="PlatformDependent.cs" t="Include" />
                 </e>
                 <e p="Extensions" t="Include">
                   <e p="CharExtensions.cs" t="Include" />
@@ -239,10 +301,6 @@
                   <e p="VectorExtensions.cs" t="Include" />
                 </e>
                 <e p="FloatRange.cs" t="Include" />
-                <e p="Input" t="Include">
-                  <e p="InputReader.cs" t="Include" />
-                  <e p="LongPressReader.cs" t="Include" />
-                </e>
                 <e p="IntRange.cs" t="Include" />
                 <e p="Singleton.cs" t="Include" />
                 <e p="Toolkit.Common.Runtime.asmdef" t="Include" />
@@ -251,9 +309,22 @@
                   <e p="Delay.cs" t="Include" />
                   <e p="Perfomance.cs" t="Include" />
                   <e p="StaticCoroutine.cs" t="Include" />
+                  <e p="StringEncryptor.cs" t="Include" />
                 </e>
               </e>
             </e>
+          </e>
+          <e p="Toolkit.Resettables" t="Include">
+            <e p="Components" t="Include">
+              <e p="ComponentResetter.cs" t="Include" />
+              <e p="TrailRendererResetter.cs" t="Include" />
+            </e>
+            <e p="IResettable.cs" t="Include" />
+            <e p="IResetter.cs" t="Include" />
+            <e p="MonoBehaviourResetter.cs" t="Include" />
+            <e p="ResettableMember.cs" t="Include" />
+            <e p="Resettables.cs" t="Include" />
+            <e p="Test.cs" t="Include" />
           </e>
           <e p="Toolkit.Screens" t="Include">
             <e p="Scripts" t="Include">
@@ -301,13 +372,14 @@
         <e p="Scripts" t="Include">
           <e p="ARModelPlacer.cs" t="Include" />
           <e p="Direction.cs" t="Include" />
-          <e p="NewImageEffectShader.shader" t="Include" />
           <e p="PathUtility.cs" t="Include" />
           <e p="Screenshot.cs" t="Include" />
           <e p="SetupScreenBorders.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
       </e>
+      <e p="LeanCommon.csproj" t="IncludeRecursive" />
+      <e p="LeanPool.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Editor.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Test.csproj" t="IncludeRecursive" />
@@ -323,7 +395,7 @@
       <e p="Toolkit.sln" t="IncludeFlat" />
       <e p="uCodeEditor.csproj" t="IncludeRecursive" />
     </e>
-    <e p="C:\Users\User\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\User\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
   </component>
 </project>

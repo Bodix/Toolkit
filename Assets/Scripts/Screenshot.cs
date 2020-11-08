@@ -29,7 +29,7 @@ public static class Screenshot
         Action<byte[]> callback, bool destroyOnComplete = true)
     {
         if (destroyOnComplete)
-            callback += (bytes) => UnityEngine.Object.Destroy(screenshoter);
+            callback += bytes => UnityEngine.Object.Destroy(screenshoter);
 
         if (screenshoter == null)
             screenshoter = Camera.main.gameObject.AddComponent<Screenshoter>();

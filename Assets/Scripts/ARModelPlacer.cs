@@ -7,10 +7,10 @@
 
 using System;
 using System.Collections.Generic;
+using Toolkit.Common.Components.Input;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using Toolkit.Common.Input;
 
 [RequireComponent(typeof(ARPlaneManager), typeof(ARRaycastManager))]
 public class ARModelPlacer : MonoBehaviour
