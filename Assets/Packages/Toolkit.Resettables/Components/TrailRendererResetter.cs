@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 namespace Toolkit.Resettables.Components
 {
-    [RequireComponent(typeof(TrailRenderer))]
+    // [RequireComponent(typeof(TrailRenderer))]
     public class TrailRendererResetter : ComponentResetter<TrailRenderer>
     {
         protected override List<IResettable> GetResettables()

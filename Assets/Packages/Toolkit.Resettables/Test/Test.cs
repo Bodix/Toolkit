@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Toolkit.Resettables
+namespace Toolkit.Resettables.Test
 {
     public class Test : MonoBehaviour
     {

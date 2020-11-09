@@ -2,10 +2,8 @@
 {
     public interface IResetter
     {
+        bool HasResettable { get; }
+        
         void Reset();
-    }
-
-    public interface IResetter<out T> : IResetter
-    {
     }
 }

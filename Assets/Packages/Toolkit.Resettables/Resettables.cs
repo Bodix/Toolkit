@@ -21,17 +21,17 @@ namespace Toolkit.Resettables
                   assemblyType.BaseType.GetGenericTypeDefinition() == typeof(ComponentResetter<>)
             select assemblyType;
 
-        public static IResetter<T> AddResetterToGameObject<T>(GameObject gameObject, T component)
+        public static IComponentResetter<T> AddComponentResetterToGameObject<T>(GameObject gameObject, T component)
             where T : Component
         {
             Type componentResetterGenericType = typeof(ComponentResetter<>).MakeGenericType(component.GetType());
-            
+
             try
             {
-                Type resetterType = componentResetterTypes
+                Type componentResetterType = componentResetterTypes
                     .First(x => x.IsSubclassOf(componentResetterGenericType));
-                
-                return (IResetter<T>) gameObject.AddComponent(resetterType);
+
+                return (IComponentResetter<T>) gameObject.AddComponent(componentResetterType);
             }
             catch (InvalidOperationException e)
             {
