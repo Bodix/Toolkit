@@ -267,17 +267,20 @@
             </e>
           </e>
           <e p="Toolkit.Resettables" t="Include">
-            <e p="Components" t="Include">
-              <e p="ComponentResetter.cs" t="Include" />
-              <e p="GameObjectResetter.cs" t="Include" />
-              <e p="IComponentResetter.cs" t="Include" />
-              <e p="TrailRendererResetter.cs" t="Include" />
+            <e p="ComponentResetter.cs" t="Include" />
+            <e p="Extensions" t="Include">
+              <e p="ComponentExtensions.cs" t="Include" />
+              <e p="GameObjectExtensions.cs" t="Include" />
             </e>
+            <e p="GameObjectResetter.cs" t="Include" />
+            <e p="IComponentResetter.cs" t="Include" />
             <e p="IResettable.cs" t="Include" />
             <e p="IResetter.cs" t="Include" />
-            <e p="MonoBehaviourResetter.cs" t="Include" />
-            <e p="ResettableMember.cs" t="Include" />
             <e p="Resettables.cs" t="Include" />
+            <e p="ResettableStruct.cs" t="Include" />
+            <e p="Resetters" t="Include">
+              <e p="TrailRendererResetter.cs" t="Include" />
+            </e>
             <e p="Test" t="Include">
               <e p="Test.cs" t="Include" />
             </e>
