@@ -1,0 +1,11 @@
+[submodule "Unity.Toolkit.Common"]
+path = Assets/Packages/Toolkit.Common
+url = https://github.com/Bodix/Unity.Toolkit.Common.git
+
+[submodule "Unity.Toolkit.Screens"]
+path = Assets/Packages/Toolkit.Screens
+url = https://github.com/Bodix/Unity.Toolkit.Screens.git
+
+[submodule "Unity.Toolkit.Resettables"]
+path = Assets/Packages/Toolkit.Resettables
+url = https://github.com/Bodix/Unity.Toolkit.Resettables.git
