@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Common" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Resettables" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Screens" vcs="Git" />
   </component>
 </project>

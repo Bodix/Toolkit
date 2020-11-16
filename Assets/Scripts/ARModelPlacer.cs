@@ -16,9 +16,9 @@ using UnityEngine.XR.ARSubsystems;
 public class ARModelPlacer : MonoBehaviour
 {
     [SerializeField]
-    private bool multiplePlacing;
+    private bool multiplePlacing = true;
     [SerializeField]
-    private InputReader inputReader;
+    private InputReader inputReader = null;
     [SerializeField]
     private GameObject modelPrefab;
 

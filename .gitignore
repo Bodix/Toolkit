@@ -3,6 +3,8 @@
 
 !.gitignore
 !.gitmodules
+!*.DotSettings
+
 !.idea/
 !Assets/
 !Packages/

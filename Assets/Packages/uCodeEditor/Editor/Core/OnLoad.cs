@@ -152,7 +152,7 @@ namespace uCodeEditor
 
                 if (existsProcess == "exists")
                 {
-                    Utility.LogWithName("Connected to Omnisharp Server");
+                    // Utility.LogWithName("Connected to Omnisharp Server");
                 }
 
                 // If omnisharp lock file exits, we need to restart omnisharp

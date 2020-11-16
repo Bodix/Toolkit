@@ -10,7 +10,7 @@ using Toolkit.Common.Attributes;
 
 public class SetupScreenBorders : MonoBehaviour
 {
-    [SerializeField, Layer] private int layer;
+    [SerializeField, Layer] private int layer = 0;
     [SerializeField] private new Camera camera;
     [SerializeField] private float thickness = 1f;
         
