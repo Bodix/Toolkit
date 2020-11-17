@@ -330,12 +330,16 @@
                 <e p="READ ME.txt" t="Include" />
               </e>
               <e p="Scripts" t="Include">
-                <e p="ChildDestroyer.cs" t="Include" />
-                <e p="ControlPanel.cs" t="Include" />
-                <e p="PeriodicBehaviour.cs" t="Include" />
-                <e p="PoolSpawner.cs" t="Include" />
+                <e p="Logic" t="Include">
+                  <e p="ChildDestroyer.cs" t="Include" />
+                  <e p="PeriodicBehaviour.cs" t="Include" />
+                  <e p="PoolSpawner.cs" t="Include" />
+                  <e p="Spawner.cs" t="Include" />
+                </e>
                 <e p="ResettableObject.cs" t="Include" />
-                <e p="Spawner.cs" t="Include" />
+                <e p="UI" t="Include">
+                  <e p="PoolToggle.cs" t="Include" />
+                </e>
               </e>
             </e>
             <e p="Toolkit.Resettables.asmdef" t="Include" />
