@@ -223,10 +223,6 @@
                   <e p="LayerAttribute.cs" t="Include" />
                 </e>
                 <e p="Collections" t="Include">
-                  <e p="Pool" t="Include">
-                    <e p="IPoolable.cs" t="Include" />
-                    <e p="Pool.cs" t="Include" />
-                  </e>
                   <e p="WeightQueue.cs" t="Include" />
                 </e>
                 <e p="Components" t="Include">
@@ -335,8 +331,9 @@
               </e>
               <e p="Scripts" t="Include">
                 <e p="ChildDestroyer.cs" t="Include" />
-                <e p="LeanSpawner.cs" t="Include" />
+                <e p="ControlPanel.cs" t="Include" />
                 <e p="PeriodicBehaviour.cs" t="Include" />
+                <e p="PoolSpawner.cs" t="Include" />
                 <e p="ResettableObject.cs" t="Include" />
                 <e p="Spawner.cs" t="Include" />
               </e>
