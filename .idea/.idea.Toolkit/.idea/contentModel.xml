@@ -276,8 +276,14 @@
               <e p="Resettable.cs" t="Include" />
               <e p="Resettables.cs" t="Include" />
               <e p="Resetters" t="Include">
+                <e p="AnimatorResetter.cs" t="Include" />
+                <e p="CircleCollider2DResetter.cs" t="Include" />
+                <e p="Collider2DResetter.cs" t="Include" />
                 <e p="RendererResetter.cs" t="Include" />
+                <e p="Rigidbody2DResetter.cs" t="Include" />
+                <e p="SpriteRendererResetter.cs" t="Include" />
                 <e p="TrailRendererResetter.cs" t="Include" />
+                <e p="TransformResetter.cs" t="Include" />
               </e>
             </e>
             <e p="Test" t="Include">
