@@ -11,7 +11,8 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PeriodicBehaviour : MonoBehaviour
+[Obsolete("Use PeriodicBehaviour instead.")]
+public class PeriodicCoroutineBehaviour : MonoBehaviour
 {
     public float Period = 1f;
 
@@ -26,8 +27,8 @@ public class PeriodicBehaviour : MonoBehaviour
     private Coroutine periodCoroutine;
     private float lastPeriod;
 
-    protected virtual bool ShowAutoApplyInInspector => GetType() == typeof(PeriodicBehaviour);
-    protected virtual bool ShowEventInInspector => GetType() == typeof(PeriodicBehaviour);
+    protected virtual bool ShowAutoApplyInInspector => GetType() == typeof(PeriodicCoroutineBehaviour);
+    protected virtual bool ShowEventInInspector => GetType() == typeof(PeriodicCoroutineBehaviour);
     private bool IsPeriodChanged => Math.Abs(Period - lastPeriod) >= 0.001f;
 
     protected virtual void OnEnable()

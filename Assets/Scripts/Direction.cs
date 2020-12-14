@@ -8,7 +8,7 @@
 using System;
 using UnityEngine;
 
-public struct Direction
+public readonly struct Direction
 {
     public static Direction Up => new Direction(Vector2.up, vector => vector.y);
     public static Direction Down => new Direction(Vector2.down, vector => -vector.y);
@@ -27,10 +27,17 @@ public struct Direction
             
         this.axisSelector = axisSelector;
     }
-        
+
+    public float GetAxis(Vector2 vector)
+    {
+        return axisSelector?.Invoke(vector) ?? 0f;
+    }
+    
     public bool Equals(Direction other)
     {
-        return NormalizedVector.Equals(other.NormalizedVector) && Angle.Equals(other.Angle) && Equals(axisSelector, other.axisSelector);
+        return NormalizedVector.Equals(other.NormalizedVector) 
+               && Angle.Equals(other.Angle) 
+               && axisSelector.Equals(other.axisSelector);
     }
 
     public override bool Equals(object obj)
@@ -45,13 +52,9 @@ public struct Direction
             int hashCode = NormalizedVector.GetHashCode();
             hashCode = (hashCode * 397) ^ Angle.GetHashCode();
             hashCode = (hashCode * 397) ^ (axisSelector != null ? axisSelector.GetHashCode() : 0);
+            
             return hashCode;
         }
-    }
-        
-    public float GetAxis(Vector2 vector)
-    {
-        return axisSelector(vector);
     }
 
     public static bool operator ==(Direction direction1, Direction direction2)
