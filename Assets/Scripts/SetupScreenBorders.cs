@@ -6,7 +6,7 @@
 */
 
 using UnityEngine;
-using Toolkit.Common.Attributes;
+using Evolunity.Attributes;
 
 public class SetupScreenBorders : MonoBehaviour
 {
