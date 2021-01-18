@@ -21,3 +21,5 @@ Unity project for testing different things, storing scripts and developing packa
     ```git
     git submodule update
     ```
+
+4. If you don't have access to some repositories, just ignore them.
