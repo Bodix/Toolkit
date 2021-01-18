@@ -12,7 +12,7 @@ namespace Dirty.Test
         [SerializeField]
         private IntRange range2;
 
-        [Sirenix.OdinInspector.Button]
+        // [OdinInspector.Button]
         public void Test()
         {
             Debug.Log(range1 == range2);

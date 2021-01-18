@@ -4,6 +4,7 @@
 !.gitignore
 !.gitmodules
 !*.DotSettings
+!README.md
 
 !.idea/
 !Assets/
