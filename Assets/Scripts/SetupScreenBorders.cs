@@ -1,12 +1,8 @@
-﻿/*
- * Copyright (C) 2020 by Evolutex - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Bogdan Nikolaev <bodix321@gmail.com>
-*/
+﻿// Copyright © 2020 Bogdan Nikolayev <bodix321@gmail.com>
+// All Rights Reserved
 
+using Evolutex.Evolunity.Attributes;
 using UnityEngine;
-using Evolunity.Attributes;
 
 public class SetupScreenBorders : MonoBehaviour
 {
