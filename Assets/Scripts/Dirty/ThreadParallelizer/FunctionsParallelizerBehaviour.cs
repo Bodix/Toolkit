@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Evolutex.Evolunity.Extensions;
 using NaughtyAttributes;
-using Proyecto26;
-using RSG;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 namespace Dirty.ThreadParallelizer
@@ -24,6 +17,9 @@ namespace Dirty.ThreadParallelizer
         [SerializeField]
         private string fileUrl =
             "https://www.google.com.ua/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png";
+        [SerializeField]
+        private string jsonUrl =
+            "https://api.github.com/emojis";
         [SerializeField]
         private Slider slider;
         [SerializeField]
@@ -54,16 +50,36 @@ namespace Dirty.ThreadParallelizer
             }
         }
         
-        [Button("Get Async Request Image")]
-        public async Task TestRequestAsync()
+        [Button("Get Image")]
+        public async Task TestRequestImageAsync()
         {
             for (int i = 0; i < count; i++)
             {
                 CreateImage(await AsyncHttpRequest.GetByteArray(fileUrl));
             }
         }
+        
+        [Button("Get Json")]
+        public async Task TestRequestAsync()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Dictionary<string, string> a = await AsyncHttpRequest.GetJson<Dictionary<string, string>>(jsonUrl);
+                Debug.Log(a.AsString(x => x.Key + " : " + x.Value));
+            }
+        }
 
         private void CreateImage(byte[] bytes)
+        {
+            InstantiateImage(bytes);
+        }
+        
+        private async Task CreateImageAsync(byte[] bytes)
+        {
+            await Task.Run(() => InstantiateImage(bytes)).ConfigureAwait(true);
+        }
+
+        private void InstantiateImage(byte[] bytes)
         {
             Image image = Instantiate(imagePrefab, transform);
 
