@@ -9,9 +9,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="JsonDotNet" t="Include">
-          <e p="link.xml" t="Include" />
-        </e>
         <e p="Packages" t="Include">
           <e p="Demigiant" t="Include">
             <e p="DOTween" t="Include">
@@ -258,6 +255,9 @@
                 </e>
               </e>
             </e>
+          </e>
+          <e p="JsonDotNet" t="Include">
+            <e p="link.xml" t="Include" />
           </e>
           <e p="Toolkit.Common" t="Include">
             <e p="Advanced PlayerPrefs Window" t="Include">
@@ -572,9 +572,9 @@
               <e p="States.cs" t="Include" />
             </e>
             <e p="ThreadParallelizer" t="Include">
+              <e p="AsyncHttpRequest.cs" t="Include" />
               <e p="FunctionsParallelizer.cs" t="Include" />
               <e p="FunctionsParallelizerBehaviour.cs" t="Include" />
-              <e p="HttpRequest.cs" t="Include" />
               <e p="RequestManager.cs" t="Include" />
             </e>
           </e>
