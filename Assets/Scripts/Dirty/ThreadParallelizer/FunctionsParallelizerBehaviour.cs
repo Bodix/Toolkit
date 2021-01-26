@@ -40,32 +40,31 @@ namespace Dirty.ThreadParallelizer
             tr.Translate(Time.deltaTime, 0, 0);
         }
 
-        [Button("Get Async Client Image")]
+        [Button("Get JSON async (client)")]
         public async Task TestClientAsync()
         {
             HttpClient client = new HttpClient();
             for (int i = 0; i < count; i++)
             {
-                CreateImage(await client.GetByteArrayAsync(fileUrl));
+                Debug.Log((await client.GetAsync(jsonUrl)).Content.ReadAsStringAsync().Result);
             }
         }
         
-        [Button("Get Image")]
+        [Button("Get image async")]
         public async Task TestRequestImageAsync()
         {
             for (int i = 0; i < count; i++)
             {
-                CreateImage(await AsyncHttpRequest.GetByteArray(fileUrl));
+                await CreateImageAsync(await AsyncHttpRequest.GetByteArray(fileUrl));
             }
         }
         
-        [Button("Get Json")]
-        public async Task TestRequestAsync()
+        [Button("Get JSON async")]
+        public async Task TestJsonAsync()
         {
             for (int i = 0; i < count; i++)
             {
-                Dictionary<string, string> a = await AsyncHttpRequest.GetJson<Dictionary<string, string>>(jsonUrl);
-                Debug.Log(a.AsString(x => x.Key + " : " + x.Value));
+                Debug.Log(await AsyncHttpRequest.Get(jsonUrl));
             }
         }
 
@@ -76,7 +75,7 @@ namespace Dirty.ThreadParallelizer
         
         private async Task CreateImageAsync(byte[] bytes)
         {
-            await Task.Run(() => InstantiateImage(bytes)).ConfigureAwait(true);
+            await Task.Run(() => InstantiateImage(bytes)).ConfigureAwait(false);
         }
 
         private void InstantiateImage(byte[] bytes)
@@ -87,6 +86,11 @@ namespace Dirty.ThreadParallelizer
             image.sprite = bytes.ToSprite();
         }
 
+        private void LogJson(Dictionary<string, string> dicti)
+        {
+            Debug.Log(dicti.AsString(x => x.Key + " : " + x.Value));
+        }
+        
         public void TestCoroutine()
         {
             // IPromise promise = RestClient.Get(new RequestHelper {

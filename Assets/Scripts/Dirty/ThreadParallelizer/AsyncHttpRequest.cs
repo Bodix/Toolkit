@@ -10,13 +10,13 @@ namespace Dirty.ThreadParallelizer
 {
     public static class AsyncHttpRequest
     {
-        public static async Task<TOutput> Post<TInput, TOutput>(string url, string content,
+        public static async Task<TOutput> Post<TOutput>(string url, string content,
             string contentType = "application/json", string method = "POST")
         {
             HttpWebRequest request = CreateRequestWithContent(url, method, contentType, content);
 
-            // using (StreamWriter writer = new StreamWriter(await request.GetRequestStreamAsync(), Encoding.ASCII))
-            //     await writer.WriteAsync(requestString);
+            using (StreamWriter writer = new StreamWriter(await request.GetRequestStreamAsync(), Encoding.ASCII))
+                await writer.WriteAsync(content);
 
             return await ReadResponse(request, JsonConvert.DeserializeObject<TOutput>);
         }
@@ -38,12 +38,12 @@ namespace Dirty.ThreadParallelizer
             return await ReadResponse(CreateRequest(url, contentType));
         }
 
-        public static async Task<TOutput> Get<TOutput>(string url, Func<string, TOutput> converter, string contentType = "text/plain")
+        public static async Task<TOutput> Get<TOutput>(string url, Func<string, TOutput> converter, string contentType = "application/json")
         {
             return await ReadResponse(CreateRequest(url, contentType), converter);
         }
         
-        public static async Task<TOutput> Get<TOutput>(string url, Func<string, Task<TOutput>> converter, string contentType = "text/plain")
+        public static async Task<TOutput> Get<TOutput>(string url, Func<string, Task<TOutput>> converter, string contentType = "application/json")
         {
             return await ReadResponse(CreateRequest(url, contentType), converter);
         }
