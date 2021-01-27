@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Dirty.Http;
 using Evolutex.Evolunity.Extensions;
@@ -25,6 +26,8 @@ namespace Dirty.ThreadParallelizer
         [SerializeField]
         private Slider slider;
 
+        HttpClient client = new HttpClient();
+
         private async void Start()
         {
             // await Test();
@@ -33,11 +36,10 @@ namespace Dirty.ThreadParallelizer
 
             // var a = new Thread(new ParameterizedThreadStart(async o => await Test()));
             // a.Start();
+
             TaskScheduler.UnobservedTaskException += (s, e) =>
             {
-                Debug.Log($"Unobserved Task Exception : {e.Exception.Message}");
-                //to actually observe the task, uncomment the below line of code
-                //e.SetObserved();
+                Debug.LogError($"UnobservedTaskException:\n{e.Exception.InnerException}");
             };
         }
 
@@ -47,23 +49,25 @@ namespace Dirty.ThreadParallelizer
         }
 
         [Button("Get JSON async (client)")]
-        public async Task TestClientAsync()
+        public async Task GetJsonAsyncWithClient()
         {
-            HttpClient client = new HttpClient();
             for (int i = 0; i < count; i++)
             {
+                var content = (await client.GetAsync("http://webcode.me"));
+                Debug.Log(content);
+
                 Debug.Log((await client.GetAsync(fileUrl)).ToString());
             }
         }
 
         [Button("Get image async")]
-        public async Task TestRequestImageAsync()
+        public async Task GetImageAsync()
         {
             for (int i = 0; i < count; i++)
             {
                 try
                 {
-                    Image image = await AsyncHttpRequest.Get(fileUrl, CreateImageAsync);
+                    await AsyncHttpRequest.Get(fileUrl, InstantiateImage);
                 }
                 catch (Exception e)
                 {
@@ -74,8 +78,34 @@ namespace Dirty.ThreadParallelizer
             }
         }
 
+        [Button("Get images parallel")]
+        public void GetImagesInParallel()
+        {
+            List<Action> actions = new List<Action>();
+            for (int i = 0; i < count; i++)
+            {
+                // actions.Add(async () => await AsyncHttpRequest.Get(fileUrl, InstantiateImage));
+                actions.Add(async () =>
+                {
+                    try
+                    {
+                        InstantiateImage(await client.GetByteArrayAsync(fileUrl));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                });
+            }
+
+            Debug.Log(actions.Count);
+
+            Parallel.Invoke(actions.ToArray());
+        }
+
         [Button("Get JSON async")]
-        public async Task TestJsonAsync()
+        public async Task GetJsonAsync()
         {
             for (int i = 0; i < count; i++)
             {
@@ -83,9 +113,9 @@ namespace Dirty.ThreadParallelizer
             }
         }
 
-        private Image CreateImage(byte[] bytes)
+        private void CreateImage(byte[] bytes)
         {
-            return InstantiateImage(bytes);
+            InstantiateImage(bytes);
         }
 
         private async Task<Image> CreateImageAsync(byte[] bytes)
@@ -99,6 +129,7 @@ namespace Dirty.ThreadParallelizer
 
             image.sprite = bytes.ToSprite();
 
+            Debug.Log("Instantiated");
             return image;
         }
 

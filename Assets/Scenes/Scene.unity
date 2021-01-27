@@ -524,7 +524,7 @@ MonoBehaviour:
   count: 5
   imagePrefab: {fileID: 5705845209256064754, guid: b95fd65b251309f48a7d028e5d0964e6,
     type: 3}
-  fileUrl: ahttps://www.lg.com/ru/images/TV/features/TV-UHD-UM74-A-04-Quad-Core-Processor-Desktop.jpg
+  fileUrl: https://www.lg.com/ru/images/TV/features/TV-UHD-UM74-A-04-Quad-Core-Processor-Desktop.jpg
   jsonUrl: https://api.github.com/emojis
   slider: {fileID: 345189581}
 --- !u!114 &1163468644

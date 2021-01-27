@@ -543,6 +543,9 @@
         <e p="Scripts" t="Include">
           <e p="ARModelPlacer.cs" t="Include" />
           <e p="Dirty" t="Include">
+            <e p="Dispatcher" t="Include">
+              <e p="UnityMainThreadDispatcher.cs" t="Include" />
+            </e>
             <e p="Editor" t="Include">
               <e p="EditorIcons.cs" t="Include" />
               <e p="ProjectWindow" t="Include">

@@ -13,10 +13,9 @@ namespace Dirty.Http
     /// </summary>
     public static class AsyncHttpRequest
     {
-        // public static async Task<HttpDataResponse<TOutput>> Post<TOutput>(string url, string content,
-        //     string contentType = "application/json", string method = "POST")
+        // public static async Task<HttpDataResponse<TOutput>> Post<TOutput>(string url, string content, string contentType = "application/json")
         // {
-        //     HttpWebRequest request = CreateRequestWithContent(url, method, contentType, content);
+        //     HttpWebRequest request = CreateRequestWithContent(url, "POST", contentType, content);
         //
         //     return await ReadResponse(await SendRequestWithContent(request, content), JsonConvert.DeserializeObject<TOutput>);
         // }
