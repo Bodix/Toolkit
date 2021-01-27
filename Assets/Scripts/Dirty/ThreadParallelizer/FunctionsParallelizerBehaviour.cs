@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Dirty.Http;
 using Evolutex.Evolunity.Extensions;
 using NaughtyAttributes;
 using UnityEngine;
@@ -22,8 +24,6 @@ namespace Dirty.ThreadParallelizer
             "https://api.github.com/emojis";
         [SerializeField]
         private Slider slider;
-        [SerializeField]
-        private Transform tr;
 
         private async void Start()
         {
@@ -33,11 +33,17 @@ namespace Dirty.ThreadParallelizer
 
             // var a = new Thread(new ParameterizedThreadStart(async o => await Test()));
             // a.Start();
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+            {
+                Debug.Log($"Unobserved Task Exception : {e.Exception.Message}");
+                //to actually observe the task, uncomment the below line of code
+                //e.SetObserved();
+            };
         }
 
         private void Update()
         {
-            tr.Translate(Time.deltaTime, 0, 0);
+            slider.value += Time.deltaTime / 10;
         }
 
         [Button("Get JSON async (client)")]
@@ -46,19 +52,28 @@ namespace Dirty.ThreadParallelizer
             HttpClient client = new HttpClient();
             for (int i = 0; i < count; i++)
             {
-                Debug.Log((await client.GetAsync(jsonUrl)).Content.ReadAsStringAsync().Result);
+                Debug.Log((await client.GetAsync(fileUrl)).ToString());
             }
         }
-        
+
         [Button("Get image async")]
         public async Task TestRequestImageAsync()
         {
             for (int i = 0; i < count; i++)
             {
-                await CreateImageAsync(await AsyncHttpRequest.GetByteArray(fileUrl));
+                try
+                {
+                    Image image = await AsyncHttpRequest.Get(fileUrl, CreateImageAsync);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+
+                    throw;
+                }
             }
         }
-        
+
         [Button("Get JSON async")]
         public async Task TestJsonAsync()
         {
@@ -68,29 +83,30 @@ namespace Dirty.ThreadParallelizer
             }
         }
 
-        private void CreateImage(byte[] bytes)
+        private Image CreateImage(byte[] bytes)
         {
-            InstantiateImage(bytes);
-        }
-        
-        private async Task CreateImageAsync(byte[] bytes)
-        {
-            await Task.Run(() => InstantiateImage(bytes)).ConfigureAwait(false);
+            return InstantiateImage(bytes);
         }
 
-        private void InstantiateImage(byte[] bytes)
+        private async Task<Image> CreateImageAsync(byte[] bytes)
+        {
+            return await Task.Run(() => InstantiateImage(bytes));
+        }
+
+        private Image InstantiateImage(byte[] bytes)
         {
             Image image = Instantiate(imagePrefab, transform);
 
-            Debug.Log("VAR");
             image.sprite = bytes.ToSprite();
+
+            return image;
         }
 
         private void LogJson(Dictionary<string, string> dicti)
         {
             Debug.Log(dicti.AsString(x => x.Key + " : " + x.Value));
         }
-        
+
         public void TestCoroutine()
         {
             // IPromise promise = RestClient.Get(new RequestHelper {

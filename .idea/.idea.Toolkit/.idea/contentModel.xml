@@ -565,6 +565,19 @@
               <e p="SceneHirerarchyUtility.cs" t="Include" />
               <e p="UnfoldHierarchyObjects.cs" t="Include" />
             </e>
+            <e p="Http" t="Include">
+              <e p="AsyncHttpRequest.cs" t="Include" />
+              <e p="Response" t="Include">
+                <e p="Data" t="Include">
+                  <e p="HttpResponseData.cs" t="Include" />
+                  <e p="IHttpResponseData.cs" t="Include" />
+                </e>
+                <e p="HttpByteArrayResponse.cs" t="Include" />
+                <e p="HttpDataResponse.cs" t="Include" />
+                <e p="HttpObjectResponse.cs" t="Include" />
+                <e p="HttpStringResponse.cs" t="Include" />
+              </e>
+            </e>
             <e p="Test" t="Include">
               <e p="_Test.cs" t="Include" />
               <e p="_TestBehaviour.cs" t="Include" />
@@ -572,7 +585,6 @@
               <e p="States.cs" t="Include" />
             </e>
             <e p="ThreadParallelizer" t="Include">
-              <e p="AsyncHttpRequest.cs" t="Include" />
               <e p="FunctionsParallelizer.cs" t="Include" />
               <e p="FunctionsParallelizerBehaviour.cs" t="Include" />
               <e p="RequestManager.cs" t="Include" />
