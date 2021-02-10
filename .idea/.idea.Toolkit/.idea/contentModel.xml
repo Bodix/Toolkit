@@ -179,6 +179,10 @@
                     <e p="PeriodicBehaviourEditor.cs" t="Include" />
                   </e>
                   <e p="Evolunity.Editor.asmdef" t="Include" />
+                  <e p="Hierarchy" t="Include">
+                    <e p="ExpandHierarchyObjects.cs" t="Include" />
+                    <e p="SceneHierarchyUtility.cs" t="Include" />
+                  </e>
                   <e p="MenuItems.cs" t="Include" />
                   <e p="OpenInFileManager.cs" t="Include" />
                   <e p="UnityConstantsGenerator.cs" t="Include" />
@@ -231,6 +235,7 @@
                     <e p="VectorExtensions.cs" t="Include" />
                   </e>
                   <e p="Patterns" t="Include">
+                    <e p="Singleton.cs" t="Include" />
                     <e p="StateMachine" t="Include">
                       <e p="State.cs" t="Include" />
                       <e p="StateMachine.cs" t="Include" />
@@ -494,8 +499,6 @@
                 <e p="ProjectWindowDetails.cs" t="Include" />
                 <e p="ProjectWindowExtensions.cs" t="Include" />
               </e>
-              <e p="SceneHirerarchyUtility.cs" t="Include" />
-              <e p="UnfoldHierarchyObjects.cs" t="Include" />
             </e>
             <e p="Test" t="Include">
               <e p="_Test.cs" t="Include" />
