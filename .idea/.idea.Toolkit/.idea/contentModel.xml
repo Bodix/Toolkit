@@ -568,6 +568,7 @@
           </e>
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />
+            <e p="Unlit-ColorAlpha.shader" t="Include" />
           </e>
         </e>
       </e>

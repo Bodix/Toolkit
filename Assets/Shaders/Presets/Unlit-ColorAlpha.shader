@@ -3,7 +3,7 @@
 // - no lightmap support
 // - no texture
 
-Shader "Custom/Unlit/Color"
+Shader "Custom/Unlit/ColorAlpha"
 {
     Properties
     {
@@ -11,6 +11,7 @@ Shader "Custom/Unlit/Color"
     }
     SubShader
     {
+        Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
             CGPROGRAM
