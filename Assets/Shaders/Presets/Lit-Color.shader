@@ -6,7 +6,6 @@ Shader "Custom/Lit/Color"
     }
     SubShader
     {
-        Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
             CGPROGRAM

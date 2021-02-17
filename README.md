@@ -1,6 +1,6 @@
 # Toolkit
 
-Unity project for testing different things, storing scripts and developing packages.
+Project for developing Unity modules, shaders, and storing scripts that are not included in the modules.
 
 ## Install
 
