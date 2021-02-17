@@ -1,9 +1,4 @@
-// Unlit shader. Simplest possible colored shader.
-// - no lighting
-// - no lightmap support
-// - no texture
-
-Shader "Custom/Unlit/Color Alpha"
+Shader "Custom/Lit/Color"
 {
     Properties
     {
