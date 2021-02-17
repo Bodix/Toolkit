@@ -566,7 +566,9 @@
             <e p="Default-StandartSurface.shader" t="Include" />
             <e p="Default-Unlit.shader" t="Include" />
           </e>
-          <e p="SoftNoise.shader" t="Include" />
+          <e p="Presets" t="Include">
+            <e p="Unlit-Color.shader" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Evolunity.Editor.csproj" t="IncludeRecursive" />
