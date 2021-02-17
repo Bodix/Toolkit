@@ -1,4 +1,4 @@
-﻿using Evolutex.Evolunity.Structs;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Dirty.Test
@@ -7,15 +7,10 @@ namespace Dirty.Test
     {
         [SerializeField]
         private _Test test;
-        [SerializeField]
-        private IntRange range1;
-        [SerializeField]
-        private IntRange range2;
 
-        // [OdinInspector.Button]
+        [Button]
         public void Test()
         {
-            Debug.Log(range1 == range2);
         }
     }
 }
