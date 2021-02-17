@@ -15,33 +15,19 @@ Shader "Custom/Unlit/Color"
         {
             CGPROGRAM
             
-            #pragma fragment frag
             #pragma vertex vert
-            
-            struct appdata
-            {
-                float4 vertex: POSITION;
-            };
-            
-            struct v2f
-            {
-                float4 vertex: SV_POSITION;
-            };
+            #pragma fragment frag
             
             float4 _Color;
             
-            fixed4 frag(v2f i): SV_Target
+            float4 vert(float4 vertex : POSITION) : SV_POSITION
             {
-                return _Color;
+                return UnityObjectToClipPos(vertex);
             }
             
-            v2f vert(appdata v)
+            fixed4 frag() : SV_TARGET
             {
-                v2f o;
-                
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                
-                return o;
+                return _Color;
             }
             ENDCG
         }
