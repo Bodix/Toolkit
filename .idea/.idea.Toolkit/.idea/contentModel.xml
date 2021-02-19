@@ -567,9 +567,10 @@
             <e p="Default-Unlit.shader" t="Include" />
           </e>
           <e p="Presets" t="Include">
-            <e p="Lit-Color.shader" t="Include" />
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorAlpha.shader" t="Include" />
+            <e p="Unlit-Normals.shader" t="Include" />
+            <e p="Unlit-Texture.shader" t="Include" />
           </e>
         </e>
       </e>
