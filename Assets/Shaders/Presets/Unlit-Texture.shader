@@ -11,6 +11,25 @@ Shader "Custom/Unlit/Texture"
     }
     SubShader
     {
+        // Simplified version with using UnityCG.cginc. 
+        // Doesn't support texture tiling and offset.
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert_img
+            #pragma fragment frag
+            
+            #include "UnityCG.cginc"
+            
+            sampler2D _MainTex;
+            
+            fixed4 frag(v2f_img i): SV_TARGET
+            {
+                return tex2D(_MainTex, i.uv);
+            }
+            ENDCG
+        }
+
         // Pass
         // {
         //     CGPROGRAM
@@ -50,24 +69,5 @@ Shader "Custom/Unlit/Texture"
         //     }
         //     ENDCG
         // }
-        
-        // Simplified version with using UnityCG.cginc. 
-        // Doesn't support texture tiling and offset.
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert_img
-            #pragma fragment frag
-            
-            #include "UnityCG.cginc"
-            
-            sampler2D _MainTex;
-            
-            fixed4 frag(v2f_img i): SV_TARGET
-            {
-                return tex2D(_MainTex, i.uv);
-            }
-            ENDCG
-        }
     }
 }
