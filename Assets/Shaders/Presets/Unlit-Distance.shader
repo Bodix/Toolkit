@@ -3,6 +3,8 @@ Shader "Custom/Unlit/Distance"
     Properties
     {
         _MainTex ("Texture", 2D) = "" { }
+        _VisibleDist ("Visible Distance", Float) = 10
+        _InvisibleDist ("Invisible Distance", Float) = 10
     }
     SubShader
     {
@@ -30,6 +32,8 @@ Shader "Custom/Unlit/Distance"
             
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            half _VisibleDist;
+            half _InvisibleDist;
             
             v2f vert(appdata v)
             {
@@ -46,7 +50,8 @@ Shader "Custom/Unlit/Distance"
             {
                 fixed4 c = tex2D(_MainTex, i.uv);
 
-                c.a = 1 / i.distToCam;
+                half w = min(0, i.distToCam - _InvisibleDist);
+                c.a = w / (_VisibleDist - _InvisibleDist);
 
                 return c;
             }
