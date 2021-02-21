@@ -12,14 +12,14 @@ Shader "Custom/Unlit/Normals"
             
             struct appdata
             {
-                float3 vertex: POSITION;
-                float3 normal: NORMAL;
+                float3 vertex : POSITION;
+                float3 normal : NORMAL;
             };
             
             struct v2f
             {
-                float4 vertex: SV_POSITION;
-                float3 normal: TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                float3 normal : NORMAL;
             };
             
             v2f vert(appdata v)
@@ -32,7 +32,7 @@ Shader "Custom/Unlit/Normals"
                 return o;
             }
             
-            fixed4 frag(v2f i): SV_TARGET
+            fixed4 frag(v2f i) : SV_TARGET
             {
                 fixed4 c = 0;
                 

@@ -23,7 +23,7 @@ Shader "Custom/Unlit/Texture"
             
             sampler2D _MainTex;
             
-            fixed4 frag(v2f_img i): SV_TARGET
+            fixed4 frag(v2f_img i) : SV_TARGET
             {
                 return tex2D(_MainTex, i.uv);
             }
