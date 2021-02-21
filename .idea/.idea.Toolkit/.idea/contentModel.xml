@@ -164,22 +164,26 @@
               </e>
               <e p="Scripts" t="Include">
                 <e p="Editor" t="Include">
-                  <e p="CameraScreenshot.cs" t="Include" />
-                  <e p="Define.cs" t="Include" />
                   <e p="Drawers" t="Include">
                     <e p="AttributePropertyDrawer.cs" t="Include" />
                     <e p="LayerDrawer.cs" t="Include" />
                     <e p="RangeDrawer.cs" t="Include" />
                   </e>
-                  <e p="EditorConsole.cs" t="Include" />
                   <e p="Editors" t="Include">
                     <e p="CommentEditor.cs" t="Include" />
                     <e p="PeriodicBehaviourEditor.cs" t="Include" />
                   </e>
                   <e p="Evolunity.Editor.asmdef" t="Include" />
                   <e p="MenuItems.cs" t="Include" />
-                  <e p="OpenInFileManager.cs" t="Include" />
                   <e p="UnityConstantsGenerator.cs" t="Include" />
+                  <e p="Utilities" t="Include">
+                    <e p="AutoExpandHierarchy.cs" t="Include" />
+                    <e p="CameraScreenshot.cs" t="Include" />
+                    <e p="Define.cs" t="Include" />
+                    <e p="EditorConsole.cs" t="Include" />
+                    <e p="FileManager.cs" t="Include" />
+                    <e p="SceneHierarchy.cs" t="Include" />
+                  </e>
                   <e p="Windows" t="Include">
                     <e p="Config.cs" t="Include" />
                   </e>
@@ -229,6 +233,7 @@
                     <e p="VectorExtensions.cs" t="Include" />
                   </e>
                   <e p="Patterns" t="Include">
+                    <e p="Singleton.cs" t="Include" />
                     <e p="StateMachine" t="Include">
                       <e p="State.cs" t="Include" />
                       <e p="StateMachine.cs" t="Include" />
@@ -570,6 +575,7 @@
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorAlpha.shader" t="Include" />
             <e p="Unlit-Normals.shader" t="Include" />
+            <e p="Unlit-Texture 1.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />
           </e>
         </e>

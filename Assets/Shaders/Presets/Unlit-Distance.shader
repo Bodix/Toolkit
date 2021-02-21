@@ -1,7 +1,12 @@
-Shader "Custom/Unlit/Normals"
+Shader "Custom/Unlit/Distance"
 {
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "" { }
+    }
     SubShader
     {
+        Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
             CGPROGRAM
@@ -12,32 +17,37 @@ Shader "Custom/Unlit/Normals"
             
             struct appdata
             {
-                float3 vertex : POSITION;
-                half3 normal : NORMAL;
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
             };
             
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                half3 normal : NORMAL;
+                float2 uv : TEXCOORD0;
+                half distToCam : TEXCOORD1;
             };
+            
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
             
             v2f vert(appdata v)
             {
                 v2f o;
                 
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.normal = UnityObjectToWorldNormal(v.normal);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.distToCam = length(ObjSpaceViewDir(v.vertex));
                 
                 return o;
             }
             
             fixed4 frag(v2f i) : SV_TARGET
             {
-                fixed4 c = 0;
-                
-                c.rgb = i.normal * 0.5 + 0.5;
-                
+                fixed4 c = tex2D(_MainTex, i.uv);
+
+                c.a = 1 / i.distToCam;
+
                 return c;
             }
             ENDCG
