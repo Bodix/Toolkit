@@ -3,7 +3,7 @@
 // - no lightmap support
 // - no texture
 
-Shader "Custom/Unlit/Color Alpha"
+Shader "Custom/Unlit/Color Transparent"
 {
     Properties
     {
@@ -11,6 +11,8 @@ Shader "Custom/Unlit/Color Alpha"
     }
     SubShader
     {
+        Tags { "Queue" = "Transparent" }
+        ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {

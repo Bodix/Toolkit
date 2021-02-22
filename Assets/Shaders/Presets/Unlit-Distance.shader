@@ -8,6 +8,8 @@ Shader "Custom/Unlit/Distance"
     }
     SubShader
     {
+        Tags { "Queue" = "Transparent" }
+        ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
@@ -50,8 +52,7 @@ Shader "Custom/Unlit/Distance"
             {
                 fixed4 c = tex2D(_MainTex, i.uv);
 
-                half w = min(0, i.distToCam - _InvisibleDist);
-                c.a = w / (_VisibleDist - _InvisibleDist);
+                c.a = clamp(i.distToCam - _InvisibleDist / (_VisibleDist - _InvisibleDist), 0, 1);
 
                 return c;
             }
