@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: balloonstupidcat
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 769851cc9041471469c5b3fc3ba08250, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 769851cc9041471469c5b3fc3ba08250, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

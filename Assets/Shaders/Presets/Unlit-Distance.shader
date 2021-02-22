@@ -52,7 +52,7 @@ Shader "Custom/Unlit/Distance"
             {
                 fixed4 c = tex2D(_MainTex, i.uv);
 
-                c.a = clamp(i.distToCam - _InvisibleDist / (_VisibleDist - _InvisibleDist), 0, 1);
+                c.a = clamp((i.distToCam - _InvisibleDist) / (_VisibleDist - _InvisibleDist), 0, 1);
 
                 return c;
             }
