@@ -4,4 +4,6 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cinput/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cspawners/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cspawners/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime_005Cextensions_005Csystem/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolutex_005Cevolunity_005Cscripts_005Cruntime_005Cextensions_005Cunity/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
