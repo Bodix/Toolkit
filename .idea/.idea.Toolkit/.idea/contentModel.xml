@@ -198,6 +198,13 @@
                     <e p="WeightQueue.cs" t="Include" />
                   </e>
                   <e p="Components" t="Include">
+                    <e p="Animations" t="Include">
+                      <e p="AnimationEventsHandler.cs" t="Include" />
+                      <e p="Fade.cs" t="Include" />
+                      <e p="IInOutPlayable.cs" t="Include" />
+                      <e p="InOutBehaviour.cs" t="Include" />
+                      <e p="SceneTransition.cs" t="Include" />
+                    </e>
                     <e p="Comment.cs" t="Include" />
                     <e p="DevelopmentOnly.cs" t="Include" />
                     <e p="DisableMethod.cs" t="Include" />
@@ -513,6 +520,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Animations" t="Include">
+            <e p="CanvasGroupFadeAnimation.cs" t="Include" />
+          </e>
           <e p="AR" t="Include">
             <e p="ARModelPlacer.cs" t="Include" />
             <e p="ARPlacementPointer.cs" t="Include" />
