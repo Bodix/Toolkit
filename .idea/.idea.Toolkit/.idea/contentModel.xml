@@ -244,6 +244,7 @@
                       <e p="LayerMaskExtensions.cs" t="Include" />
                       <e p="QuaternionExtensions.cs" t="Include" />
                       <e p="RectExtensions.cs" t="Include" />
+                      <e p="RectTransformExtensions.cs" t="Include" />
                       <e p="RendererExtensions.cs" t="Include" />
                       <e p="TextureExtensions.cs" t="Include" />
                       <e p="TransformExtensions.cs" t="Include" />
@@ -570,10 +571,15 @@
               <e p="_Test.cs" t="Include" />
               <e p="_TestBehaviour.cs" t="Include" />
               <e p="AutoSetTag.cs" t="Include" />
+              <e p="DraggableGraphic.cs" t="Include" />
               <e p="GIFAnimationBehaviour.cs" t="Include" />
+              <e p="GizmosCustom.cs" t="Include" />
+              <e p="ImageFitter.cs" t="Include" />
               <e p="ScreenOrientationChecker.cs" t="Include" />
               <e p="ScreenOrientationManager.cs" t="Include" />
               <e p="ScreenOrientations.cs" t="Include" />
+              <e p="SetupRectBorders.cs" t="Include" />
+              <e p="ToggleGroupExtensions.cs" t="Include" />
               <e p="TransformExtensions.cs" t="Include" />
             </e>
           </e>
