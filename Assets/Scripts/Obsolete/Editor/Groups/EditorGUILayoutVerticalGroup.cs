@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Obsolete.Editor.Groups
 {
+    [Obsolete("Use EditorGUILayout.VerticalScope instead.")]
     public class EditorGUILayoutVerticalGroup : IDisposable
     {
         private readonly Rect rect;

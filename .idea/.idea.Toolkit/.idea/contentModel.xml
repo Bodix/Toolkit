@@ -580,6 +580,7 @@
                 <e p="EditorGUILayoutHorizontalGroup.cs" t="Include" />
                 <e p="EditorGUILayoutVerticalGroup.cs" t="Include" />
               </e>
+              <e p="MenuItems.cs" t="Include" />
             </e>
           </e>
           <e p="PathUtility.cs" t="Include" />
