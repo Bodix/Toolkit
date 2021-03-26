@@ -173,6 +173,7 @@
                   </e>
                   <e p="Editors" t="Include">
                     <e p="CommentEditor.cs" t="Include" />
+                    <e p="FlexibleLayoutGroupEditor.cs" t="Include" />
                     <e p="PeriodicBehaviourEditor.cs" t="Include" />
                   </e>
                   <e p="Evolunity.Editor.asmdef" t="Include" />
@@ -209,7 +210,6 @@
                     <e p="DevelopmentOnly.cs" t="Include" />
                     <e p="DisableMethod.cs" t="Include" />
                     <e p="DontDestroyOnLoad.cs" t="Include" />
-                    <e p="FPSCounter.cs" t="Include" />
                     <e p="Input" t="Include">
                       <e p="InputReader.cs" t="Include" />
                       <e p="LongPressReader.cs" t="Include" />
@@ -220,6 +220,10 @@
                     <e p="Spawners" t="Include">
                       <e p="BaseSpawner.cs" t="Include" />
                       <e p="Spawner.cs" t="Include" />
+                    </e>
+                    <e p="UI" t="Include">
+                      <e p="FlexibleLayoutGroup.cs" t="Include" />
+                      <e p="FPSCounter.cs" t="Include" />
                     </e>
                   </e>
                   <e p="Evolunity.Runtime.asmdef" t="Include" />
