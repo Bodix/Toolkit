@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-1712206376.00" t="ExcludeRecursive" />
-    <e p="D:\Projects\Toolkit" t="IncludeRecursive">
+    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-1962429402.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\My\Toolkit" t="IncludeRecursive">
       <e p="AdvancedPlayerPrefsWindow.Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -570,6 +570,11 @@
               <e p="_Test.cs" t="Include" />
               <e p="_TestBehaviour.cs" t="Include" />
               <e p="AutoSetTag.cs" t="Include" />
+              <e p="GIFAnimationBehaviour.cs" t="Include" />
+              <e p="ScreenOrientationChecker.cs" t="Include" />
+              <e p="ScreenOrientationManager.cs" t="Include" />
+              <e p="ScreenOrientations.cs" t="Include" />
+              <e p="TransformExtensions.cs" t="Include" />
             </e>
           </e>
           <e p="Extensions" t="Include">
