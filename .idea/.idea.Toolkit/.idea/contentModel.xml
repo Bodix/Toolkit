@@ -589,6 +589,11 @@
           </e>
           <e p="PathUtility.cs" t="Include" />
           <e p="Screenshot.cs" t="Include" />
+          <e p="Selectable" t="Include">
+            <e p="ISelectable.cs" t="Include" />
+            <e p="ParentController.cs" t="Include" />
+            <e p="SelectableBehaviour.cs" t="Include" />
+          </e>
           <e p="SetupScreenBorders.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
