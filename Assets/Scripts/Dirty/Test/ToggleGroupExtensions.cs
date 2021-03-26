@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine.UI;
 
-namespace Evolutex.Evolunity.Extensions
+namespace Dirty.Test
 {
     public static class ToggleGroupExtensions
     {
