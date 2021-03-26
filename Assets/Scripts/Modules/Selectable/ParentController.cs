@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace Selectable
 {
-    // TODO:
-    // Refactoring.
-    
     public class ParentController : MonoBehaviour
     {
         public GameObject ControllableObject { get; private set; }
