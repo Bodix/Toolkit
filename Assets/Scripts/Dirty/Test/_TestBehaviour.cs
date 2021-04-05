@@ -12,5 +12,10 @@ namespace Dirty.Test
         public void Test()
         {
         }
+
+        public void Log()
+        {
+            Debug.Log("Log");
+        }
     }
 }

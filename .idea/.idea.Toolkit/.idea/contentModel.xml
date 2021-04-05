@@ -208,6 +208,7 @@
                       <e p="SceneTransition.cs" t="Include" />
                     </e>
                     <e p="Comment.cs" t="Include" />
+                    <e p="DelayedEvent.cs" t="Include" />
                     <e p="DevelopmentOnly.cs" t="Include" />
                     <e p="DisableMethod.cs" t="Include" />
                     <e p="DontDestroyOnLoad.cs" t="Include" />
@@ -576,7 +577,6 @@
               <e p="_TestBehaviour.cs" t="Include" />
               <e p="AutoSetTag.cs" t="Include" />
               <e p="CountDownBehaviour.cs" t="Include" />
-              <e p="DelayedEvent.cs" t="Include" />
               <e p="DeviceChange.cs" t="Include" />
               <e p="DraggableGraphic.cs" t="Include" />
               <e p="PositionCopier.cs" t="Include" />
@@ -599,7 +599,7 @@
             </e>
             <e p="Selectable" t="Include">
               <e p="ISelectable.cs" t="Include" />
-              <e p="ParentController.cs" t="Include" />
+              <e p="ParentSelector.cs" t="Include" />
               <e p="SelectableBehaviour.cs" t="Include" />
             </e>
           </e>
@@ -626,7 +626,6 @@
             </e>
           </e>
           <e p="PathUtility.cs" t="Include" />
-          <e p="SetupScreenBorders.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">

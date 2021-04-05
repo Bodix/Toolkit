@@ -3,23 +3,23 @@ using UnityEngine;
 
 namespace Selectable
 {
-    public class ParentController : MonoBehaviour
+    public class ParentSelector : MonoBehaviour
     {
-        public GameObject ControllableObject { get; private set; }
+        public GameObject SelectedObject { get; private set; }
 
         private Transform previousParent;
 
         public event Action<GameObject> Select;
         public event Action<GameObject> Unselect;
 
-        public void SelectObject(GameObject gameObj, bool snapToObject = true)
+        public void SelectObject(GameObject gameObj, bool stickToObject = true)
         {
-            if (gameObj == ControllableObject)
+            if (gameObj == SelectedObject)
                 return;
             
             UnselectObject();
 
-            if (snapToObject)
+            if (stickToObject)
             {
                 transform.position = gameObj.transform.position;
                 transform.rotation = gameObj.transform.rotation;
@@ -30,18 +30,18 @@ namespace Selectable
             gameObj.GetComponent<ISelectable>()?.Select();
 
             Select?.Invoke(gameObj);
-            ControllableObject = gameObj;
+            SelectedObject = gameObj;
         }
 
         public void UnselectObject()
         {
-            if (ControllableObject)
+            if (SelectedObject)
             {
-                ControllableObject.transform.SetParent(previousParent);
-                ControllableObject.GetComponent<ISelectable>()?.Unselect();
+                SelectedObject.transform.SetParent(previousParent);
+                SelectedObject.GetComponent<ISelectable>()?.Unselect();
                 
-                Unselect?.Invoke(ControllableObject);
-                ControllableObject = null;
+                Unselect?.Invoke(SelectedObject);
+                SelectedObject = null;
             }
         }
     }

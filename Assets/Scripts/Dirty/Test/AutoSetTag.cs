@@ -5,27 +5,29 @@ namespace Dirty.Test
     [ExecuteAlways]
     public class AutoSetTag : MonoBehaviour
     {
-        private bool markSetTag;
+        public string Tag;
+        
+        private bool setTag;
         
         private void OnValidate()
         {
             if (Application.isEditor && !Application.isPlaying)
             {
-                if (!CompareTag("SomeTag"))
-                    markSetTag = true;
+                if (!CompareTag(Tag))
+                    setTag = true;
             }
         }
 
         private void LateUpdate()
         {
-            // We cant just set tag in OnValidate due to this warning:
+            // We can't just set tag in OnValidate due to the following warning:
             // SendMessage cannot be called during Awake, CheckConsistency, or OnValidate
             // https://forum.unity.com/threads/sendmessage-cannot-be-called-during-awake-checkconsistency-or-onvalidate-can-we-suppress.537265/
-            if (markSetTag)
+            if (setTag)
             {
-                tag = "SomeTag";
+                tag = Tag;
 
-                markSetTag = false;
+                setTag = false;
             }
         }
     }
