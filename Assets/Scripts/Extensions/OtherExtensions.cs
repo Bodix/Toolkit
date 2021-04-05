@@ -23,7 +23,7 @@ namespace Extensions
         public static void DestroyComponentImmediateIfExists<T>(this Component component) where T : Component
         {
             T otherComponent = component.GetComponent<T>();
-            
+
             if (otherComponent != null)
                 Object.DestroyImmediate(otherComponent);
         }
@@ -32,11 +32,22 @@ namespace Extensions
         public static T GetOrAddComponent<T>(this Component component) where T : Component
         {
             T otherComponent = component.GetComponent<T>();
-            
+
             if (otherComponent == null)
                 otherComponent = component.gameObject.AddComponent<T>();
-            
+
             return otherComponent;
+        }
+
+        // Leads to design disruption.
+        public static Transform GetNestedChild(this Transform transform, params int[] indexesPath)
+        {
+            Transform child = transform.transform;
+
+            foreach (int index in indexesPath)
+                child = child.GetChild(index);
+
+            return child;
         }
     }
 }

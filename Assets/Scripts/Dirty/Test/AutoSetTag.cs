@@ -3,7 +3,6 @@
 namespace Dirty.Test
 {
     [ExecuteAlways]
-    [RequireComponent(typeof(Collider))]
     public class AutoSetTag : MonoBehaviour
     {
         private bool markSetTag;

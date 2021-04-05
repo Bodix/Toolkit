@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ArNavigation
+namespace Dirty.Test
 {
     public class ScreenSleep : MonoBehaviour
     {

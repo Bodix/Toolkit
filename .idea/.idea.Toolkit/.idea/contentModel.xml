@@ -185,6 +185,7 @@
                     <e p="Define.cs" t="Include" />
                     <e p="EditorConsole.cs" t="Include" />
                     <e p="FileManager.cs" t="Include" />
+                    <e p="GizmosCustom.cs" t="Include" />
                     <e p="SceneHierarchy.cs" t="Include" />
                   </e>
                   <e p="Windows" t="Include">
@@ -216,6 +217,7 @@
                     </e>
                     <e p="PeriodicBehaviour.cs" t="Include" />
                     <e p="PlatformDependent.cs" t="Include" />
+                    <e p="RectBorders.cs" t="Include" />
                     <e p="SingletonBehaviour.cs" t="Include" />
                     <e p="Spawners" t="Include">
                       <e p="BaseSpawner.cs" t="Include" />
@@ -224,6 +226,7 @@
                     <e p="UI" t="Include">
                       <e p="FlexibleLayoutGroup.cs" t="Include" />
                       <e p="FPSCounter.cs" t="Include" />
+                      <e p="ImageAspectRatioFitter.cs" t="Include" />
                     </e>
                   </e>
                   <e p="Evolunity.Runtime.asmdef" t="Include" />
@@ -247,6 +250,7 @@
                       <e p="RectTransformExtensions.cs" t="Include" />
                       <e p="RendererExtensions.cs" t="Include" />
                       <e p="TextureExtensions.cs" t="Include" />
+                      <e p="ToggleGroupExtensions.cs" t="Include" />
                       <e p="TransformExtensions.cs" t="Include" />
                       <e p="VectorExtensions.cs" t="Include" />
                     </e>
@@ -573,18 +577,10 @@
               <e p="AutoSetTag.cs" t="Include" />
               <e p="CountDownBehaviour.cs" t="Include" />
               <e p="DelayedEvent.cs" t="Include" />
+              <e p="DeviceChange.cs" t="Include" />
               <e p="DraggableGraphic.cs" t="Include" />
-              <e p="GIFAnimationBehaviour.cs" t="Include" />
-              <e p="GizmosCustom.cs" t="Include" />
-              <e p="ImageFitter.cs" t="Include" />
               <e p="PositionCopier.cs" t="Include" />
-              <e p="ScreenOrientationChecker.cs" t="Include" />
-              <e p="ScreenOrientationManager.cs" t="Include" />
-              <e p="ScreenOrientations.cs" t="Include" />
               <e p="ScreenSleep.cs" t="Include" />
-              <e p="SetupRectBorders.cs" t="Include" />
-              <e p="ToggleGroupExtensions.cs" t="Include" />
-              <e p="TransformExtensions.cs" t="Include" />
             </e>
           </e>
           <e p="Extensions" t="Include">

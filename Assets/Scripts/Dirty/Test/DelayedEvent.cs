@@ -6,10 +6,18 @@ namespace Dirty.Test
 {
     public class DelayedEvent : MonoBehaviour
     {
-        [SerializeField]
-        private UnityEvent _event;
+        public UnityEvent Event;
 
-        void Start()
+        [SerializeField]
+        private InvokeMethod invokeMethod;
+        
+        private enum InvokeMethod
+        {
+            Awake,
+            Start
+        }
+
+        private void Start()
         {
             StartCoroutine(DelayedCall());   
         }
@@ -17,7 +25,7 @@ namespace Dirty.Test
         private IEnumerator DelayedCall()
         {
             yield return null;
-            _event.Invoke();
+            Event.Invoke();
         }
     }
 }
