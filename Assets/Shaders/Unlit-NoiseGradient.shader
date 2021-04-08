@@ -66,12 +66,14 @@ Shader "Custom/Unlit/NoiseGradient"
 
             fixed4 frag(v2f i) : SV_TARGET
             {
-                float2 vecToRounded = round_prec(i.scaledUV, 100) - i.scaledUV;
-                float vecToRoundedLength = length(vecToRounded);
+                float2 vecToRounded = i.scaledUV - round_prec(i.scaledUV, 100);
+                // return float4(vecToRounded*1000, 0, 1);
+                float vecToRoundedLength = length(vecToRounded)*100;
+                // return float4(vecToRoundedLength, vecToRoundedLength, 0, 1);
 
                 // return color;
-                return tex2D(_NoiseTex, i.scaledUV * vecToRoundedLength + _Time.x * _Speed);
-                // return tex2D(_MainTex, float2(color, color));
+                return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength + _Time.x * _Speed);
+                return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength);
             }
 
             ENDCG
