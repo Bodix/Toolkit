@@ -64,16 +64,25 @@ Shader "Custom/Unlit/NoiseGradient"
                 return round(x * precision) / precision;
             }
 
+            float invLerp(float from, float to, float value){
+  return (value - from) / (to - from);
+}
+
             fixed4 frag(v2f i) : SV_TARGET
             {
+                float4 colorAtScaledUv = tex2D(_NoiseTex, i.scaledUV);
+                return colorAtScaledUv;
                 float2 vecToRounded = i.scaledUV - round_prec(i.scaledUV, 100);
                 // return float4(vecToRounded*1000, 0, 1);
-                float vecToRoundedLength = length(vecToRounded)*100;
-                // return float4(vecToRoundedLength, vecToRoundedLength, 0, 1);
+                float vecToRoundedLength = length(vecToRounded)*200;
+                // return float4(vecToRoundedLength, vecToRoundedLength, vecToRoundedLength, 1);
+                // float color = invLerp(0, colorAtScaledUv, vecToRoundedLength);
+                // float color = (pow(colorAtScaledUv, 10)+vecToRoundedLength)/2;
+                // return float4(color, color, color, 1);
 
                 // return color;
-                return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength + _Time.x * _Speed);
-                return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength);
+                // return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength + _Time.x * _Speed);
+                // return max(tex2D(_NoiseTex, i.scaledUV), vecToRoundedLength);
             }
 
             ENDCG

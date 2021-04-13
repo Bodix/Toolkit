@@ -421,6 +421,7 @@
                 <e p="IResetter.cs" t="Include" />
                 <e p="SerializedComponentResetter.cs" t="Include" />
               </e>
+              <e p="Toolkit.Resettables.asmdef" t="Include" />
             </e>
             <e p="Test" t="Include">
               <e p="Lean" t="Include">
@@ -489,7 +490,6 @@
                 </e>
               </e>
             </e>
-            <e p="Toolkit.Resettables.asmdef" t="Include" />
           </e>
           <e p="Toolkit.Screens" t="Include">
             <e p="Scripts" t="Include">
@@ -637,12 +637,18 @@
             <e p="Default-StandartSurface.shader" t="Include" />
             <e p="Default-Unlit.shader" t="Include" />
           </e>
+          <e p="Noise" t="Include">
+            <e p="noise-simplex 1.shader" t="Include" />
+            <e p="noise-simplex.shader" t="Include" />
+            <e p="NoiseSimplex.cginc" t="Include" />
+          </e>
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorTransparent.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />
           </e>
           <e p="Unlit-Distance.shader" t="Include" />
+          <e p="Unlit-NoiseGradient.shader" t="Include" />
         </e>
       </e>
       <e p="Evolunity.Editor.csproj" t="IncludeRecursive" />
