@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-1962429402.00" t="ExcludeRecursive" />
-    <e p="D:\Projects\My\Toolkit" t="IncludeRecursive">
+    <e p="C:\Projects\Toolkit" t="IncludeRecursive">
       <e p="AdvancedPlayerPrefsWindow.Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -629,6 +627,7 @@
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
+          <e p="CustomFunctions.cginc" t="Include" />
           <e p="Debug" t="Include">
             <e p="Unlit-Normals.shader" t="Include" />
           </e>
@@ -647,6 +646,7 @@
             <e p="Unlit-ColorTransparent.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />
           </e>
+          <e p="Unlit Distance Lerp.shader" t="Include" />
           <e p="Unlit-Distance.shader" t="Include" />
           <e p="Unlit-NoiseGradient.shader" t="Include" />
         </e>
@@ -672,5 +672,7 @@
       <e p="Toolkit.sln" t="IncludeFlat" />
       <e p="uCodeEditor.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
   </component>
 </project>

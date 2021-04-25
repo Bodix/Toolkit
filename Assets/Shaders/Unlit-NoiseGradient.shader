@@ -6,6 +6,7 @@ Shader "Custom/Unlit/NoiseGradient"
 {
     Properties
     {
+        _FirstColor ("First Color", Color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _NoiseTex ("Noise", 2D) = "" {}
         _Scale ("Scale", float) = 100
@@ -36,6 +37,8 @@ Shader "Custom/Unlit/NoiseGradient"
                 float2 uv : TEXCOORD0;
                 float2 scaledUV : TEXCOORD1;
             };
+
+            fixed4 _FirstColor;
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
@@ -83,7 +86,18 @@ Shader "Custom/Unlit/NoiseGradient"
                 // return color;
                 // return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength + _Time.x * _Speed);
                 // return max(tex2D(_NoiseTex, i.scaledUV), vecToRoundedLength);
+                // float2 vecToRounded = i.scaledUV - round_prec(i.scaledUV, 100);
+                // return float4(vecToRounded*1000, 0, 1);
+                // float vecToRoundedLength = length(vecToRounded)*100;
+                // return float4(vecToRoundedLength, vecToRoundedLength, 0, 1);
+
+                return _FirstColor * tex2D(_NoiseTex, i.scaledUV + _Time.x * _Speed);
+
+                // return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength + _Time.x * _Speed);
+                // return tex2D(_NoiseTex, i.scaledUV + vecToRoundedLength);
             }
+
+            // fixed4 blur(float4 color, )
 
             ENDCG
         }
