@@ -1,55 +1,17 @@
-Shader "NoiseTest/HLSL/NoiseTest"
+Shader "Noise/Keijiro/Noise"
 {
     CGINCLUDE
 
-    #pragma multi_compile CNOISE PNOISE SNOISE BCCNOISE4 BCCNOISE8
+    #pragma multi_compile BCCNOISE4 BCCNOISE8
     #pragma multi_compile _ THREED
     #pragma multi_compile _ FRACTAL
     #pragma multi_compile _ GRAD_NUMERICAL GRAD_ANALYTICAL
 
     #include "UnityCG.cginc"
 
-    #if defined(CNOISE) || defined(PNOISE)
-
-        #if defined(THREED)
-            #include "Packages/jp.keijiro.noiseshader/Shader/ClassicNoise3D.hlsl"
-        #else
-            #include "Packages/jp.keijiro.noiseshader/Shader/ClassicNoise2D.hlsl"
-        #endif
-
-        #define INITIAL_WEIGHT 0.5
-
-        #if defined(GRAD_ANALYTICAL)
-            #define NOISE_FUNC(coord, period) 0
-        #elif defined(CNOISE)
-            #define NOISE_FUNC(coord, period) cnoise(coord)
-        #else // PNOISE
-            #define NOISE_FUNC(coord, period) pnoise(coord, period)
-        #endif
-
-    #endif
-
-    #if defined(SNOISE)
-
-        #if defined(THREED)
-            #include "Packages/jp.keijiro.noiseshader/Shader/SimplexNoise3D.hlsl"
-        #else
-            #include "Packages/jp.keijiro.noiseshader/Shader/SimplexNoise2D.hlsl"
-        #endif
-
-        #define INITIAL_WEIGHT 0.25
-
-        #if defined(GRAD_ANALYTICAL)
-            #define NOISE_FUNC(coord, period) snoise_grad(coord)
-        #else
-            #define NOISE_FUNC(coord, period) snoise(coord)
-        #endif
-
-    #endif
-
     #if defined(BCCNOISE4)
 
-        #include "Packages/jp.keijiro.noiseshader/Shader/BCCNoise4.hlsl"
+        #include "BCCNoise4.hlsl"
 
         #define INITIAL_WEIGHT 0.25
 
@@ -71,7 +33,7 @@ Shader "NoiseTest/HLSL/NoiseTest"
 
     #if defined(BCCNOISE8)
 
-        #include "Packages/jp.keijiro.noiseshader/Shader/BCCNoise8.hlsl"
+        #include "BCCNoise8.hlsl"
 
         #define INITIAL_WEIGHT 0.25
 

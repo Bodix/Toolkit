@@ -627,7 +627,6 @@
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
-          <e p="CustomFunctions.cginc" t="Include" />
           <e p="Debug" t="Include">
             <e p="Unlit-Normals.shader" t="Include" />
           </e>
@@ -637,18 +636,38 @@
             <e p="Default-Unlit.shader" t="Include" />
           </e>
           <e p="Noise" t="Include">
-            <e p="noise-simplex 1.shader" t="Include" />
-            <e p="noise-simplex.shader" t="Include" />
-            <e p="NoiseSimplex.cginc" t="Include" />
+            <e p="Keijiro" t="Include">
+              <e p="BCCNoise4.hlsl" t="Include" />
+              <e p="BCCNoise8.hlsl" t="Include" />
+              <e p="Noise.shader" t="Include" />
+            </e>
+            <e p="Lex-DRL" t="Include">
+              <e p="ArtifactsFix.cginc" t="Include" />
+              <e p="noise-simplex.shader" t="Include" />
+              <e p="NoiseSimplex.cginc" t="Include" />
+              <e p="noiseSimplex2.cginc" t="Include" />
+              <e p="noiseSimplexOptimized.cginc" t="Include" />
+              <e p="noiseSimplexOptimizedLessButWithoutArtifacts.cginc" t="Include" />
+              <e p="Original" t="Include">
+                <e p="noise-simplex.shader" t="Include" />
+                <e p="NoiseSimplex.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="NoiseWithIntSeedAndAnalyticalDerivatives.cginc" t="Include" />
+            <e p="Perlin" t="Include">
+              <e p="Perlin1.shader" t="Include" />
+              <e p="Perlin2.shader" t="Include" />
+              <e p="PerlinNoise.cginc" t="Include" />
+            </e>
           </e>
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorTransparent.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />
           </e>
-          <e p="Unlit Distance Lerp.shader" t="Include" />
           <e p="Unlit-Distance.shader" t="Include" />
           <e p="Unlit-NoiseGradient.shader" t="Include" />
+          <e p="Utilities.cginc" t="Include" />
         </e>
       </e>
       <e p="Evolunity.Editor.csproj" t="IncludeRecursive" />

@@ -1,5 +1,4 @@
-#pragma target 4.0
-#ifndef NOISE_SIMPLEX_FUNC
+﻿#ifndef NOISE_SIMPLEX_FUNC
 #define NOISE_SIMPLEX_FUNC
 /*
  
@@ -59,7 +58,7 @@ Remark about those offsets from the original author:
  
 // 1 / 289
 #define NOISE_SIMPLEX_1_DIV_289 0.00346020761245674740484429065744f
-
+ 
 float mod289(float x) {
     return x - floor(x * NOISE_SIMPLEX_1_DIV_289) * 289.0;
 }
@@ -302,7 +301,7 @@ float snoise(float3 v)
 }
  
 // ----------------------------------- 4D -------------------------------------
-
+ 
 float snoise(float4 v)
 {
     const float4 C = float4(
@@ -434,32 +433,6 @@ float snoise(float4 v)
     );
 }
  
-float snoise(float4 v, float numOctaves, float persistence)
-{
-	float total = 0;
-	float p = persistence;
-	float n = numOctaves - 1;
-
-
-	float amplitude = 1;
-	float frequency = 1;
-
-	float4 col = 0;
-
-	float maxValue = 0;
-
-	for(int i = 0; i <= n; i++) {
-		maxValue += amplitude;
-
-		amplitude *= persistence;
-        frequency *= 2;
-//		float frequency = pow(2, i);
-//		float amplitude = max(pow(p, i),1);
-		total += snoise(v * frequency) * amplitude;
-	}
-
-	return total/maxValue;
-}
  
  
 //                 Credits from source glsl file:
