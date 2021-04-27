@@ -636,6 +636,9 @@
             <e p="Default-Unlit.shader" t="Include" />
           </e>
           <e p="Noise" t="Include">
+            <e p="FastNoiseLite" t="Include">
+              <e p="FastNoiseLite.hlsl" t="Include" />
+            </e>
             <e p="Keijiro" t="Include">
               <e p="BCCNoise4.hlsl" t="Include" />
               <e p="BCCNoise8.hlsl" t="Include" />
@@ -660,6 +663,7 @@
               <e p="PerlinNoise.cginc" t="Include" />
             </e>
           </e>
+          <e p="NormalMapFromHeightMap.txt" t="Include" />
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorTransparent.shader" t="Include" />
