@@ -216,6 +216,7 @@
                       <e p="InputReader.cs" t="Include" />
                       <e p="LongPressReader.cs" t="Include" />
                     </e>
+                    <e p="MainThreadDispatcher.cs" t="Include" />
                     <e p="PeriodicBehaviour.cs" t="Include" />
                     <e p="PlatformDependent.cs" t="Include" />
                     <e p="RectBorders.cs" t="Include" />

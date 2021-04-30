@@ -5,9 +5,6 @@ public class NoiseTest : MonoBehaviour
 {
     public enum NoiseType
     {
-        ClassicPerlin,
-        PeriodicPerlin,
-        Simplex,
         FastSimplex,
         SuperSimplex
     }
@@ -20,7 +17,7 @@ public class NoiseTest : MonoBehaviour
     }
 
     [SerializeField]
-    private NoiseType _noiseType = NoiseType.ClassicPerlin;
+    private NoiseType _noiseType = NoiseType.SuperSimplex;
     [SerializeField]
     private GradientType _gradientType = GradientType.None;
     [SerializeField]
@@ -34,6 +31,8 @@ public class NoiseTest : MonoBehaviour
 
     private void Update()
     {
+        material = GetComponent<Renderer>().material;
+        
         if (material == null)
         {
             material = new Material(shader);
@@ -42,18 +41,12 @@ public class NoiseTest : MonoBehaviour
         }
         else
         {
-            material = GetComponent<Renderer>().material;
+            
         }
 
         material.shaderKeywords = null;
-
-        if (_noiseType == NoiseType.ClassicPerlin)
-            material.EnableKeyword("CNOISE");
-        else if (_noiseType == NoiseType.PeriodicPerlin)
-            material.EnableKeyword("PNOISE");
-        else if (_noiseType == NoiseType.Simplex)
-            material.EnableKeyword("SNOISE");
-        else if (_noiseType == NoiseType.FastSimplex)
+        
+        if (_noiseType == NoiseType.FastSimplex)
             material.EnableKeyword("BCCNOISE4");
         else if (_noiseType == NoiseType.SuperSimplex)
             material.EnableKeyword("BCCNOISE8");
