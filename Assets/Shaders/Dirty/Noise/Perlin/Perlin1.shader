@@ -1,4 +1,4 @@
-﻿Shader "Unlit/noise2"
+﻿Shader "Dirty/Perlin1"
 {
     Properties
     {
