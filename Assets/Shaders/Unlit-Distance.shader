@@ -18,6 +18,7 @@ Shader "Custom/Unlit/Distance"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+            #include "UtilityFunctions.cginc"
 
             struct appdata
             {
@@ -52,7 +53,9 @@ Shader "Custom/Unlit/Distance"
             {
                 fixed4 c = tex2D(_MainTex, i.uv);
 
-                c.a = clamp((i.distToCam - _InvisibleDist) / (_VisibleDist - _InvisibleDist), 0, 1);
+                // The same as:
+                // c.a = clamp((i.distToCam - _InvisibleDist) / (_VisibleDist - _InvisibleDist), 0, 1);
+                c.a = saturate(invLerp(_InvisibleDist, _VisibleDist, i.distToCam));
 
                 return c;
             }
