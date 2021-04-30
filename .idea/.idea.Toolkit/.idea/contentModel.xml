@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Projects\Toolkit" t="IncludeRecursive">
+    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-1962429402.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\My\Toolkit" t="IncludeRecursive">
       <e p="AdvancedPlayerPrefsWindow.Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -577,6 +579,7 @@
               <e p="CountDownBehaviour.cs" t="Include" />
               <e p="DeviceChange.cs" t="Include" />
               <e p="DraggableGraphic.cs" t="Include" />
+              <e p="NoiseTest.cs" t="Include" />
               <e p="PositionCopier.cs" t="Include" />
               <e p="ScreenSleep.cs" t="Include" />
             </e>
@@ -657,6 +660,10 @@
               </e>
             </e>
             <e p="NoiseWithIntSeedAndAnalyticalDerivatives.cginc" t="Include" />
+            <e p="OpenSimplex2" t="Include">
+              <e p="Noise.glslinc" t="Include" />
+              <e p="Noise.shader" t="Include" />
+            </e>
             <e p="Perlin" t="Include">
               <e p="Perlin1.shader" t="Include" />
               <e p="Perlin2.shader" t="Include" />
@@ -695,7 +702,5 @@
       <e p="Toolkit.sln" t="IncludeFlat" />
       <e p="uCodeEditor.csproj" t="IncludeRecursive" />
     </e>
-    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
   </component>
 </project>
