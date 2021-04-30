@@ -664,7 +664,7 @@
               <e p="NoiseWithIntSeedAndAnalyticalDerivatives.cginc" t="Include" />
               <e p="OpenSimplex2" t="Include">
                 <e p="Noise.glslinc" t="Include" />
-                <e p="Noise.shader" t="Include" />
+                <e p="NoiseTest.shader" t="Include" />
               </e>
               <e p="Perlin" t="Include">
                 <e p="Perlin1.shader" t="Include" />
