@@ -2,7 +2,7 @@
 // - no lighting
 // - no lightmap support
 
-Shader "Custom/Unlit/NoiseGradient"
+Shader "Custom/Unlit/Noise Gradient"
 {
     Properties
     {

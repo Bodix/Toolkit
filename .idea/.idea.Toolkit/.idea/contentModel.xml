@@ -671,8 +671,8 @@
                 <e p="Perlin2.shader" t="Include" />
                 <e p="PerlinNoise.cginc" t="Include" />
               </e>
+              <e p="Unlit-NoiseGradient.shader" t="Include" />
             </e>
-            <e p="Unlit-NoiseGradient.shader" t="Include" />
           </e>
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />

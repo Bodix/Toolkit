@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class NoiseTest : MonoBehaviour
 {
     public enum NoiseType
@@ -31,7 +31,7 @@ public class NoiseTest : MonoBehaviour
 
     private void Update()
     {
-        material = GetComponent<Renderer>().material;
+        material = GetComponent<Renderer>().sharedMaterial;
         
         if (material == null)
         {

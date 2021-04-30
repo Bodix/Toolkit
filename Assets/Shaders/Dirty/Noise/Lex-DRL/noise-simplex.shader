@@ -2,7 +2,7 @@
 
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
-Shader "Noise-Simplex" {
+Shader "Dirty/LexDRL/Noise-Simplex" {
 Properties {
 	_Freq ("Frequency", Float) = 1
 	_Speed ("Speed", Float) = 1
