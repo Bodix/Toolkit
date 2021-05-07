@@ -234,6 +234,7 @@
                   <e p="Evolunity.Runtime.asmdef" t="Include" />
                   <e p="Extensions" t="Include">
                     <e p="System" t="Include">
+                      <e p="ArrayExtensions.cs" t="Include" />
                       <e p="ByteArrayExtensions.cs" t="Include" />
                       <e p="CharExtensions.cs" t="Include" />
                       <e p="ComparableExtensions.cs" t="Include" />
@@ -247,6 +248,7 @@
                       <e p="ColorExtensions.cs" t="Include" />
                       <e p="GraphicExtensions.cs" t="Include" />
                       <e p="LayerMaskExtensions.cs" t="Include" />
+                      <e p="ObjectExtensions.cs" t="Include" />
                       <e p="QuaternionExtensions.cs" t="Include" />
                       <e p="RectExtensions.cs" t="Include" />
                       <e p="RectTransformExtensions.cs" t="Include" />
@@ -647,6 +649,19 @@
               <e p="Keijiro" t="Include">
                 <e p="BCCNoise4.hlsl" t="Include" />
                 <e p="BCCNoise8.hlsl" t="Include" />
+                <e p="GLSL" t="Include">
+                  <e p="NoiseTest.glslinc" t="Include" />
+                  <e p="NoiseTest.shader" t="Include" />
+                </e>
+                <e p="HLSL" t="Include">
+                  <e p="BCCNoise4.hlsl" t="Include" />
+                  <e p="BCCNoise8.hlsl" t="Include" />
+                  <e p="ClassicNoise2D.hlsl" t="Include" />
+                  <e p="ClassicNoise3D.hlsl" t="Include" />
+                  <e p="NoiseTest.shader" t="Include" />
+                  <e p="SimplexNoise2D.hlsl" t="Include" />
+                  <e p="SimplexNoise3D.hlsl" t="Include" />
+                </e>
                 <e p="Noise.shader" t="Include" />
               </e>
               <e p="Lex-DRL" t="Include">
