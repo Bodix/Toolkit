@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Bogdan_Nikolayev\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-1962429402.00" t="ExcludeRecursive" />
-    <e p="D:\Projects\My\Toolkit" t="IncludeRecursive">
+    <e p="C:\Projects\Toolkit" t="IncludeRecursive">
       <e p="AdvancedPlayerPrefsWindow.Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -352,36 +350,6 @@
                 <e p="QObjectList.cs" t="Include" />
               </e>
             </e>
-            <e p="Sirenix" t="Include">
-              <e p="Assemblies" t="Include">
-                <e p="link.xml" t="Include" />
-                <e p="Sirenix.OdinInspector.Attributes.xml" t="Include" />
-                <e p="Sirenix.OdinInspector.Editor.xml" t="Include" />
-                <e p="Sirenix.Serialization.Config.xml" t="Include" />
-                <e p="Sirenix.Utilities.Editor.xml" t="Include" />
-                <e p="Sirenix.Utilities.xml" t="Include" />
-              </e>
-              <e p="Odin Inspector" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="AssemblyImportSettingsAutomation.cs" t="Include" />
-                    <e p="BuildAOTAutomation.cs" t="Include" />
-                    <e p="EnsureOdinInspectorDefine.cs" t="Include" />
-                    <e p="FixBrokenUnityObjectWrapperDrawer.cs" t="Include" />
-                    <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.asmdef" t="Include" />
-                    <e p="SyncListDrawer.cs" t="Include" />
-                    <e p="SyncVarAttributeDrawer.cs" t="Include" />
-                    <e p="Vector2IntMinMaxAttributeDrawer.cs" t="Include" />
-                    <e p="VectorIntDrawers.cs" t="Include" />
-                    <e p="VectorIntPropertyResolvers.cs" t="Include" />
-                  </e>
-                  <e p="SerializedNetworkBehaviour.cs" t="Include" />
-                  <e p="Sirenix.OdinInspector.CompatibilityLayer.asmdef" t="Include" />
-                  <e p="VectorIntFormatters.cs" t="Include" />
-                </e>
-              </e>
-              <e p="readme.txt" t="Include" />
-            </e>
           </e>
           <e p="Toolkit.Resettables" t="Include">
             <e p="Scripts" t="Include">
@@ -559,6 +527,27 @@
                 <e p="ProjectWindowExtensions.cs" t="Include" />
               </e>
             </e>
+            <e p="Extensions" t="Include">
+              <e p="Vexe" t="Include">
+                <e p="ComponentExtensions.cs" t="Include" />
+                <e p="DelegateExtensions.cs" t="Include" />
+                <e p="FastReflection.cs" t="Include" />
+                <e p="Flags.cs" t="Include" />
+                <e p="GameObjectExtensions.cs" t="Include" />
+                <e p="GenericEnumerableExtensions.cs" t="Include" />
+                <e p="LayerMaskExtensions.cs" t="Include" />
+                <e p="MemberInfoExtensions.cs" t="Include" />
+                <e p="MethodInfoExtensions.cs" t="Include" />
+                <e p="OtherExtensions.cs" t="Include" />
+                <e p="PropertyInfoExtensions.cs" t="Include" />
+                <e p="RigidbodyExtensions.cs" t="Include" />
+                <e p="StringExtensions.cs" t="Include" />
+                <e p="SystemObjectExtensions.cs" t="Include" />
+                <e p="TypeExtensions.cs" t="Include" />
+                <e p="UnityObjectExtensions.cs" t="Include" />
+                <e p="VectorExtensions.cs" t="Include" />
+              </e>
+            </e>
             <e p="Modules" t="Include">
               <e p="Input" t="Include">
                 <e p="EscapeButtonListener.cs" t="Include" />
@@ -710,8 +699,6 @@
       <e p="QHierarchy.Editor.csproj" t="IncludeRecursive" />
       <e p="QHierarchy.Nullable.csproj" t="IncludeRecursive" />
       <e p="QHierarchy.Runtime.csproj" t="IncludeRecursive" />
-      <e p="Sirenix.OdinInspector.CompatibilityLayer.csproj" t="IncludeRecursive" />
-      <e p="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="Toolkit.Resettables.csproj" t="IncludeRecursive" />
       <e p="Toolkit.Resettables.Editor.csproj" t="IncludeRecursive" />
@@ -719,5 +706,8 @@
       <e p="Toolkit.sln" t="IncludeFlat" />
       <e p="uCodeEditor.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_Toolkit.-2063006313.00" t="ExcludeRecursive" />
+    <e p="C:\Users\User\AppData\Roaming\JetBrains\Rider2020.3\scratches" t="IncludeRecursive" />
   </component>
 </project>
