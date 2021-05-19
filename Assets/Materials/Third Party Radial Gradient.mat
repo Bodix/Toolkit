@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _NoiseForce: 10
-    - _RadiusMultiplier: 1
+    - _RadiusMultiplier: 0.5
     m_Colors:
     - _ColorFrom: {r: 1, g: 0, b: 1, a: 1}
     - _ColorTo: {r: 1, g: 1, b: 0, a: 1}

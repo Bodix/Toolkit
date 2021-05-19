@@ -169,6 +169,9 @@
                   <e p="Drawers" t="Include">
                     <e p="AttributePropertyDrawer.cs" t="Include" />
                     <e p="LayerDrawer.cs" t="Include" />
+                    <e p="Materials" t="Include">
+                      <e p="Vector2Drawer.cs" t="Include" />
+                    </e>
                     <e p="RangeDrawer.cs" t="Include" />
                   </e>
                   <e p="Editors" t="Include">
@@ -289,6 +292,14 @@
                 </e>
               </e>
             </e>
+          </e>
+          <e p="MaterialPropertyDrawer-master" t="Include">
+            <e p="BlendModeDrawer.cs" t="Include" />
+            <e p="MaterialAlphaRangeDrawer.cs" t="Include" />
+            <e p="MaterialNormalizeDrawer.cs" t="Include" />
+            <e p="MaterialTextureToggleDrawer.cs" t="Include" />
+            <e p="MaterialToggleLeftDrawer.cs" t="Include" />
+            <e p="MaterialVectorFieldDrawer.cs" t="Include" />
           </e>
           <e p="Toolkit.Common" t="Include">
             <e p="Advanced PlayerPrefs Window" t="Include">

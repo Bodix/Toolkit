@@ -3,7 +3,7 @@ Shader "Custom/Unlit/Radial Gradient"
     Properties
     {
         _StartColor ("Start Color", Color) = (1, 1, 1, 1)
-        _EndColor ("End Color", Color) = (1, 1, 1, 1)
+        _EndColor ("End Color", Color) = (0, 0, 0, 1)
         _Radius ("Radius", Float) = 0.5
         _CenterPosition ("Center Position", Vector) = (0.5, 0.5, 0, 0)
     }

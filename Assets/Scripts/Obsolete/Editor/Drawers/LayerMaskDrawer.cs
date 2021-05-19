@@ -13,7 +13,7 @@ namespace Obsolete.Editor.Drawers
     [CustomPropertyDrawer(typeof(LayerMaskAttribute))]
     public class LayerMaskDrawer : PropertyDrawer
     {
-        private const string TypeErrorMessage = "Use " + nameof(LayerMaskAttribute) + " with int";
+        private const string TypeErrorMessage = "You can use [MinMax] attribute only with an int";
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

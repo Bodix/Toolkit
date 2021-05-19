@@ -13,11 +13,11 @@ namespace Obsolete.Editor.Drawers
     [CustomPropertyDrawer(typeof(MinMaxAttribute))]
     public class MinMaxDrawer : PropertyDrawer
     {
-        private const string ErrorMessage = "You can use MinMax attribute only on a Vector2";
+        private const string TypeErrorMessage = "You can use [MinMax] attribute only with a Vector2";
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Assert.IsTrue(property.propertyType == SerializedPropertyType.Vector2, ErrorMessage);
+            Assert.IsTrue(property.propertyType == SerializedPropertyType.Vector2, TypeErrorMessage);
 
             if (property.propertyType == SerializedPropertyType.Vector2)
             {
@@ -54,7 +54,7 @@ namespace Obsolete.Editor.Drawers
             }
             else
             {
-                GUI.Label(position, ErrorMessage);
+                GUI.Label(position, TypeErrorMessage);
             }
         }
     }
