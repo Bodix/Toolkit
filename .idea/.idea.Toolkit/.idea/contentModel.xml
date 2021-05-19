@@ -169,9 +169,6 @@
                   <e p="Drawers" t="Include">
                     <e p="AttributePropertyDrawer.cs" t="Include" />
                     <e p="LayerDrawer.cs" t="Include" />
-                    <e p="Materials" t="Include">
-                      <e p="Vector2Drawer.cs" t="Include" />
-                    </e>
                     <e p="RangeDrawer.cs" t="Include" />
                   </e>
                   <e p="Editors" t="Include">
@@ -551,6 +548,9 @@
         <e p="Scripts" t="Include">
           <e p="Dirty" t="Include">
             <e p="Editor" t="Include">
+              <e p="Drawers" t="Include">
+                <e p="Vector2Drawer.cs" t="Include" />
+              </e>
               <e p="EditorIcons.cs" t="Include" />
               <e p="ProjectWindow" t="Include">
                 <e p="Details" t="Include">
@@ -723,6 +723,7 @@
             <e p="unity-shader-smooth-radial-gradient-master" t="Include">
               <e p="RadialGradientUnlit.shader" t="Include" />
             </e>
+            <e p="Unlit-Test.shader" t="Include" />
           </e>
           <e p="Presets" t="Include">
             <e p="Unlit-Color.shader" t="Include" />
