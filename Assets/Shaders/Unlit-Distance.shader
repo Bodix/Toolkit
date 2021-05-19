@@ -2,7 +2,7 @@ Shader "Custom/Unlit/Distance"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "" { }
+        [MainTexture] _MainTex ("Texture", 2D) = "" { }
         _VisibleDist ("Visible Distance", Float) = 10
         _InvisibleDist ("Invisible Distance", Float) = 10
     }

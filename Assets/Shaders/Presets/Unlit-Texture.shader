@@ -6,10 +6,10 @@ Shader "Custom/Unlit/Texture"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "" { }
+        [MainTexture] _MainTex ("Texture", 2D) = "" { }
 
         // Use [NoScaleOffset] only for simplified version.
-        // [NoScaleOffset] _MainTex ("Texture", 2D) = "" { }
+        // [NoScaleOffset] [MainTexture] _MainTex ("Texture", 2D) = "" { }
     }
     SubShader
     {

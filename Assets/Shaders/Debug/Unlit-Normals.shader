@@ -1,4 +1,4 @@
-Shader "Custom/Unlit/Normals"
+Shader "Custom/Debug/Normals"
 {
     Properties
     {
