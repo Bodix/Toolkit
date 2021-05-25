@@ -17,7 +17,7 @@ Shader "Custom/Lit/Diffuse"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
-            // Use for light color.
+            // Used for light color (_LightColor0).
             #include "UnityLightingCommon.cginc"
 
             struct appdata
@@ -59,8 +59,8 @@ Shader "Custom/Lit/Diffuse"
                 float diffuseLight = dot(N, L);
                 // Use saturate(x) or max(0, x) function if you plan to use the light value somewhere else.
                 // float diffuseLight = saturate(dot(N, L));
-        
-                // Use _LightColor0 to apply light color (required "UnityLightingCommon.cginc" include).
+                
+                // The _LightColor0 already contains color intensity.
                 return color * diffuseLight * _LightColor0;
             }
             ENDCG
