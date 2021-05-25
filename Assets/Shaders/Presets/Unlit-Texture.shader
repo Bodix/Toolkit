@@ -1,5 +1,5 @@
 // Unlit texture shader.
-// Simplest possible colored shader with texture.
+// Simplest possible colored shader with texture:
 // - no transparency
 // - no lighting
 
@@ -35,6 +35,8 @@ Shader "Custom/Unlit/Texture"
             };
 
             sampler2D _MainTex;
+            // Use x and y to get tiling.
+            // Use z and w to get offset.
             float4 _MainTex_ST;
 
             v2f vert(appdata v)

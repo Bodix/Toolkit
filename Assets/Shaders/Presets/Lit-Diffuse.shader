@@ -1,7 +1,8 @@
-// Diffuse (Lambertian Reflectance) lighting shader.
+// Diffuse lighting shader.
 // Used to light matte objects.
+// Based on Lambertian reflectance.
 
-Shader "Custom/Dirty/Lit/Diffuse"
+Shader "Custom/Lit/Diffuse"
 {
     Properties
     {
@@ -16,7 +17,8 @@ Shader "Custom/Dirty/Lit/Diffuse"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
-            #include "AutoLight.cginc"
+            // Use for light color.
+            // #include "UnityLightingCommon.cginc"
 
             struct appdata
             {
@@ -49,13 +51,18 @@ Shader "Custom/Dirty/Lit/Diffuse"
             fixed4 frag(v2f i) : SV_TARGET
             {
                 fixed4 color = tex2D(_MainTex, i.uv);
+
                 float3 N = i.normal;
                 // For the first pass, it will always be a direction of directional light.
                 // https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
                 float3 L = _WorldSpaceLightPos0.xyz;
                 float diffuseLight = dot(N, L);
+                // Use saturate(x) or max(0, x) function if you plan to use the light value somewhere else.
+                // float diffuseLight = saturate(dot(N, L));
         
                 return color * diffuseLight;
+                // Use _LightColor0 to apply light color (required "UnityLightingCommon.cginc" include).
+                // return color * diffuseLight * _LightColor0;
             }
             ENDCG
         }

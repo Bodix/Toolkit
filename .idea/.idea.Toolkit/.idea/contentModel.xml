@@ -290,14 +290,6 @@
               </e>
             </e>
           </e>
-          <e p="MaterialPropertyDrawer-master" t="Include">
-            <e p="BlendModeDrawer.cs" t="Include" />
-            <e p="MaterialAlphaRangeDrawer.cs" t="Include" />
-            <e p="MaterialNormalizeDrawer.cs" t="Include" />
-            <e p="MaterialTextureToggleDrawer.cs" t="Include" />
-            <e p="MaterialToggleLeftDrawer.cs" t="Include" />
-            <e p="MaterialVectorFieldDrawer.cs" t="Include" />
-          </e>
           <e p="Toolkit.Common" t="Include">
             <e p="Advanced PlayerPrefs Window" t="Include">
               <e p="Editor" t="Include">
@@ -674,6 +666,14 @@
             <e p="Default-Unlit.shader" t="Include" />
           </e>
           <e p="Dirty" t="Include">
+            <e p="MaterialPropertyDrawer-master" t="Include">
+              <e p="BlendModeDrawer.cs" t="Include" />
+              <e p="MaterialAlphaRangeDrawer.cs" t="Include" />
+              <e p="MaterialNormalizeDrawer.cs" t="Include" />
+              <e p="MaterialTextureToggleDrawer.cs" t="Include" />
+              <e p="MaterialToggleLeftDrawer.cs" t="Include" />
+              <e p="MaterialVectorFieldDrawer.cs" t="Include" />
+            </e>
             <e p="Noise" t="Include">
               <e p="FastNoiseLite" t="Include">
                 <e p="FastNoiseLite.hlsl" t="Include" />
@@ -726,6 +726,7 @@
             <e p="Unlit-Test.shader" t="Include" />
           </e>
           <e p="Presets" t="Include">
+            <e p="Lit-Diffuse.shader" t="Include" />
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorTransparent.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />
