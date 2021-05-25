@@ -57,18 +57,17 @@ Shader "Custom/Lit/Specular"
                 fixed4 color = tex2D(_MainTex, i.uv);
 
                 // Normalization is used to normalize normals not equal in length to 1, obtained after interpolation.
-                // This fixes the ugly grid effect (for example, сan be seen on a standard sphere or capsule mesh).
+                // This fixes the ugly grid effect (for example, сan be seen on a default sphere or capsule mesh).
                 float3 N = normalize(i.normal);
                 // For the first pass, _WorldSpaceLightPos0 will always be a direction of directional light.
+                // Breaks down with other types of light!
                 // https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
                 float3 L = _WorldSpaceLightPos0.xyz;
                 float3 V = normalize(_WorldSpaceCameraPos - i.worldPos);
                 float3 R = reflect(-L, N);
-
                 float specularLight = dot(V, R);
-                // Use saturate(x) or max(0, x) function if you plan to use the light value somewhere else.
-                // float specularLight = saturate(dot(V, R));
-
+                // Use saturate(x) or max(0, x) function if necessary.
+                // specularLight = saturate(specularLight);
                 specularLight = pow(specularLight, _Smoothness);
                 
                 // The _LightColor0 already contains the color intensity.

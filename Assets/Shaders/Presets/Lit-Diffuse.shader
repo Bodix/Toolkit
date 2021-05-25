@@ -53,12 +53,13 @@ Shader "Custom/Lit/Diffuse"
                 fixed4 color = tex2D(_MainTex, i.uv);
 
                 float3 N = i.normal;
-                // For the first pass, it will always be a direction of directional light.
+                // For the first pass, _WorldSpaceLightPos0 will always be a direction of directional light.
+                // Breaks down with other types of light!
                 // https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
                 float3 L = _WorldSpaceLightPos0.xyz;
                 float diffuseLight = dot(N, L);
-                // Use saturate(x) or max(0, x) function if you plan to use the light value somewhere else.
-                // float diffuseLight = saturate(dot(N, L));
+                // Use saturate(x) or max(0, x) function if necessary.
+                // diffuseLight = saturate(diffuseLight);
                 
                 // The _LightColor0 already contains the color intensity.
                 // The _LightColor0 requires the "UnityLightingCommon.cginc" include.
