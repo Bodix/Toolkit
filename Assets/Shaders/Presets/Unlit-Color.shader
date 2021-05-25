@@ -1,7 +1,8 @@
-// Unlit shader. Simplest possible colored shader.
-// - no lighting
-// - no lightmap support
+// Unlit shader. 
+// Simplest possible colored shader:
 // - no texture
+// - no transparency
+// - no lighting
 
 Shader "Custom/Unlit/Color"
 {
