@@ -727,6 +727,7 @@
           </e>
           <e p="Presets" t="Include">
             <e p="Lit-Diffuse.shader" t="Include" />
+            <e p="Lit-Specular.shader" t="Include" />
             <e p="Unlit-Color.shader" t="Include" />
             <e p="Unlit-ColorTransparent.shader" t="Include" />
             <e p="Unlit-Texture.shader" t="Include" />

@@ -1,12 +1,13 @@
-// Diffuse lighting shader.
-// Used to light matte objects.
-// Based on Lambertian reflectance.
+// Specular lighting shader.
+// Used to light glossy objects.
+// Based on (Blinn-)Phong reflection model.
 
-Shader "Custom/Lit/Diffuse"
+Shader "Custom/Lit/Specular"
 {
     Properties
     {
         [MainTexture] _MainTex ("Texture", 2D) = "" { }
+        _Smoothness ("Smoothness", Float) = 1
     }
     SubShader
     {
@@ -23,19 +24,21 @@ Shader "Custom/Lit/Diffuse"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
                 float3 normal : NORMAL;
+                float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                float2 uv : TEXCOORD0;
                 float3 normal : NORMAL;
+                float2 uv : TEXCOORD0;
+                float3 worldPos : TEXCOORD1;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float _Smoothness;
 
             v2f vert(appdata v)
             {
@@ -44,6 +47,7 @@ Shader "Custom/Lit/Diffuse"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.normal = UnityObjectToWorldNormal(v.normal);
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex);     
 
                 return o;
             }
@@ -52,17 +56,24 @@ Shader "Custom/Lit/Diffuse"
             {
                 fixed4 color = tex2D(_MainTex, i.uv);
 
-                float3 N = i.normal;
-                // For the first pass, it will always be a direction of directional light.
+                // Normalization is used to normalize normals not equal in length to 1, obtained after interpolation.
+                // This fixes the ugly grid effect (for example, сan be seen on a standard sphere or capsule mesh).
+                float3 N = normalize(i.normal);
+                // For the first pass, _WorldSpaceLightPos0 will always be a direction of directional light.
                 // https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
                 float3 L = _WorldSpaceLightPos0.xyz;
-                float diffuseLight = dot(N, L);
+                float3 V = normalize(_WorldSpaceCameraPos - i.worldPos);
+                float3 R = reflect(-L, N);
+
+                float specularLight = dot(V, R);
                 // Use saturate(x) or max(0, x) function if you plan to use the light value somewhere else.
-                // float diffuseLight = saturate(dot(N, L));
+                // float specularLight = saturate(dot(V, R));
+
+                specularLight = pow(specularLight, _Smoothness);
                 
                 // The _LightColor0 already contains the color intensity.
                 // The _LightColor0 requires the "UnityLightingCommon.cginc" include.
-                return color * diffuseLight * _LightColor0;
+                return color * specularLight * _LightColor0;
             }
             ENDCG
         }
