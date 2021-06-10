@@ -248,6 +248,7 @@
                       <e p="ColorExtensions.cs" t="Include" />
                       <e p="GraphicExtensions.cs" t="Include" />
                       <e p="LayerMaskExtensions.cs" t="Include" />
+                      <e p="MonoBehaviourExtensions.cs" t="Include" />
                       <e p="ObjectExtensions.cs" t="Include" />
                       <e p="QuaternionExtensions.cs" t="Include" />
                       <e p="RectExtensions.cs" t="Include" />
@@ -256,6 +257,7 @@
                       <e p="TextureExtensions.cs" t="Include" />
                       <e p="ToggleGroupExtensions.cs" t="Include" />
                       <e p="TransformExtensions.cs" t="Include" />
+                      <e p="UnityWebRequestExtensions.cs" t="Include" />
                       <e p="VectorExtensions.cs" t="Include" />
                     </e>
                   </e>
@@ -274,6 +276,7 @@
                   <e p="Utilities" t="Include">
                     <e p="Angle.cs" t="Include" />
                     <e p="BinarySerializer.cs" t="Include" />
+                    <e p="CoroutineWrapper.cs" t="Include" />
                     <e p="Delay.cs" t="Include" />
                     <e p="Enum.cs" t="Include" />
                     <e p="Performance.cs" t="Include" />
