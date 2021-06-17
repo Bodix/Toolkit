@@ -228,6 +228,7 @@
                     <e p="UI" t="Include">
                       <e p="FlexibleLayoutGroup.cs" t="Include" />
                       <e p="FPSCounter.cs" t="Include" />
+                      <e p="GifImage.cs" t="Include" />
                       <e p="ImageAspectRatioFitter.cs" t="Include" />
                     </e>
                   </e>
@@ -276,7 +277,6 @@
                   <e p="Utilities" t="Include">
                     <e p="Angle.cs" t="Include" />
                     <e p="BinarySerializer.cs" t="Include" />
-                    <e p="CoroutineWrapper.cs" t="Include" />
                     <e p="Delay.cs" t="Include" />
                     <e p="Enum.cs" t="Include" />
                     <e p="Performance.cs" t="Include" />
@@ -288,6 +288,8 @@
                     </e>
                     <e p="StaticCoroutine.cs" t="Include" />
                     <e p="StringEncryptor.cs" t="Include" />
+                    <e p="Validate.cs" t="Include" />
+                    <e p="WrappedCoroutine.cs" t="Include" />
                   </e>
                 </e>
               </e>
@@ -609,6 +611,7 @@
               <e p="CountDownBehaviour.cs" t="Include" />
               <e p="DeviceChange.cs" t="Include" />
               <e p="DraggableGraphic.cs" t="Include" />
+              <e p="ErrorMessage.cs" t="Include" />
               <e p="NoiseTest.cs" t="Include" />
               <e p="PositionCopier.cs" t="Include" />
               <e p="ScreenSleep.cs" t="Include" />
