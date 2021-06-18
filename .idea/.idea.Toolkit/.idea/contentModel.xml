@@ -212,6 +212,7 @@
                     <e p="DevelopmentOnly.cs" t="Include" />
                     <e p="DisableMethod.cs" t="Include" />
                     <e p="DontDestroyOnLoad.cs" t="Include" />
+                    <e p="FramerateConfig.cs" t="Include" />
                     <e p="Input" t="Include">
                       <e p="InputReader.cs" t="Include" />
                       <e p="LongPressReader.cs" t="Include" />
