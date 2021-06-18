@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace AR
 {
-    // TO DO:
-    // Make the class more versatile and reusable.
+    // TODO: Make the class more versatile and reusable.
     
     public class ARPlacementPointer : MonoBehaviour
     {

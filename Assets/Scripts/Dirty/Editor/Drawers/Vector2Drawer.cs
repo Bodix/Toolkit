@@ -5,8 +5,7 @@ using UnityEngine.Assertions;
 
 namespace Evolutex.Evolunity.Editor.Drawers.Materials
 {
-    // TODO:
-    // Fix double-lined property view on short width.
+    // TODO: Fix double-lined property view on short width.
 
     // https://github.com/Unity-Technologies/UnityCsReference/blob/master/Editor/Mono/Inspector/MaterialEditor.cs
     // TextureScaleOffsetProperty

@@ -6,11 +6,10 @@ using UnityEngine;
 
 namespace Obsolete.Editor.Groups
 {
-    // TO DO:
-    // Add groups:
-    // 1. Fade
-    // 2. ScrollView
-    // 3. Toggle
+    // TODO: Add groups:
+    // 1. Fade.
+    // 2. ScrollView.
+    // 3. Toggle.
     
     /// <summary>
     /// Use these methods in the "using" block.

@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 namespace Dirty.VideoPlayer
 {
-    // TODO:
-    // 1. Remove dependency from App and injects.
-    // 2. Move to Core?
-
     [RequireComponent(typeof(UnityEngine.Video.VideoPlayer))]
     public class VideoViewer : MonoBehaviour
     {
@@ -33,8 +29,7 @@ namespace Dirty.VideoPlayer
         {
             videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
             
-            // TODO:
-            // Move to extension method.
+            // TODO: Move to extension method.
             videoPlayer.targetTexture.Release();
             videoPlayer.targetTexture.width = Screen.width;
             videoPlayer.targetTexture.height = Screen.height;
