@@ -660,6 +660,7 @@
             </e>
           </e>
           <e p="PathUtility.cs" t="Include" />
+          <e p="StrongInitializationExample.cs" t="Include" />
           <e p="TextToTextureConverter.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
