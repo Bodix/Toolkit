@@ -295,6 +295,58 @@
               </e>
             </e>
           </e>
+          <e p="LunarConsole" t="Include">
+            <e p="Editor" t="Include">
+              <e p="AndroidPlugin.cs" t="Include" />
+              <e p="Autorun.cs" t="Include" />
+              <e p="BuildPostProcessor.cs" t="Include" />
+              <e p="Compatibility.cs" t="Include" />
+              <e p="EditorConstants.cs" t="Include" />
+              <e p="EditorHelper.cs" t="Include" />
+              <e p="Installer.cs" t="Include" />
+              <e p="Legacy" t="Include">
+                <e p="LunarConsoleLegacyActionsEditor.cs" t="Include" />
+              </e>
+              <e p="Log.cs" t="Include" />
+              <e p="LunarConsoleActionEditor.cs" t="Include" />
+              <e p="LunarConsoleEditor.asmdef" t="Include" />
+              <e p="LunarConsoleEditor.cs" t="Include" />
+              <e p="LunarConsoleEditorAnalytics.cs" t="Include" />
+              <e p="LunarConsoleHttpClient.cs" t="Include" />
+              <e p="MenuItems.cs" t="Include" />
+              <e p="SimpleJSON.cs" t="Include" />
+              <e p="UI" t="Include">
+                <e p="ActionsAndVariablesWindow.cs" t="Include" />
+              </e>
+              <e p="Updater.cs" t="Include" />
+              <e p="Utils.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Actions" t="Include">
+                <e p="CAction.cs" t="Include" />
+                <e p="CRegistry.cs" t="Include" />
+                <e p="CVar.cs" t="Include" />
+              </e>
+              <e p="Constants.cs" t="Include" />
+              <e p="Legacy" t="Include">
+                <e p="LunarConsoleLegacyActions.cs" t="Include" />
+              </e>
+              <e p="LunarConsole.asmdef" t="Include" />
+              <e p="LunarConsole.cs" t="Include" />
+              <e p="LunarConsoleAction.cs" t="Include" />
+              <e p="Utils" t="Include">
+                <e p="BaseList.cs" t="Include" />
+                <e p="ClassUtils.cs" t="Include" />
+                <e p="Collections.cs" t="Include" />
+                <e p="ColorUtils.cs" t="Include" />
+                <e p="FileUtils.cs" t="Include" />
+                <e p="Iterator.cs" t="Include" />
+                <e p="Log.cs" t="Include" />
+                <e p="ReflectionUtils.cs" t="Include" />
+                <e p="StringUtils.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Toolkit.Common" t="Include">
             <e p="Advanced PlayerPrefs Window" t="Include">
               <e p="Editor" t="Include">
@@ -674,12 +726,14 @@
           </e>
           <e p="Dirty" t="Include">
             <e p="MaterialPropertyDrawer-master" t="Include">
-              <e p="BlendModeDrawer.cs" t="Include" />
-              <e p="MaterialAlphaRangeDrawer.cs" t="Include" />
-              <e p="MaterialNormalizeDrawer.cs" t="Include" />
-              <e p="MaterialTextureToggleDrawer.cs" t="Include" />
-              <e p="MaterialToggleLeftDrawer.cs" t="Include" />
-              <e p="MaterialVectorFieldDrawer.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="BlendModeDrawer.cs" t="Include" />
+                <e p="MaterialAlphaRangeDrawer.cs" t="Include" />
+                <e p="MaterialNormalizeDrawer.cs" t="Include" />
+                <e p="MaterialTextureToggleDrawer.cs" t="Include" />
+                <e p="MaterialToggleLeftDrawer.cs" t="Include" />
+                <e p="MaterialVectorFieldDrawer.cs" t="Include" />
+              </e>
             </e>
             <e p="Noise" t="Include">
               <e p="FastNoiseLite" t="Include">
@@ -748,6 +802,8 @@
       <e p="Evolunity.Runtime.csproj" t="IncludeRecursive" />
       <e p="LeanCommon.csproj" t="IncludeRecursive" />
       <e p="LeanPool.csproj" t="IncludeRecursive" />
+      <e p="LunarConsole.csproj" t="IncludeRecursive" />
+      <e p="LunarConsoleEditor.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Editor.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Test.csproj" t="IncludeRecursive" />
