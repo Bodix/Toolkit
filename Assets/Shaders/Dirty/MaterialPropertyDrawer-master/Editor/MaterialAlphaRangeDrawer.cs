@@ -41,7 +41,9 @@ namespace UnityEditor
 				GUI.Label( position, label );
 
 				EditorGUI.BeginChangeCheck();
+#pragma warning disable 618
 				v = EditorGUI.ColorField( position, label, v, true, false, false, null);
+#pragma warning restore 618
 
 				position.y += height;
 				v.a = EditorGUI.Slider( position, alphaLabel, v.a, minAlpha, maxAlpha );
