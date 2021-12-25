@@ -1,10 +1,11 @@
+using Evolutex.Evolunity.Utilities.Gizmos;
 using UnityEngine;
 #if UNITY_EDITOR
 using Handles = UnityEditor.Handles;
 using HandleUtility = UnityEditor.HandleUtility;
 #endif
 
-namespace Kit
+namespace Dirty.Test
 {
 	/// <summary>
 	/// Gizmo Extension - Static class that extends Unity's gizmo functionality.
@@ -36,7 +37,7 @@ namespace Kit
 
 		public static void DrawRay(Vector3 position, Vector3 direction, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawRay(position, direction);
 			}
@@ -48,7 +49,7 @@ namespace Kit
 		/// <param name="color"></param>
 		public static void DrawLine(Vector3 from, Vector3 to, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(from, to);
 			}
@@ -69,7 +70,7 @@ namespace Kit
 				lfd = bounds.center + new Vector3(-bounds.extents.x, -bounds.extents.y, bounds.extents.z),
 				lbd = bounds.center + new Vector3(-bounds.extents.x, -bounds.extents.y, -bounds.extents.z);
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(ruf, luf);
 				Gizmos.DrawLine(ruf, rub);
@@ -119,7 +120,7 @@ namespace Kit
 				lastPoint = position + matrix.MultiplyPoint3x4(new Vector3(Mathf.Cos(0), 0, Mathf.Sin(0))),
 				nextPoint = Vector3.zero;
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				for (int i = 0; i <= 90; i++)
 				{
@@ -153,7 +154,7 @@ namespace Kit
 			DrawCircle(end, -up, color, radius);
 			DrawCircle((start + end) * 0.5f, up, color, radius);
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				//Side lines
 				Gizmos.DrawLine(start + right, end + right);
@@ -194,7 +195,7 @@ namespace Kit
 			float dist;
 			farPlane.Raycast(distRay, out dist);
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawRay(position, slerpedVector.normalized * dist);
 				Gizmos.DrawRay(position, Vector3.Slerp(forward, -up, angle / 90.0f).normalized * dist);
@@ -225,7 +226,7 @@ namespace Kit
 				Vector3 headDir = direction.normalized * -arrowLength;
 				DrawCone(position + direction, headDir, color, angle);
 			}
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawRay(position, direction);
 			}
@@ -240,7 +241,7 @@ namespace Kit
 		{
 			if (point1 == point2)
 			{
-				using (new ColorScope(color))
+				using (new GizmosColorScope(color))
 				{
 					Gizmos.DrawWireSphere(point1, radius);
 				}
@@ -264,7 +265,7 @@ namespace Kit
 				DrawCircle(point1, up, color, radius);
 				DrawCircle(point2, -up, color, radius);
 
-				using (new ColorScope(color))
+				using (new GizmosColorScope(color))
 				{
 					//Side lines
 					Gizmos.DrawLine(point1 + right, point2 + right);
@@ -296,7 +297,7 @@ namespace Kit
 		/// <param name="color"></param>
 		public static void DrawFrustum(Camera camera, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.matrix = Matrix4x4.TRS(camera.transform.position, camera.transform.rotation, Vector3.one);
 				Gizmos.DrawFrustum(Vector3.zero, camera.fieldOfView, camera.farClipPlane, camera.nearClipPlane, camera.aspect);
@@ -317,7 +318,7 @@ namespace Kit
 			if (Mathf.Approximately(width, 0f))
 				return;
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Quaternion rotation =
 					Quaternion.LookRotation(end - start, upward) *
@@ -351,7 +352,7 @@ namespace Kit
 		/// <param name="color"></param>
 		public static void DrawSphere(Vector3 position, float radius, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawSphere(position, radius);
 			}
@@ -369,7 +370,7 @@ namespace Kit
 		/// <param name="color"></param>
 		public static void DrawDirection(Vector3 position, Vector3 direction, float distance = 1f, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(position, position + (direction * distance));
 			}
@@ -527,7 +528,7 @@ namespace Kit
 
 		public static void DrawBox(Box box, Color color = default(Color))
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(box.frontTopLeft, box.frontTopRight);
 				Gizmos.DrawLine(box.frontTopRight, box.frontBottomRight);
@@ -606,7 +607,7 @@ namespace Kit
 			Box bottomBox = new Box(origin, halfExtents, orientation);
 			Box topBox = new Box(origin + (direction * distance), halfExtents, orientation);
 
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(bottomBox.backBottomLeft, topBox.backBottomLeft);
 				Gizmos.DrawLine(bottomBox.backBottomRight, topBox.backBottomRight);
@@ -637,7 +638,7 @@ namespace Kit
 		[System.Obsolete("Use DrawBox", true)]
 		private static void DrawLocalCube(ref Color color, ref Vector3 lbb, ref Vector3 rbb, ref Vector3 lbf, ref Vector3 rbf, ref Vector3 lub, ref Vector3 rub, ref Vector3 luf, ref Vector3 ruf)
 		{
-			using (new ColorScope(color))
+			using (new GizmosColorScope(color))
 			{
 				Gizmos.DrawLine(lbb, rbb);
 				Gizmos.DrawLine(rbb, lbf);

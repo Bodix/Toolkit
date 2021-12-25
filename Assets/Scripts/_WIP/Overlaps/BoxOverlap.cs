@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Kit;
+using Evolutex.Evolunity.Utilities.Gizmos;
 using UnityEngine;
 
 namespace AI.Overlaps
@@ -36,18 +36,14 @@ namespace AI.Overlaps
 
         private void OnDrawGizmos()
         {
-            
-            if (!enabled)
-                return;
-            
             if (!_wasExecuted)
                 Gizmos.DrawCube(GetOrigin.transform.position, HalfExtents);
             else
             {
-                using (new ColorScope(Color.green))
+                using (new GizmosColorScope(Color.green))
                 {
                     Gizmos.DrawCube(GetOrigin.transform.position, HalfExtents);
-
+            
                     _wasExecuted = false;
                 }
             }

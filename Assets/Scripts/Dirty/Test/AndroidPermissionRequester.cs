@@ -1,12 +1,11 @@
 // Copyright 2021 Niantic, Inc. All Rights Reserved.
 
 using UnityEngine;
-
 #if UNITY_ANDROID && UNITY_2018_3_OR_NEWER
 using UnityEngine.Android;
 #endif
 
-namespace Niantic.ARDK.Extensions.Permissions
+namespace Dirty.Test
 {
   /// Permission types ARDK supports requesting from the user
   public enum ARDKPermission
