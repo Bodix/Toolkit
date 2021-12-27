@@ -13,9 +13,9 @@ namespace AI
         {
             // _smartVision.LookSpherical(out IEnumerable<Collider> result);
             // _smartVision.LookConical(out IEnumerable<Collider> result);
-            _smartVision.LookForCharacters(out BaseCharacter[] result);
+            // _smartVision.LookForCharacters(out BaseCharacter[] result);
             
-            Debug.Log(result.AsString());
+            // Debug.Log(result.AsString());
         }
     }
 }
