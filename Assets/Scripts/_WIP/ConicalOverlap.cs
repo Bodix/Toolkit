@@ -18,14 +18,16 @@ namespace AI
         [SerializeField]
         private bool GizmosEnabled;
 
-        private float Angle
-        {
-            get
-            {
-                if (_boxOverlap.HalfExtents.x > _boxOverlap.HalfExtents.y)
-                    return Vec
-            }
-        }
+        // private float Angle
+        // {
+        //     get
+        //     {
+        //         if (_boxOverlap.HalfExtents.x > _boxOverlap.HalfExtents.y)
+        //             return Vec
+        //     }
+        // }
+
+        private float Angle;
 
         private void OnValidate()
         {
