@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace AI
 {
+    // https://gist.github.com/StagPoint/4d8ca93923f66ad60ce480124c0d5092
     public class FrustumOverlap : MonoBehaviour
     {
         [SerializeField]
