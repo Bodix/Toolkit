@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Dirty.Test
+namespace _WIP
 {
     public class _TestBehaviour : MonoBehaviour
     {
@@ -15,6 +15,11 @@ namespace Dirty.Test
 
         [Button]
         public void Test()
+        {
+        }
+
+        [Button]
+        public void Test2()
         {
         }
     }

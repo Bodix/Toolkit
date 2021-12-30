@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dirty.Test;
+﻿using System.Collections.Generic;
 using Evolutex.Evolunity.Components.Physics;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace AI
+namespace Dirty.Modules.Physics
 {
     // https://gist.github.com/StagPoint/4d8ca93923f66ad60ce480124c0d5092
     public class FrustumOverlap : MonoBehaviour
@@ -23,8 +20,6 @@ namespace AI
         private void Execute()
         {
             _boxOverlap.Execute(out IEnumerable<Collider> colliders);
-            
-            
         }
 
         public void Execute(out IEnumerable<Collider> colliders)

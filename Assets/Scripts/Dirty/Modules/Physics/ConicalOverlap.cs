@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Dirty.Test;
 using Evolutex.Evolunity.Components.Physics;
-using Evolutex.Evolunity.Utilities;
-using Evolutex.Evolunity.Utilities.Gizmos;
 using UnityEngine;
 
-namespace AI
+namespace Dirty.Modules.Physics
 {
     [RequireComponent(typeof(BoxOverlap))]
     public class ConicalOverlap : MonoBehaviour
