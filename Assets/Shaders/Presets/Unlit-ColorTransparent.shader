@@ -1,4 +1,4 @@
-// Unlit transparert shader. 
+// Unlit transparent shader. 
 // Simplest possible colored shader with transparency:
 // - no texture
 // - no lighting
