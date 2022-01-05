@@ -37,6 +37,8 @@ namespace _WIP
             Coroutine delayCoroutine = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"));
             Coroutine repeatCoroutine = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"));
             Coroutine staticCoroutine = StaticCoroutine.Start(SomeCoroutine());
+            // To stop a cached coroutine instance use StaticCoroutine.Stop method.
+            // See the description of the StaticCoroutine.Stop method for details.
             StaticCoroutine.Stop(delayCoroutine);
             StaticCoroutine.Stop(repeatCoroutine);
             StaticCoroutine.Stop(staticCoroutine);
@@ -46,9 +48,8 @@ namespace _WIP
             Coroutine delayCoroutine2 = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"), exampleBehaviour);
             Coroutine repeatCoroutine2 = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"), this);
             // In this case, you can stop the coroutine as usual.
-            // See the description of the StaticCoroutine.Stop() method for details.
             exampleBehaviour.StopCoroutine(delayCoroutine2);
-            StopCoroutine(repeatCoroutine2);
+            this.StopCoroutine(repeatCoroutine2);
         }
 
         public void EnumerableExtensions()
@@ -60,9 +61,6 @@ namespace _WIP
                 new GameObject("Cone")
             };
 
-            // Shuffle the array.
-            objects = objects.Shuffle().ToArray();
-            
             // Output the array to the console.
             // Output: Cone (UnityEngine.GameObject), Sphere (UnityEngine.GameObject), Cube (UnityEngine.GameObject)
             Debug.Log(objects.AsString());
@@ -70,8 +68,21 @@ namespace _WIP
             // Output: Cone : Sphere : Cube
             Debug.Log(objects.AsString(item => item.name, " : "));
             
-            // Get random object from array.
+            // Get random object from the array.
             GameObject randomObj = objects.Random();
+            
+            // Shuffle the array.
+            objects = objects.Shuffle().ToArray();
+
+            // Remove duplicates from the array.
+            objects = objects.RemoveDuplicates().ToArray();
+
+            // ForEach as extension method.
+            objects.ForEach(Debug.Log);
+            objects.ForEach((x, index) => Debug.Log(index + " : " + x.name + ", "));
+            // ForEach with lazy execution.
+            objects.ForEachLazy(Debug.Log);
+            objects.ForEachLazy((x, index) => Debug.Log(index + " : " + x.name + ", "));
         }
         
         public class ExampleBehaviour : MonoBehaviour
