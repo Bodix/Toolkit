@@ -34,21 +34,21 @@ namespace _WIP
             StaticCoroutine.Start(SomeCoroutine());
 
             // You can cache a coroutine instance and stop it at any time.
-            // Coroutine delayCoroutine = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"));
-            // Coroutine repeatCoroutine = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"));
+            Coroutine delayCoroutine = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"));
+            Coroutine repeatCoroutine = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"));
             Coroutine staticCoroutine = StaticCoroutine.Start(SomeCoroutine());
-            // StaticCoroutine.Stop(delayCoroutine);
-            // StaticCoroutine.Stop(repeatCoroutine);
+            StaticCoroutine.Stop(delayCoroutine);
+            StaticCoroutine.Stop(repeatCoroutine);
             StaticCoroutine.Stop(staticCoroutine);
             
             // You can specify the MonoBehaviour instance on which to execute the coroutine.
             ExampleBehaviour exampleBehaviour = GetComponent<ExampleBehaviour>();
-            Coroutine delayCoroutine = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"), exampleBehaviour);
-            Coroutine repeatCoroutine = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"), this);
+            Coroutine delayCoroutine2 = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"), exampleBehaviour);
+            Coroutine repeatCoroutine2 = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"), this);
             // In this case, you can stop the coroutine as usual.
             // See the description of the StaticCoroutine.Stop() method for details.
-            exampleBehaviour.StopCoroutine(delayCoroutine);
-            StopCoroutine(repeatCoroutine);
+            exampleBehaviour.StopCoroutine(delayCoroutine2);
+            StopCoroutine(repeatCoroutine2);
         }
 
         public void EnumerableExtensions()
@@ -62,14 +62,21 @@ namespace _WIP
 
             // Shuffle the array.
             objects = objects.Shuffle().ToArray();
+            
             // Output the array to the console.
             // Output: Cone (UnityEngine.GameObject), Sphere (UnityEngine.GameObject), Cube (UnityEngine.GameObject)
             Debug.Log(objects.AsString());
             // Output the array to the console by specifying the string selector and separator.
             // Output: Cone : Sphere : Cube
             Debug.Log(objects.AsString(item => item.name, " : "));
+            
             // Get random object from array.
             GameObject randomObj = objects.Random();
+        }
+        
+        public class ExampleBehaviour : MonoBehaviour
+        {
+        
         }
 
         private IEnumerator SomeCoroutine()
