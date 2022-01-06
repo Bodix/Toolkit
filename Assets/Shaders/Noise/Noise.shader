@@ -1,28 +1,37 @@
 Shader "Custom/Noise"
 {
+    Properties
+    {
+        [KeywordEnum(BCCNoise4, BCCNoise8)] _NoiseType("Noise Type", Float) = 0
+        [KeywordEnum(None, Numerical, Analytical)] _Gradient("Gradient Method", Float) = 0
+        [Toggle(THREED)] _ThreeD("3D", Float) = 0
+        [Toggle(FRACTAL)] _Fractal("Fractal", Float) = 0
+    }
+
+
     CGINCLUDE
 
-    #pragma multi_compile BCCNOISE4 BCCNOISE8
+    #pragma multi_compile _NOISETYPE_BCCNOISE4 _NOISETYPE_BCCNOISE8
+    #pragma multi_compile _ _GRADIENT_NUMERICAL _GRADIENT_ANALYTICAL
     #pragma multi_compile _ THREED
     #pragma multi_compile _ FRACTAL
-    #pragma multi_compile _ GRAD_NUMERICAL GRAD_ANALYTICAL
 
     #include "UnityCG.cginc"
 
-    #if defined(BCCNOISE4)
+    #if defined(_NOISETYPE_BCCNOISE4)
 
         #include "BCCNoise4.hlsl"
 
         #define INITIAL_WEIGHT 0.25
 
         #if defined(THREED)
-            #if defined(GRAD_ANALYTICAL)
+            #if defined(_GRADIENT_ANALYTICAL)
                 #define NOISE_FUNC(coord, period) (Bcc4NoiseClassic(coord).xyz)
             #else
                 #define NOISE_FUNC(coord, period) (Bcc4NoiseClassic(coord).w)
             #endif
         #else
-            #if defined(GRAD_ANALYTICAL)
+            #if defined(_GRADIENT_ANALYTICAL)
                 #define NOISE_FUNC(coord, period) (Bcc4NoisePlaneFirst(float3(coord, 0)).xy)
             #else
                 #define NOISE_FUNC(coord, period) (Bcc4NoisePlaneFirst(float3(coord, 0)).w)
@@ -31,20 +40,20 @@ Shader "Custom/Noise"
 
     #endif
 
-    #if defined(BCCNOISE8)
+    #if defined(_NOISETYPE_BCCNOISE8)
 
         #include "BCCNoise8.hlsl"
 
         #define INITIAL_WEIGHT 0.25
 
         #if defined(THREED)
-            #if defined(GRAD_ANALYTICAL)
+            #if defined(_GRADIENT_ANALYTICAL)
                 #define NOISE_FUNC(coord, period) (Bcc8NoiseClassic(coord).xyz)
             #else
                 #define NOISE_FUNC(coord, period) (Bcc8NoiseClassic(coord).w)
             #endif
         #else
-            #if defined(GRAD_ANALYTICAL)
+            #if defined(_GRADIENT_ANALYTICAL)
                 #define NOISE_FUNC(coord, period) (Bcc8NoisePlaneFirst(float3(coord, 0)).xy)
             #else
                 #define NOISE_FUNC(coord, period) (Bcc8NoisePlaneFirst(float3(coord, 0)).w)
@@ -67,7 +76,7 @@ Shader "Custom/Noise"
 
         float2 uv = i.uv * 4.0 + float2(0.2, 1) * _Time.y;
 
-        #if defined(GRAD_ANALYTICAL) || defined(GRAD_NUMERICAL)
+        #if defined(_GRADIENT_ANALYTICAL) || defined(_GRADIENT_NUMERICAL)
             #if defined(THREED)
                 float3 o = 0.5;
             #else
@@ -92,7 +101,7 @@ Shader "Custom/Noise"
                 float2 period = s * 2.0;
             #endif
 
-            #if defined(GRAD_NUMERICAL)
+            #if defined(_GRADIENT_NUMERICAL)
                 #if defined(THREED)
                     float v0 = NOISE_FUNC(coord, period);
                     float vx = NOISE_FUNC(coord + float3(epsilon, 0, 0), period);
@@ -113,7 +122,7 @@ Shader "Custom/Noise"
             w *= 0.5;
         }
 
-        #if defined(GRAD_ANALYTICAL) || defined(GRAD_NUMERICAL)
+        #if defined(_GRADIENT_ANALYTICAL) || defined(_GRADIENT_NUMERICAL)
             #if defined(THREED)
                 return float4(o, 1);
             #else
