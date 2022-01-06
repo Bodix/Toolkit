@@ -1,6 +1,7 @@
 ﻿// Copyright © 2020 Bogdan Nikolayev <bodix321@gmail.com>
 // All Rights Reserved
 
+#if UNITY_2019_OR_NEWER
 using UnityEngine;
 
 namespace AR
@@ -57,3 +58,4 @@ namespace AR
         }
     }
 }
+#endif

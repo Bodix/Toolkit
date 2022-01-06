@@ -7,8 +7,7 @@ Shader "Custom/Noise"
         [Toggle(THREED)] _ThreeD("3D", Float) = 0
         [Toggle(FRACTAL)] _Fractal("Fractal", Float) = 0
     }
-
-
+    
     CGINCLUDE
 
     #pragma multi_compile _NOISETYPE_BCCNOISE4 _NOISETYPE_BCCNOISE8
@@ -134,6 +133,7 @@ Shader "Custom/Noise"
     }
 
     ENDCG
+    
     SubShader
     {
         Pass

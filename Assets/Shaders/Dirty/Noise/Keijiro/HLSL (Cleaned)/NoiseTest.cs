@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Dirty.Test
+namespace KeijiroNoiseCleaned
 {
     [ExecuteAlways]
     public class NoiseTest : MonoBehaviour
     {
-        public enum NoiseType
+        private enum NoiseType
         {
             FastSimplex,
             SuperSimplex
@@ -34,20 +34,16 @@ namespace Dirty.Test
         private void Update()
         {
             material = GetComponent<Renderer>().sharedMaterial;
-        
+
             if (material == null)
             {
                 material = new Material(shader);
                 material.hideFlags = HideFlags.DontSave;
                 GetComponent<Renderer>().material = material;
             }
-            else
-            {
-            
-            }
 
             material.shaderKeywords = null;
-        
+
             if (_noiseType == NoiseType.FastSimplex)
                 material.EnableKeyword("BCCNOISE4");
             else if (_noiseType == NoiseType.SuperSimplex)
