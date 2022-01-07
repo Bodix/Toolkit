@@ -6,7 +6,7 @@ Shader "Unlit/Texture Blending"
         _SecondColor ("Second Color", Color) = (1, 1, 1, 1)
         _FirstTex ("First Texture", 2D) = "" { }
         _SecondTex ("Second Texture", 2D) = "" { }
-        [KeywordEnum(Average, Darken, Multiply, Color Burn, Linear Burn)] _Blend ("Blend Mode", Float) = 2
+        [KeywordEnum(Average, Darken, Multiply, Color Burn, Linear Burn, Lighten)] _Blend ("Blend Mode", Float) = 2
         _NoiseTex ("Noise Texture", 2D) = "" { }
         _NoiseIntensity("Noise Intensity", Range(0, 2)) = 1
         _Speed("Speed", Float) = 1
@@ -20,10 +20,10 @@ Shader "Unlit/Texture Blending"
             #pragma vertex vert
             #pragma fragment frag
 
-            #pragma multi_compile _BLEND_AVERAGE _BLEND_DARKEN _BLEND_MULTIPLY _BLEND_COLOR_BURN _BLEND_LINEAR_BURN
-            #include "BlendModes.cginc"
+            #pragma multi_compile _BLEND_AVERAGE _BLEND_DARKEN _BLEND_MULTIPLY _BLEND_COLOR_BURN _BLEND_LINEAR_BURN _BLEND_LIGHTEN
+            #include "Assets/Shaders/BlendModes.cginc"
             #include "UnityCG.cginc"
-            
+
             #if defined(_BLEND_AVERAGE)
             #define BLEND_FUNC(col1, col2) half4(Average(col1, col2), 1)
             #elif defined(_BLEND_DARKEN)
@@ -34,6 +34,8 @@ Shader "Unlit/Texture Blending"
             #define BLEND_FUNC(col1, col2) half4(ColorBurn(col1, col2), 1)
             #elif defined(_BLEND_LINEAR_BURN)
             #define BLEND_FUNC(col1, col2) half4(LinearBurn(col1, col2), 1)
+            #elif defined(_BLEND_LIGHTEN)
+            #define BLEND_FUNC(col1, col2) half4(Lighten(col1, col2), 1)
             #endif
 
             // appdata_img
