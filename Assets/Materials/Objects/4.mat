@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 4
   m_Shader: {fileID: 4800000, guid: 2b22dec8ecb24afb9509b08f9101f83c, type: 3}
-  m_ShaderKeywords: FRACTAL THREED _GRADIENT_NUMERICAL _GRAD_NUMERICAL _NOISETYPE_BCCNOISE
+  m_ShaderKeywords: THREED _GRADIENT_ANALYTICAL _GRAD_NUMERICAL _NOISETYPE_BCCNOISE
     _NOISETYPE_BCCNOISE4 _NOISETYPE_BCCNOISED _NOISETYPE_SIMPLEX _NOISE_BCCNOISE4
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -61,11 +61,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Fractal: 1
+    - _Fractal: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Gradient: 1
+    - _Gradient: 2
     - _Metallic: 0
     - _Mode: 0
     - _NoiseType: 0
