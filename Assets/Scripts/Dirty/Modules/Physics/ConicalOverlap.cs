@@ -15,6 +15,10 @@ namespace Dirty.Modules.Physics
         [SerializeField]
         private bool GizmosEnabled;
 
+        // Pyramidal FOV:
+        // https://gamedev.stackexchange.com/a/171780/132595
+        
+        // TODO: Make angle auto-fit to BoxOverlap.
         // private float Angle
         // {
         //     get
@@ -22,6 +26,15 @@ namespace Dirty.Modules.Physics
         //         if (_boxOverlap.HalfExtents.x > _boxOverlap.HalfExtents.y)
         //             return Vec
         //     }
+        // }
+        
+        // public int LookSpherical(out IEnumerable<Collider> colliders)
+        // {
+        //     int collidersCount = Physics.OverlapSphereNonAlloc(
+        //     Origin.transform.position, Distance, _collidersBuffer, Layers);
+        //     colliders = _collidersBuffer.Take(collidersCount).Where(x => x! != null);
+        //
+        //     return collidersCount;
         // }
 
         private float Angle;
@@ -51,6 +64,7 @@ namespace Dirty.Modules.Physics
             if (!GizmosEnabled)
                 return;
 
+            // TODO: Make cone with spherical base.
             Gizmos.matrix = Matrix4x4.TRS(_boxOverlap.Center, _boxOverlap.Orientation, Vector3.one);
             // using (new GizmosColorScope(Color.Lerp(GizmosDefaultColor, GizmosExecutedColor,
             //     Mathf.SmoothDamp(_gizmosColorValue, 0, ref _gizmosColorValue, GizmosFadeTime))))
