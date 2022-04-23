@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Dirty.Modules.Physics
 {
+    // See also:
+    // https://gamedev.stackexchange.com/a/171780/132595
     // https://gist.github.com/StagPoint/4d8ca93923f66ad60ce480124c0d5092
     public class FrustumOverlap : MonoBehaviour
     {
@@ -31,7 +33,7 @@ namespace Dirty.Modules.Physics
 
         private void OnDrawGizmos()
         {
-            Gizmos.matrix = Matrix4x4.TRS(_boxOverlap.Center, _boxOverlap.Orientation, Vector3.one);
+            Gizmos.matrix = Matrix4x4.TRS(_boxOverlap.Center, _boxOverlap.Rotation, Vector3.one);
             Gizmos.DrawFrustum(Vector3.zero, Fov, Min, _boxOverlap.HalfExtents.z, _boxOverlap.HalfExtents.x / 
             _boxOverlap.HalfExtents.y);
         }
