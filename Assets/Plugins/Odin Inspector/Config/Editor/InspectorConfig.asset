@@ -133,3 +133,5 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: _Game.Networking.Modes.Drift.Zone.BoxZone, Toolkit.WIP
       EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Initializer, Evolunity.Runtime
+      EditorTypeName: 
