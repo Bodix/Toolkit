@@ -2,15 +2,15 @@
 using System.Linq;
 using UnityEngine;
 
-namespace AI.Vision
+namespace AI
 {
     public class AiSmartVision : AiVision
     {
-        public void LookForCharacters(out Character[] characters)
+        public IEnumerable<Character> CharactersInRange;
+        
+        protected override void OnCollidersOverlap(IEnumerable<Collider> colliders)
         {
-            LookConical(out IEnumerable<Collider> colliders);
-
-            characters = colliders.Select(x => x.GetComponent<Character>()).ToArray();
+            CharactersInRange = colliders.Select(x => x.GetComponent<Character>());
         }
     }
 }

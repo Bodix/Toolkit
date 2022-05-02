@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1137305049, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: InspectorConfig
+  m_EditorClassIdentifier: 
+  enableOdinInInspector: 1
+  defaultEditorBehaviour: 11
+  processMouseMoveInInspector: 1
+  drawingConfig:
+    configs:
+    - DrawnTypeName: Evolutex.Evolunity.Components.DelayedEvent, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.DevelopmentOnly, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.DontDestroyOnLoad, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.FrameRateConfig, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.InputReader, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.LongPressReader, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.MainThreadDispatcher, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.PlatformDependent, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.RectBorders, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.ScreenFitter, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Animations.AnimationEventsHandler,
+        Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Animations.Fade, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Animations.SceneTransition, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Physics.BoxOverlap, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Physics.ConicalOverlap, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UI.FpsCounter, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UI.GifImage, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UI.ImageAspectRatioFitter, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Utilities.StaticCoroutine+StaticCoroutineComponent,
+        Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Utilities.Screenshot.Screenshoter, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: AI.AiMovement, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: AI.Bot, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: AI.Character, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: AI.Vision.AiSmartVision, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Resettables.Test.ResettableObject, Toolkit.Resettables.Test
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Resettables.Test.ResettablesContainer, Toolkit.Resettables.Test
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Resettables.Test.UI.PoolToggle, Toolkit.Resettables.Test
+      EditorTypeName: 
+    - DrawnTypeName: _WIP._TestBehaviour, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.Cheatsheet, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.Cheatsheet+ExampleBehaviour, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.Utilities.LayersCache, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: AI.AiSmartVision, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Input.EscapeButtonListener, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Input.UpDownReader, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Modules.Physics.FrustumOverlap, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.AndroidPermissionRequester, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.CountDownBehaviour, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.DeviceChange, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.DraggableGraphic, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.ErrorMessage, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.PositionCopier, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.ScreenSleep, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.StateMachineBehaviour, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.Test.WorldPoint, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.VideoPlayer.Timeline, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.VideoPlayer.VideoViewer, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.VideoPlayer.VideoViewerRect, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Dirty.VideoPlayer.VolumeSlider, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Animations.CanvasGroupFadeAnimation, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: Selectable.ParentSelector, Toolkit
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.UI.UiConfirmationDialog, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.UI.UiText, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.UI.UiTimerText, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.Utilities.OutOfZoneHandler, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _WIP.Utilities.Timer, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _Game.Networking.Modes.Drift.Zone.BoxTrigger, Toolkit.WIP
+      EditorTypeName: 
+    - DrawnTypeName: _Game.Networking.Modes.Drift.Zone.BoxZone, Toolkit.WIP
+      EditorTypeName: 

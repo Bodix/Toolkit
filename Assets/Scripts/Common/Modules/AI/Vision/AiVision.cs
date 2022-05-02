@@ -1,73 +1,61 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using Evolutex.Evolunity.Utilities.Gizmos;
+using Evolutex.Evolunity.Components.Physics;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace AI.Vision
+namespace AI
 {
     // See also:
     // https://www.clonefactor.com/wordpress/public/2481/
-    public class AiVision : MonoBehaviour
+    public abstract class AiVision : MonoBehaviour
     {
-        public float Radius = 5;
-        [Range(0, 360)]
-        public float Angle = 90;
+        public ConicalOverlap Overlap;
         public Transform Eyes;
-        public LayerMask Layers = Physics.AllLayers;
+        public bool AutoCheck;
+        [ShowIf(nameof(AutoCheck))]
+        public float Interval = 1;
 
-        private readonly Collider[] _collidersBuffer = new Collider[512];
+        protected IEnumerable<Collider> _collidersInRange;
 
-        private Transform Origin => Eyes ? Eyes : transform;
+        private Coroutine _checkCoroutine;
 
-        public int LookSpherical(out IEnumerable<Collider> colliders)
+        private void OnValidate()
         {
-            int collidersCount = Physics.OverlapSphereNonAlloc(
-                Origin.transform.position, Radius, _collidersBuffer, Layers);
-            colliders = _collidersBuffer.Take(collidersCount).Where(x => x != null);
-
-            return collidersCount;
+            Overlap.SetPoseTransform(Eyes);
         }
 
-        public int LookBox(out IEnumerable<Collider> colliders)
+        private void OnEnable()
         {
-            int collidersCount = Physics.OverlapBoxNonAlloc(
-                Origin.transform.position, new Vector3(Radius, Radius, Radius),
-                _collidersBuffer, Origin.rotation, Layers);
-            colliders = _collidersBuffer.Take(collidersCount).Where(x => x != null);
-
-            return collidersCount;
+            _checkCoroutine = StartCoroutine(CheckCoroutine());
         }
 
-        public int LookConical(out IEnumerable<Collider> colliders)
+        private void OnDisable()
         {
-            LookBox(out colliders);
-            colliders = colliders.Where(x =>
+            StopCoroutine(_checkCoroutine);
+        }
+
+        private IEnumerator CheckCoroutine()
+        {
+            while (enabled)
             {
-                Vector3 forwardDir = Origin.forward;
-                Vector3 colliderDir = (x.transform.position - Origin.position).normalized;
-                float dot = Vector3.Dot(forwardDir, colliderDir);
+                yield return new WaitForSeconds(Interval);
 
-                return dot >= Mathf.Cos(Angle / 2);
-            });
+                Look(out _collidersInRange);
+                OnCollidersOverlap(_collidersInRange);
+            }
+        }
+        
+        public int Look(out IEnumerable<Collider> colliders)
+        {
+            Overlap.SetPoseTransform(Eyes);
+            Overlap.Execute(out colliders);
 
             return colliders.Count();
         }
 
-        // TODO: Make frustum look.
-        // public int LookFrustum(out IEnumerable<Collider> colliders)
-        // {
-        //     LookSpherical(out colliders);
-        //     colliders = colliders.Where(x =>
-        //     {
-        //         
-        //     });
-        //
-        //     return colliders.Count();
-        // }
-
-        public void OnDrawGizmos()
-        {
-            GizmosExtend.DrawCone(Origin.transform.position, Origin.forward * Radius, angle: Angle / 2);
-        }
+        protected abstract void OnCollidersOverlap(IEnumerable<Collider> colliders);
     }
 }

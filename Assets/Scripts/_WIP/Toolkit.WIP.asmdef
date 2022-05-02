@@ -1,7 +1,9 @@
 {
     "name": "Toolkit.WIP",
     "references": [
-        "Evolunity.Runtime"
+        "Evolunity.Runtime",
+        "NaughtyAttributes.Core",
+        "Unity.TextMeshPro"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
