@@ -1,5 +1,6 @@
-﻿using System;
-using Evolutex.Evolunity.Collections;
+﻿#if UNITY_2020_1_OR_NEWER
+
+using System;
 using Evolutex.Evolunity.Extensions;
 using NaughtyAttributes;
 using UnityEditor;
@@ -8,7 +9,7 @@ using UnityEngine;
 namespace Dirty.Test
 {
     // TODO: Handle behaviour in disabled state.
-
+    
     [ExecuteAlways]
     public class WorldPoint : MonoBehaviour
     {
@@ -161,3 +162,5 @@ namespace Dirty.Test
         }
     }
 }
+
+#endif
