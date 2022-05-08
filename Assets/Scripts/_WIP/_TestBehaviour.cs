@@ -1,5 +1,6 @@
-using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace _WIP
 {
@@ -21,6 +22,13 @@ namespace _WIP
         [Button]
         public void Test2()
         {
+        }
+        
+                
+        [Serializable]
+        public class _TestBehaviour2 : _TestBehaviour
+        {
+        
         }
     }
 }

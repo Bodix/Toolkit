@@ -3,7 +3,8 @@
     "references": [
         "Evolunity.Runtime",
         "NaughtyAttributes.Core",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Toolkit"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
