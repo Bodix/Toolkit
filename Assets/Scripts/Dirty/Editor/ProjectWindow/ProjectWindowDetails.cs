@@ -111,7 +111,13 @@ namespace Evolutex.Evolunity.Editor.ProjectWindow
         private static void DrawMenuIcon(Rect rect)
         {
             rect.y += 4;
-            var icon = EditorGUIUtility.IconContent("d_LookDevPaneOption");
+            
+            // var icon = EditorGUIUtility.IconContent("d_LookDevPaneOption");
+            // Fix for:
+            // Unable to load the icon: 'd_LookDevPaneOption'.
+            // https://github.com/halak/unity-editor-icons
+            var icon = EditorGUIUtility.IconContent("d__Menu");
+            
             EditorGUI.LabelField(rect, icon);
         }
 
