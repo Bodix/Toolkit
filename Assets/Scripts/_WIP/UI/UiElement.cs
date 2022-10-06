@@ -1,6 +1,6 @@
 ﻿using System;
-using NaughtyAttributes;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace _WIP.UI
 {
@@ -10,72 +10,95 @@ namespace _WIP.UI
         public AnimationBehaviour ShowAnimation;
         [Foldout("Animations")]
         public AnimationBehaviour HideAnimation;
-        // ClickAnimation
-
+        // We should force this message to prevent possible errors.
+        // [Foldout("Debug")]
+        // public bool LogWarnings = true;
+        
         public event Action Showing;
         public event Action Hiding;
         public event Action Shown;
         public event Action Hidden;
-
+        
         public virtual bool IsShown => gameObject.activeSelf;
+        public bool IsShownAndActiveInHierarchy => IsShown && gameObject.activeInHierarchy;
 
         [ContextMenu(nameof(Show))]
         public void Show()
         {
-            Show(false);
+            Show(false, null);
         }
 
         [ContextMenu(nameof(Hide))]
         public void Hide()
         {
-            Hide(false);
+            Hide(false, null);
         }
-        
+
         [ContextMenu(nameof(ShowInstantly))]
         public void ShowInstantly()
         {
-            Show(true);
+            Show(true, null);
         }
 
         [ContextMenu(nameof(HideInstantly))]
         public void HideInstantly()
         {
-            Hide(true);
+            Hide(true, null);
+        }
+        
+        public void Show(Action onComplete)
+        {
+            Show(false, onComplete);
         }
 
-        protected virtual void Show(bool instantly)
+        public void Hide(Action onComplete)
         {
-            if (IsShown)
+            Hide(false, onComplete);
+        }
+
+        protected virtual void Show(bool instantly, Action onComplete)
+        {
+            if (IsShown/* && LogWarnings*/)
+            {
+                Debug.LogWarning("Trying to show the UiElement when it is already shown. " +
+                    "Animation and callbacks won't be invoked");
+                
                 return;
-            
+            }
+
             if (!ShowAnimation || instantly)
             {
                 OnShowAnimationStart();
-                OnShowAnimationComplete();
+                OnShowAnimationComplete(onComplete);
             }
             else
             {
                 ShowAnimation.Play(
                     onStart: OnShowAnimationStart,
-                    onComplete: OnShowAnimationComplete);
+                    onComplete: () => OnShowAnimationComplete(onComplete));
             }
         }
 
-        protected virtual void Hide(bool instantly)
+        protected virtual void Hide(bool instantly, Action onComplete)
         {
-            if (!IsShown)
+            if (!IsShown/* && LogWarnings*/)
+            {
+                Debug.LogWarning("Trying to hide the UiElement when it is already hidden. " +
+                    "Animation and callbacks won't be invoked");
+                
                 return;
-            
+            }
+
             if (!HideAnimation || instantly)
             {
                 OnHideAnimationStart();
-                OnHideAnimationComplete();
+                OnHideAnimationComplete(onComplete);
             }
             else
             {
                 HideAnimation.Play(
                     onStart: OnHideAnimationStart,
-                    onComplete: OnHideAnimationComplete);
+                    onComplete: () => OnHideAnimationComplete(onComplete));
             }
         }
 
@@ -86,8 +109,9 @@ namespace _WIP.UI
             Showing?.Invoke();
         }
 
-        protected virtual void OnShowAnimationComplete()
+        protected virtual void OnShowAnimationComplete(Action onComplete)
         {
+            onComplete?.Invoke();
             Shown?.Invoke();
         }
 
@@ -96,10 +120,11 @@ namespace _WIP.UI
             Hiding?.Invoke();
         }
 
-        protected virtual void OnHideAnimationComplete()
+        protected virtual void OnHideAnimationComplete(Action onComplete)
         {
             gameObject.SetActive(false);
 
+            onComplete?.Invoke();
             Hidden?.Invoke();
         }
     }

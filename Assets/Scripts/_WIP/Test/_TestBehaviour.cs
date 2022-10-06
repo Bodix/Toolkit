@@ -1,8 +1,8 @@
 using System;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-namespace _WIP
+namespace _WIP.Test
 {
     public class _TestBehaviour : MonoBehaviour
     {
@@ -11,24 +11,25 @@ namespace _WIP
 
         private void Awake()
         {
-            Test();
+            // Test();
         }
 
         [Button]
         public void Test()
         {
+
         }
 
         [Button]
         public void Test2()
         {
+            
         }
-        
-                
+
+
         [Serializable]
-        public class _TestBehaviour2 : _TestBehaviour
+        public class _NestedTestBehaviour : _TestBehaviour
         {
-        
         }
     }
 }

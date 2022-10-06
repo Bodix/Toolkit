@@ -7,7 +7,8 @@ namespace _WIP.Utilities
     public delegate void TimerUpdateHandler(float deltaTime);
 
     // TODO: Make the timer work in the Editor. It is necessary to use Editor's update.
-    // TODO: Add check for enabled GO in Start method. Also review Awake logic after this.
+    // TODO: Add check for enabled GO in Start method. Also, review Awake logic after this.
+    // TODO: Consider removing the _onStart callback.
 
     public class Timer : MonoBehaviour
     {
@@ -88,7 +89,7 @@ namespace _WIP.Utilities
                 return;
             }
 
-            Begin(timeInSeconds, onStart, onUpdate, onStop, onComplete);
+            SetupAndEnable(timeInSeconds, onStart, onUpdate, onStop, onComplete);
             _onStart?.Invoke();
             Started?.Invoke();
         }
@@ -119,7 +120,7 @@ namespace _WIP.Utilities
             // Cache callback before cleaning in Terminate() method.
             Action onStop = _onStop;
             
-            Terminate();
+            CleanupAndDisable();
             onStop?.Invoke();
             Stopped?.Invoke();
         }
@@ -144,16 +145,16 @@ namespace _WIP.Utilities
 
             if (RemainingTime <= 0)
             {
-                // Cache callback before cleaning in Terminate() method.
+                // Cache callback before cleaning in CleanupAndDisable() method.
                 Action onComplete = _onComplete;
                 
-                Terminate();
+                CleanupAndDisable();
                 onComplete?.Invoke();
                 Completed?.Invoke();
             }
         }
 
-        private void Begin(float timeInSeconds,
+        private void SetupAndEnable(float timeInSeconds,
             Action onStart, TimerUpdateHandler onUpdate, Action onStop, Action onComplete)
         {
             RemainingTime = timeInSeconds;
@@ -165,7 +166,7 @@ namespace _WIP.Utilities
             _onComplete = onComplete;
         }
 
-        private void Terminate()
+        private void CleanupAndDisable()
         {
             RemainingTime = NotStartedTime;
             enabled = false;

@@ -46,10 +46,10 @@ namespace _WIP
             // You can specify the MonoBehaviour instance on which to execute the coroutine.
             ExampleBehaviour exampleBehaviour = GetComponent<ExampleBehaviour>();
             Coroutine delayCoroutine2 = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"), exampleBehaviour);
-            Coroutine repeatCoroutine2 = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"), this);
+            Coroutine repeatCoroutine2 = Repeat.EverySeconds(60, () => Debug.Log("Repeat coroutine"), exampleBehaviour);
             // In this case, you can stop the coroutine as usual.
             exampleBehaviour.StopCoroutine(delayCoroutine2);
-            this.StopCoroutine(repeatCoroutine2);
+            exampleBehaviour.StopCoroutine(repeatCoroutine2);
         }
 
         public void EnumerableExtensions()

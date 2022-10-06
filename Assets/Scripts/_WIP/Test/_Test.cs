@@ -1,8 +1,8 @@
 ﻿using System;
-using UnityEngine;
 using Evolutex.Evolunity.Attributes;
+using UnityEngine;
 
-namespace _WIP
+namespace _WIP.Test
 {
     [Serializable]
     public class _Test
