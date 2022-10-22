@@ -13,7 +13,7 @@ namespace _WIP.Utilities
     {
         public GameObject[] Targets;
         public LayersCacheMethod CacheMethod = LayersCacheMethod.Start;
-        [SerializeField, Unity.Collections.ReadOnly]
+        [SerializeField, ReadOnly]
         private GenericDictionary<GameObject, int> _cache = new GenericDictionary<GameObject, int>();
 
         private void Awake()
