@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using UnityEngine;
 
 namespace Dirty.Test
@@ -15,8 +15,8 @@ namespace Dirty.Test
         public static float RoundTo(this float value, float approximation, float offset = 0)
         {
             if (approximation <= 0)
-                throw new ArgumentException(string.Format("Could not round the value, because the approximation ({0}) " +
-                    "is less than or equal to zero!", approximation));
+                throw new ArgumentException($"Could not round the value, because the approximation ({approximation}) " +
+                    "is less than or equal to zero!");
             value -= offset;
             value /= approximation;
             value = Mathf.Round(value);

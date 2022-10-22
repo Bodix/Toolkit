@@ -22,42 +22,47 @@ namespace _WIP.UI
             declineButton.onClick.AddListener(Decline);
         }
 
-        public void Show(Action<Result> resultCallback, bool instant = false)
+        public void Show(Action<Result> resultCallback, Action onShowComplete, bool instantly = false)
         {
             SetResultCallback(resultCallback);
 
-            base.Show(instant);
+            base.Show(instantly, onShowComplete);
         }
 
-        public void Hide(Result result, bool instant = false)
+        public void Hide(Result result, Action onHideComplete, bool instantly = false)
         {
             InvokeAndClearResultCallback(result);
 
-            base.Hide(instant);
+            base.Hide(instantly, onHideComplete);
         }
 
-        protected sealed override void Show(bool instantly)
+        protected sealed override void Show(bool instantly, Action onComplete)
         {
-            Show(null, instantly);
+            Debug.LogWarning("Trying to show " + nameof(UiConfirmationDialog) + " without result callback. " +
+                "Use the overload of \"Show()\" method with \"resultCallback\" parameter instead.");
+            
+            Show(null, onComplete, instantly);
         }
 
-        protected sealed override void Hide(bool instantly)
+        protected sealed override void Hide(bool instantly, Action onComplete)
         {
-            Hide(Result.Close, instantly);
+            Hide(Result.Hide, onComplete, instantly);
         }
 
+        // [ContextMenu("Accept")]
         protected void Accept()
         {
             Accepted?.Invoke();
 
-            Hide(Result.Accept);
+            Hide(Result.Accept, null);
         }
 
+        // [ContextMenu("Decline")]
         protected void Decline()
         {
             Declined?.Invoke();
 
-            Hide(Result.Decline);
+            Hide(Result.Decline, null);
         }
 
         protected void SetResultCallback(Action<Result> resultCallback)
@@ -75,7 +80,7 @@ namespace _WIP.UI
         {
             Accept,
             Decline,
-            Close
+            Hide
         }
     }
 }

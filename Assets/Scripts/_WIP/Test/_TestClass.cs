@@ -5,15 +5,15 @@ using UnityEngine;
 namespace _WIP.Test
 {
     [Serializable]
-    public class _Test
+    public class _TestClass
     {
         [SerializeField]
         private int _someInt;
         [SerializeReference, TypeSelector]
-        private _Test2 _someObj;
+        private _NestedTestClass _someObj;
         
         [Serializable]
-        public class _Test2 : _Test
+        public class _NestedTestClass : _TestClass
         {
         
         }

@@ -10,7 +10,7 @@ namespace _WIP.UI
         public AnimationBehaviour ShowAnimation;
         [Foldout("Animations")]
         public AnimationBehaviour HideAnimation;
-        // We should force this message to prevent possible errors.
+        // We should force this message to prevent possible errors, due to non-obviousness.
         // [Foldout("Debug")]
         // public bool LogWarnings = true;
         

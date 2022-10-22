@@ -7,7 +7,9 @@ namespace _WIP.Test
     public class _TestBehaviour : MonoBehaviour
     {
         [SerializeField]
-        private _Test test;
+        private _TestClass _testClass;
+        [SerializeField]
+        private _TestStruct _testStruct;
 
         private void Awake()
         {
@@ -17,15 +19,12 @@ namespace _WIP.Test
         [Button]
         public void Test()
         {
-
         }
 
         [Button]
         public void Test2()
         {
-            
         }
-
 
         [Serializable]
         public class _NestedTestBehaviour : _TestBehaviour
