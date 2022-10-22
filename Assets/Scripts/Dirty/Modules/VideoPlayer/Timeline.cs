@@ -31,14 +31,14 @@ namespace Dirty.VideoPlayer
         public void OnPointerDown(PointerEventData eventData)
         {
             IsUsing = true;
-            
+
             PointerDown?.Invoke();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             IsUsing = false;
-            
+
             PointerUp?.Invoke();
         }
     }

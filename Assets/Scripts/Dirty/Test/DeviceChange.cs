@@ -10,16 +10,16 @@ namespace Dirty.Test
         public static event Action<DeviceOrientation> OnOrientationChange;
         public static float CheckDelay = 0.5f; // How long to wait until we check again.
 
-        static Vector2 resolution; // Current Resolution
-        static DeviceOrientation orientation; // Current Device Orientation
-        static bool isAlive = true; // Keep this script running?
+        private static Vector2 resolution; // Current Resolution
+        private static DeviceOrientation orientation; // Current Device Orientation
+        private static bool isAlive = true; // Keep this script running?
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(CheckForChange());
         }
 
-        IEnumerator CheckForChange()
+        private IEnumerator CheckForChange()
         {
             resolution = new Vector2(Screen.width, Screen.height);
             orientation = UnityEngine.Input.deviceOrientation;
@@ -54,7 +54,7 @@ namespace Dirty.Test
             }
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             isAlive = false;
         }

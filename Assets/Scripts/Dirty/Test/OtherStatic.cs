@@ -1,4 +1,4 @@
-﻿  using System;
+﻿using System;
 using UnityEngine;
 
 namespace Dirty.Test
@@ -22,6 +22,7 @@ namespace Dirty.Test
             value = Mathf.Round(value);
             return value * approximation + offset;
         }
+
         public static Vector3 RoundTo(this Vector3 value, Vector3 approximation, Vector3 offset = default)
         {
             value.x = value.x.RoundTo(approximation.x, offset.x);
@@ -29,6 +30,7 @@ namespace Dirty.Test
             value.z = value.z.RoundTo(approximation.z, offset.z);
             return value;
         }
+
         public static Vector3 ClampMin(this Vector3 value, Vector3 min)
         {
             if (value.x < min.x)
@@ -39,7 +41,7 @@ namespace Dirty.Test
                 value.z = min.z;
             return value;
         }
-        
+
         public static Vector3Int[] GetNearPositions(this Vector3Int cell)
         {
             Vector3Int back = cell + new Vector3Int(0, 0, -1);
@@ -48,7 +50,7 @@ namespace Dirty.Test
             Vector3Int right = cell + Vector3Int.right;
             Vector3Int up = cell + Vector3Int.up;
             Vector3Int down = cell - Vector3Int.up;
-            return new Vector3Int[] { back, forward, left, right, up, down, cell };
+            return new[] { back, forward, left, right, up, down, cell };
         }
     }
 }

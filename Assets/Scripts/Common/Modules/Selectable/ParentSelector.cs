@@ -16,7 +16,7 @@ namespace Selectable
         {
             if (gameObj == SelectedObject)
                 return;
-            
+
             UnselectObject();
 
             if (stickToObject)
@@ -39,7 +39,7 @@ namespace Selectable
             {
                 SelectedObject.transform.SetParent(previousParent);
                 SelectedObject.GetComponent<ISelectable>()?.Unselect();
-                
+
                 Unselect?.Invoke(SelectedObject);
                 SelectedObject = null;
             }

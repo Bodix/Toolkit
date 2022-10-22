@@ -11,29 +11,29 @@ namespace Dirty.Test
     {
         public float Duration = 5f;
         public bool DisableOnComplete = true;
-    
+
         [SerializeField] private Image circleImage;
         [SerializeField] private TextMeshProUGUI countText;
 
         private Coroutine countDownCoroutine;
-    
+
         public event Action Started;
         public event Action Stopped;
         public event Action Completed;
-    
+
         public bool IsPlaying { get; private set; }
-    
+
         public Coroutine ShowAndStart()
         {
             gameObject.SetActive(true);
-        
+
             return StartCountDown();
         }
 
         public void StopAndHide()
         {
             StopCountDown();
-        
+
             gameObject.SetActive(false);
         }
 
@@ -57,7 +57,7 @@ namespace Dirty.Test
         {
             IsPlaying = true;
             Started?.Invoke();
-        
+
             for (float fromTime = Duration; fromTime >= 0; fromTime -= Time.deltaTime)
             {
                 circleImage.fillAmount = fromTime / Duration;
@@ -67,7 +67,7 @@ namespace Dirty.Test
 
                 yield return null;
             }
-        
+
             if (DisableOnComplete)
                 gameObject.SetActive(false);
 

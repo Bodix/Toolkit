@@ -1,5 +1,4 @@
 ﻿#if UNITY_2020_1_OR_NEWER
-
 using System;
 using System.Collections.Generic;
 using Evolutex.Evolunity.Extensions;

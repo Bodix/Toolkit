@@ -10,12 +10,12 @@ namespace Dirty.VideoPlayer
     public class VolumeSlider : MonoBehaviour
     {
         public float Sensitivity = 1f;
-        
+
         [SerializeField]
         private new CanvasGroupFadeAnimation animation = null;
-        
+
         private Slider valueSlider;
-        
+
         public Slider ValueSlider => valueSlider;
 
         private void Awake()
@@ -31,7 +31,7 @@ namespace Dirty.VideoPlayer
         public void AddValue(float deltaValue)
         {
             animation.CanvasGroup.alpha = 1;
-            
+
             ValueSlider.value += deltaValue * Sensitivity;
         }
 

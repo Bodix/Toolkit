@@ -2,8 +2,17 @@
 {
     public class Other
     {
-        public enum RotateDirection { Clockwise = 1, Anticlockwise = -1 }
+        public enum RotateDirection
+        {
+            Clockwise = 1,
+            Anticlockwise = -1
+        }
 
-        public enum Axis { X, Y, Z }
+        public enum Axis
+        {
+            X,
+            Y,
+            Z
+        }
     }
 }

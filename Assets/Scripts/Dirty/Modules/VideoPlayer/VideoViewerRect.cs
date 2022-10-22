@@ -17,7 +17,7 @@ namespace Dirty.VideoPlayer
         public void OnDrag(PointerEventData eventData)
         {
             isDragging = true;
-            
+
             volumeSlider.AddValue(eventData.delta.y / Screen.height);
         }
 
@@ -27,7 +27,7 @@ namespace Dirty.VideoPlayer
                 playPauseToggle.isOn = !playPauseToggle.isOn;
 
             isDragging = false;
-            
+
             volumeSlider.Hide();
         }
 

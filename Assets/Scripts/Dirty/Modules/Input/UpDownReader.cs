@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 namespace Dirty.Input
 {
     public delegate void PositionHandler(Vector2 position);
-    
+
     public class UpDownReader : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         public event PositionHandler Down;

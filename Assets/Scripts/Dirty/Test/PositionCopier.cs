@@ -12,7 +12,7 @@ namespace Dirty.Test
         private Vector3 _offset;
         [SerializeField]
         private bool _onUpdate = true;
-        [SerializeField] 
+        [SerializeField]
         private bool _onStart = false;
         [SerializeField]
         private bool _x = true;

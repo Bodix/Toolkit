@@ -37,4 +37,3 @@ namespace Niantic.ARDK.Extensions.Permissions
   }
 }
 #endif
-

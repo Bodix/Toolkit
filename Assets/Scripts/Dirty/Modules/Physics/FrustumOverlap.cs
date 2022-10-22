@@ -27,15 +27,15 @@ namespace Dirty.Modules.Physics
         public void Execute(out IEnumerable<Collider> colliders)
         {
             _boxOverlap.Execute(out colliders);
-            
+
             // colliders = colliders.Where()
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.matrix = Matrix4x4.TRS(_boxOverlap.Center, _boxOverlap.Rotation, Vector3.one);
-            Gizmos.DrawFrustum(Vector3.zero, Fov, Min, _boxOverlap.HalfExtents.z, _boxOverlap.HalfExtents.x / 
-            _boxOverlap.HalfExtents.y);
+            Gizmos.DrawFrustum(Vector3.zero, Fov, Min, _boxOverlap.HalfExtents.z,
+                _boxOverlap.HalfExtents.x / _boxOverlap.HalfExtents.y);
         }
     }
 }

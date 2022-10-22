@@ -49,7 +49,7 @@ namespace Obsolete.Components
         {
             if (!enabled)
                 return;
-        
+
             StopCoroutine(periodCoroutine);
             periodCoroutine = StartCoroutine(PeriodCoroutine());
         }

@@ -28,7 +28,7 @@ namespace Dirty.VideoPlayer
         private void Awake()
         {
             videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
-            
+
             // TODO: Move to extension method.
             videoPlayer.targetTexture.Release();
             videoPlayer.targetTexture.width = Screen.width;
@@ -67,7 +67,7 @@ namespace Dirty.VideoPlayer
             RenderTexture.active = videoPlayer.targetTexture;
             GL.Clear(true, true, backgroundColor);
             RenderTexture.active = null;
-            
+
             videoPlayer.url = videoPath;
             lastVideoPath = videoPath;
 
