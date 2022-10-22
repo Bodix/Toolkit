@@ -8,7 +8,7 @@ namespace _WIP.UI
     public delegate void TimerTextHandler(TextMeshProUGUI text, float time);
 
     public delegate float TimeGetter();
-    
+
     // TODO: Unsubscribe from timer on destroy.
     public class UiTimerText : UiText
     {
@@ -81,7 +81,7 @@ namespace _WIP.UI
             return $"{minutes:00}:{seconds:00}";
         }
     }
-    
+
     // Added TimeUpdateMethod.InternalFromTimer update method.
     // 
     // public class UiTimerText : UiElement

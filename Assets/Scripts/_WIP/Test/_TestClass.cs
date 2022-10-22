@@ -11,11 +11,10 @@ namespace _WIP.Test
         private int _someInt;
         [SerializeReference, TypeSelector]
         private _NestedTestClass _someObj;
-        
+
         [Serializable]
         public class _NestedTestClass : _TestClass
         {
-        
         }
     }
 }

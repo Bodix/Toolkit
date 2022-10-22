@@ -18,17 +18,17 @@
         {
             return action?.Invoke() ?? true;
         }
-        
+
         public static bool IsFalseOrNull(this Condition action)
         {
             return !action?.Invoke() ?? true;
         }
-        
+
         public static bool IsTrue(this Condition condition)
         {
             return condition?.Invoke() ?? false;
         }
-        
+
         public static bool IsFalse(this Condition action)
         {
             return !action?.Invoke() ?? false;

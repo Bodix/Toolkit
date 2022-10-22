@@ -33,7 +33,7 @@ namespace _WIP.Utilities
             if (!IsOutOfZone)
             {
                 ToggleOutOfZone(true);
-                
+
                 ExitZone.Invoke();
             }
         }
@@ -43,7 +43,7 @@ namespace _WIP.Utilities
             if (IsOutOfZone)
             {
                 ToggleOutOfZone(false);
-                
+
                 EnterZone.Invoke();
             }
         }
