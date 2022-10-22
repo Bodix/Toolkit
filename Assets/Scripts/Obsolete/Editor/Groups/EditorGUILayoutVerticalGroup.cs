@@ -1,4 +1,4 @@
-﻿// Copyright © 2020 Bogdan Nikolayev <bodix321@gmail.com>
+// Copyright © 2020 Bogdan Nikolayev <bodix321@gmail.com>
 // All Rights Reserved
 
 using System;
@@ -11,7 +11,7 @@ namespace Obsolete.Editor.Groups
     public class EditorGUILayoutVerticalGroup : IDisposable
     {
         private readonly Rect rect;
-        
+
         public EditorGUILayoutVerticalGroup(params GUILayoutOption[] options)
         {
             rect = EditorGUILayout.BeginVertical(options);

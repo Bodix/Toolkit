@@ -11,7 +11,7 @@ namespace Obsolete.Editor.Groups
     public class EditorGUILayoutHorizontalGroup : IDisposable
     {
         private readonly Rect rect;
-        
+
         public EditorGUILayoutHorizontalGroup(params GUILayoutOption[] options)
         {
             rect = EditorGUILayout.BeginHorizontal(options);

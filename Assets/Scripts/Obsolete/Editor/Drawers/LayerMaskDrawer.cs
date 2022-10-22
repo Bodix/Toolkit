@@ -2,10 +2,10 @@
 // All Rights Reserved
 
 using System;
+using Obsolete.Attributes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Obsolete.Attributes;
 
 namespace Obsolete.Editor.Drawers
 {
