@@ -12,7 +12,7 @@ namespace AI
 
         public event Action<Character> CharacterFound;
         public event Action<Character> CharacterLost;
-        
+
         protected override void OnCollidersOverlap(IEnumerable<Collider> colliders)
         {
             CharactersInRange = new HashSet<Character>(colliders.Select(x => x.GetComponent<Character>()));
@@ -20,7 +20,7 @@ namespace AI
             IEnumerable<Character> removedCharacters = _prevCharactersInRange.Except(CharactersInRange);
             foreach (Character character in removedCharacters)
                 CharacterLost?.Invoke(character);
-            
+
             IEnumerable<Character> addedCharacters = CharactersInRange.Except(_prevCharactersInRange);
             foreach (Character character in addedCharacters)
                 CharacterFound?.Invoke(character);

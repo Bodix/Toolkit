@@ -68,6 +68,7 @@ public static class TextToTextureConverter
             cam.clearFlags = CameraClearFlags.Color;
             cam.backgroundColor = currentSettings.backgroundColor;
         }
+
         cam.depth = -100f;
         cam.targetTexture = new RenderTexture((int)currentSettings.textureSize, (int)currentSettings.textureSize, 1);
 
@@ -87,7 +88,9 @@ public static class TextToTextureConverter
             image.sprite = Sprite.Create(
                 currentSettings.backgroundTexture,
                 new Rect(0, 0, currentSettings.backgroundTexture.width, currentSettings.backgroundTexture.height),
-                new Vector2(currentSettings.backgroundTexture.width / 2f, currentSettings.backgroundTexture.height / 2f));
+                new Vector2(
+                    currentSettings.backgroundTexture.width / 2f,
+                    currentSettings.backgroundTexture.height / 2f));
         }
 
         Text text = new GameObject("Text").AddComponent<Text>();

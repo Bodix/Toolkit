@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AI
 {
@@ -12,7 +11,7 @@ namespace AI
 
         private void Update()
         {
-            if(_isFollowing)
+            if (_isFollowing)
                 MoveTo(_target);
         }
 

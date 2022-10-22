@@ -8,10 +8,13 @@ namespace _WIP.FindInParent.Editor
     public abstract class AttributePropertyDrawer<T> : PropertyDrawer where T : PropertyAttribute
     {
         protected abstract SerializedPropertyType[] SupportedTypes { get; }
-        
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label) => -2f;
-        
-        protected T Attribute => (T) attribute;
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            return -2f;
+        }
+
+        protected T Attribute => (T)attribute;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

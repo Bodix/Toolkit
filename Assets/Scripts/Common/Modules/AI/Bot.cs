@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AI
 {
@@ -16,11 +15,11 @@ namespace AI
         {
             _vision.CharacterLost += character =>
                 Debug.Log("lost" + character);
-            
+
             _vision.CharacterFound += character =>
             {
                 Debug.Log("found" + character);
-                
+
                 _movement.StartFollowing(character.transform);
             };
         }

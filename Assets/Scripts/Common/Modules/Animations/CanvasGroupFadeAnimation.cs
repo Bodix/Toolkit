@@ -13,7 +13,7 @@ namespace Animations
         public float Duration = 0.5f;
         public Ease Ease = Ease.Linear;
         public UnityEvent OnComplete;
-        
+
         public CanvasGroup CanvasGroup { get; private set; }
 
         private void Awake()
@@ -37,7 +37,7 @@ namespace Animations
                 .SetEase(Ease)
                 .OnComplete(() => OnComplete.Invoke());
         }
-        
+
         public Tween PlayInTweenFull()
         {
             return PlayInTween().From(0);
@@ -49,7 +49,7 @@ namespace Animations
                 .SetEase(Ease)
                 .OnComplete(() => OnComplete.Invoke());
         }
-        
+
         public Tween PlayOutTweenFull()
         {
             return PlayOutTween().From(1);

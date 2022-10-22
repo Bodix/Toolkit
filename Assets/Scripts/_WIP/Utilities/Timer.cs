@@ -119,7 +119,7 @@ namespace _WIP.Utilities
         {
             // Cache callback before cleaning in Terminate() method.
             Action onStop = _onStop;
-            
+
             CleanupAndDisable();
             onStop?.Invoke();
             Stopped?.Invoke();
@@ -130,7 +130,7 @@ namespace _WIP.Utilities
             if (!IsStarted)
             {
                 Debug.LogError("Can't set remaining time on timer that is not started");
-                
+
                 return;
             }
 
@@ -147,7 +147,7 @@ namespace _WIP.Utilities
             {
                 // Cache callback before cleaning in CleanupAndDisable() method.
                 Action onComplete = _onComplete;
-                
+
                 CleanupAndDisable();
                 onComplete?.Invoke();
                 Completed?.Invoke();

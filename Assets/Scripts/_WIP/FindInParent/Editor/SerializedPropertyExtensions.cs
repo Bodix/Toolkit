@@ -29,7 +29,7 @@ namespace _WIP.FindInParent.Editor
             string[] propertyNames = property.GetPropertyNames();
 
             object @object = property.serializedObject.targetObject;
-            foreach (var path in propertyNames.Take(propertyNames.Length - 1))
+            foreach (string path in propertyNames.Take(propertyNames.Length - 1))
             {
                 @object = @object.GetType()
                     .GetField(path, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)

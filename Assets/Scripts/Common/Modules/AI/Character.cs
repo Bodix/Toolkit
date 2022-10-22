@@ -4,6 +4,5 @@ namespace AI
 {
     public class Character : MonoBehaviour
     {
-
     }
 }

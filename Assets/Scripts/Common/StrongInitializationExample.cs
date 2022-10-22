@@ -16,7 +16,7 @@ public class StrongInitializationExample : MonoBehaviour
     // between play mode changes (domain reloading).
     [SerializeField]
     private AspectRatioFitter aspectRatioFitter;
-    
+
     private bool IsComponentsInitialized => image && aspectRatioFitter;
 
     // To initialize components in edit time.
