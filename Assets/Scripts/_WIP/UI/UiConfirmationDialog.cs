@@ -12,10 +12,10 @@ namespace _WIP.UI
         protected Button declineButton;
 
         protected Action<Result> _resultCallback;
-        
+
         public event Action Accepted;
         public event Action Declined;
-        
+
         protected virtual void Awake()
         {
             acceptButton.onClick.AddListener(Accept);
@@ -40,7 +40,7 @@ namespace _WIP.UI
         {
             Debug.LogWarning("Trying to show " + nameof(UiConfirmationDialog) + " without result callback. " +
                 "Use the overload of \"Show()\" method with \"resultCallback\" parameter instead.");
-            
+
             Show(null, onComplete, instantly);
         }
 

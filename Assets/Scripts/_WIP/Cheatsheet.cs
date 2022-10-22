@@ -42,7 +42,7 @@ namespace _WIP
             StaticCoroutine.Stop(delayCoroutine);
             StaticCoroutine.Stop(repeatCoroutine);
             StaticCoroutine.Stop(staticCoroutine);
-            
+
             // You can specify the MonoBehaviour instance on which to execute the coroutine.
             ExampleBehaviour exampleBehaviour = GetComponent<ExampleBehaviour>();
             Coroutine delayCoroutine2 = Delay.ForSeconds(60, () => Debug.Log("Delay coroutine"), exampleBehaviour);
@@ -67,10 +67,10 @@ namespace _WIP
             // Output the array to the console by specifying the string selector and separator.
             // Output: Cone : Sphere : Cube
             Debug.Log(objects.AsString(item => item.name, " : "));
-            
+
             // Get random object from the array.
             GameObject randomObj = objects.Random();
-            
+
             // Shuffle the array.
             objects = objects.Shuffle().ToArray();
 
@@ -84,10 +84,9 @@ namespace _WIP
             objects.ForEachLazy(Debug.Log);
             objects.ForEachLazy((x, index) => Debug.Log(index + " : " + x.name + ", "));
         }
-        
+
         public class ExampleBehaviour : MonoBehaviour
         {
-        
         }
 
         private IEnumerator SomeCoroutine()

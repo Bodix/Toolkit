@@ -1,6 +1,6 @@
 ﻿using System;
-using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine;
 
 namespace _WIP.UI
 {
@@ -13,12 +13,12 @@ namespace _WIP.UI
         // We should force this message to prevent possible errors, due to non-obviousness.
         // [Foldout("Debug")]
         // public bool LogWarnings = true;
-        
+
         public event Action Showing;
         public event Action Hiding;
         public event Action Shown;
         public event Action Hidden;
-        
+
         public virtual bool IsShown => gameObject.activeSelf;
         public bool IsShownAndActiveInHierarchy => IsShown && gameObject.activeInHierarchy;
 
@@ -45,7 +45,7 @@ namespace _WIP.UI
         {
             Hide(true, null);
         }
-        
+
         public void Show(Action onComplete)
         {
             Show(false, onComplete);
@@ -58,11 +58,11 @@ namespace _WIP.UI
 
         protected virtual void Show(bool instantly, Action onComplete)
         {
-            if (IsShown/* && LogWarnings*/)
+            if (IsShown /*&& LogWarnings*/)
             {
                 Debug.LogWarning("Trying to show the UiElement when it is already shown. " +
                     "Animation and callbacks won't be invoked");
-                
+
                 return;
             }
 
@@ -74,18 +74,18 @@ namespace _WIP.UI
             else
             {
                 ShowAnimation.Play(
-                    onStart: OnShowAnimationStart,
-                    onComplete: () => OnShowAnimationComplete(onComplete));
+                    OnShowAnimationStart,
+                    () => OnShowAnimationComplete(onComplete));
             }
         }
 
         protected virtual void Hide(bool instantly, Action onComplete)
         {
-            if (!IsShown/* && LogWarnings*/)
+            if (!IsShown /*&& LogWarnings*/)
             {
                 Debug.LogWarning("Trying to hide the UiElement when it is already hidden. " +
                     "Animation and callbacks won't be invoked");
-                
+
                 return;
             }
 
@@ -97,8 +97,8 @@ namespace _WIP.UI
             else
             {
                 HideAnimation.Play(
-                    onStart: OnHideAnimationStart,
-                    onComplete: () => OnHideAnimationComplete(onComplete));
+                    OnHideAnimationStart,
+                    () => OnHideAnimationComplete(onComplete));
             }
         }
 
