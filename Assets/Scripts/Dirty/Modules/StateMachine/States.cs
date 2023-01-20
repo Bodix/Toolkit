@@ -1,5 +1,5 @@
 ﻿using System;
-using Evolutex.Evolunity.Patterns.StateMachine;
+using Evolutex.Evolunity.Patterns;
 using UnityEngine;
 
 namespace Dirty.Test
