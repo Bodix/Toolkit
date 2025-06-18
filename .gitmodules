@@ -13,3 +13,7 @@
 [submodule "Evolunity"]
 	path = Assets/Packages/Evolutex/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
+
+[submodule "unity-development-tools"]
+	path = Assets/Packages/unity-development-tools
+	url = https://github.com/Bodix/unity-development-tools.git
