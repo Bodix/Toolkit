@@ -6,9 +6,9 @@
 	path = Assets/Packages/Toolkit.Common
 	url = https://github.com/Bodix/Unity.Toolkit.Common.git
 
-[submodule "Toolkit.InputSystem"];
+[submodule "Toolkit.InputSystem"]
 	path = Assets/Packages/Toolkit.InputSystem
-	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
+	url = https://github.com/Bodix/Unity.Toolkit.InputSystem
 
 [submodule "Toolkit.Screens"]
 	path = Assets/Packages/Toolkit.Screens
