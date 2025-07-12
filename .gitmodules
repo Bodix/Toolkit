@@ -8,7 +8,7 @@
 
 [submodule "Toolkit.InputSystem"]
 	path = Assets/Packages/Toolkit.InputSystem
-	url = https://github.com/Bodix/Unity.Toolkit.InputSystem
+	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
 
 [submodule "Toolkit.Screens"]
 	path = Assets/Packages/Toolkit.Screens
