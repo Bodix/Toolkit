@@ -135,3 +135,8 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Evolutex.Evolunity.Components.Initializer, Evolunity.Runtime
       EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Animations.RetargetRootMotion,
+        Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Physics.BoxTrigger, Evolunity.Runtime
+      EditorTypeName: 

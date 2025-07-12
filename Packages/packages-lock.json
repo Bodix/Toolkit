@@ -79,8 +79,8 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.legacyinputhelpers": "2.1.7",
-        "com.unity.xr.arsubsystems": "2.1.19"
+        "com.unity.xr.arsubsystems": "2.1.19",
+        "com.unity.xr.legacyinputhelpers": "2.1.7"
       },
       "url": "https://packages.unity.com"
     },
