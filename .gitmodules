@@ -18,6 +18,10 @@
 	path = Assets/Packages/unity-development-tools
 	url = https://github.com/Bodix/unity-development-tools.git
 
-[submodule "Assets/Packages/MobileConsoleKit"]
+[submodule "MobileConsoleKit"]
 	path = Assets/Packages/MobileConsoleKit
 	url = https://github.com/Bodix/MobileConsoleKit.git
+
+[submodule "Toolkit.InputSystem"]
+	path = Assets/Packages/Toolkit.InputSystem
+	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git

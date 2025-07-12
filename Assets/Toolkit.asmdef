@@ -4,7 +4,8 @@
         "Unity.TextMeshPro",
         "Evolunity.Runtime",
         "NaughtyAttributes.Core",
-        "Toolkit.Common"
+        "Toolkit.Common",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
