@@ -140,3 +140,9 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Evolutex.Evolunity.Components.Physics.BoxTrigger, Evolunity.Runtime
       EditorTypeName: 
+    - DrawnTypeName: Toolkit.InputSystem.Scripts.GenericInput, Toolkit.InputSystem
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.InputSystem.Scripts.OnScreenInputRect, Toolkit.InputSystem
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.InputSystem.Scripts.OnScreenJoystick, Toolkit.InputSystem
+      EditorTypeName: 
