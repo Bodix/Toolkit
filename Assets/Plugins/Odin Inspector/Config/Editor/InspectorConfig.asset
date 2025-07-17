@@ -146,3 +146,13 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Toolkit.InputSystem.Scripts.OnScreenJoystick, Toolkit.InputSystem
       EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Scenes.SceneChangeTrigger, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Scenes.SceneTransition, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Scenes.SceneWatcher, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Triggers.AutoTrigger, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Triggers.UiButtonTrigger, Evolunity.Runtime
+      EditorTypeName: 
