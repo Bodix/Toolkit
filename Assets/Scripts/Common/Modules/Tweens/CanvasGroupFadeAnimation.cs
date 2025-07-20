@@ -5,7 +5,7 @@ using Evolutex.Evolunity.Components.Animations;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Animations
+namespace Common.Modules.Tweens
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class CanvasGroupFadeAnimation : MonoBehaviour, IInOutPlayable

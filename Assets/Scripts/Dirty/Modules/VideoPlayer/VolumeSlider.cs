@@ -1,4 +1,4 @@
-﻿using Animations;
+﻿using Common.Modules.Tweens;
 using UnityEngine;
 using UnityEngine.UI;
 

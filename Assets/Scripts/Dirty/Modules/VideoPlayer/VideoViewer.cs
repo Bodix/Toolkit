@@ -1,4 +1,4 @@
-﻿using Animations;
+﻿using Common.Modules.Tweens;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
