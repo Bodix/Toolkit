@@ -10,9 +10,9 @@
 	path = Assets/Packages/Toolkit.InputSystem
 	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
 
-[submodule "Toolkit.Screens"]
-	path = Assets/Packages/Toolkit.Screens
-	url = https://github.com/Bodix/Unity.Toolkit.Screens.git
+[submodule "Toolkit.Tweens"]
+	path = Assets/Packages/Toolkit.Tweens
+	url = https://github.com/Bodix/Unity.Toolkit.Tweens.git
 
 [submodule "Toolkit.Resettables"]
 	path = Assets/Packages/Toolkit.Resettables
