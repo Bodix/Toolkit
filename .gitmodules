@@ -25,3 +25,7 @@
 [submodule "MobileConsoleKit"]
 	path = Assets/Packages/MobileConsoleKit
 	url = https://github.com/Bodix/MobileConsoleKit.git
+
+[submodule "Toolkit.Styles"]
+	path = Assets/Packages/Toolkit.Styles
+	url = https://github.com/Bodix/Unity.Toolkit.Styles.git
