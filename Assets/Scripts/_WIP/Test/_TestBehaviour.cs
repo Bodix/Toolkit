@@ -1,4 +1,5 @@
 using System;
+using Evolutex.Evolunity.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace _WIP.Test
         private void Awake()
         {
             // Test();
+
+            Debug.Log("Hello world".Size(35).Color(RichTextColor.purple));
+            Debug.Log("Hello world".Size(35).Color(RichTextColor.fuchsia));
         }
 
         [Button]
