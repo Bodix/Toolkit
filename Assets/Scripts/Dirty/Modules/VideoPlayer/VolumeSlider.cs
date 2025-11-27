@@ -1,4 +1,5 @@
 ﻿using Common.Modules.Tweens;
+using Toolkit.Tweens.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +38,7 @@ namespace Dirty.VideoPlayer
 
         public void Hide()
         {
-            animation.PlayOutTween();
+            animation.PlayOut();
         }
     }
 }

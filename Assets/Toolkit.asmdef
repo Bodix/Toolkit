@@ -5,7 +5,8 @@
         "Evolunity.Runtime",
         "NaughtyAttributes.Core",
         "Toolkit.Common",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Toolkit.Tweens"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

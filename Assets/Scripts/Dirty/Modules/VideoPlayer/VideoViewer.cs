@@ -1,5 +1,6 @@
 ﻿using Common.Modules.Tweens;
 using DG.Tweening;
+using Toolkit.Tweens.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,7 +72,7 @@ namespace Dirty.VideoPlayer
             videoPlayer.url = videoPath;
             lastVideoPath = videoPath;
 
-            animation.PlayInTweenFull()
+            animation.PlayIn()
                 .OnComplete(() => { videoPlayer.Play(); });
         }
 
@@ -79,7 +80,7 @@ namespace Dirty.VideoPlayer
         {
             videoPlayer.Stop();
 
-            animation.PlayOutTween()
+            animation.PlayOut()
                 .OnComplete(() =>
                 {
                     timeline.Reset();
