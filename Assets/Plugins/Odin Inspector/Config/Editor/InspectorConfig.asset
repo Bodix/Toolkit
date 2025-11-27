@@ -174,3 +174,41 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Evolutex.Evolunity.Components.Triggers.Trigger, Evolunity.Runtime
       EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.SoundEffect, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.BlendableMoveAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.CanvasGroupFadeAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.CompositeAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.GraphicFadeAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.ScaleAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.SequenceAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.TextSizeAnimation, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Screens.Screen, Toolkit.Tweens
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ColorStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.FontAssetStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.FontSizeStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.GraphicStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ImageStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ImageTypeStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ShadowColorStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ShadowDistanceStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.ShadowStyle, Toolkit.Styles
+      EditorTypeName: 
+    - DrawnTypeName: Toolkit.Styles.TextStyle, Toolkit.Styles
+      EditorTypeName: 
