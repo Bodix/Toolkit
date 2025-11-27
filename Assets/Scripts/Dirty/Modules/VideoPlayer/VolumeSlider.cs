@@ -1,5 +1,4 @@
-﻿using Common.Modules.Tweens;
-using Toolkit.Tweens.Animations;
+﻿using Toolkit.Tweens.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
