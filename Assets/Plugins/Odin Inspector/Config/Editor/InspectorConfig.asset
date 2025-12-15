@@ -212,3 +212,5 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Toolkit.Styles.TextStyle, Toolkit.Styles
       EditorTypeName: 
+    - DrawnTypeName: Toolkit.Tweens.Animations.RigidbodyMoveAnimation, Toolkit.Tweens
+      EditorTypeName: 
