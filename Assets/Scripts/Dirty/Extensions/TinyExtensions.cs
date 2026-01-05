@@ -1502,7 +1502,7 @@ namespace TP.ExtensionMethods
         {
             System.Type type = original.GetType();
 
-            Component copy;
+            Component copy = null;
 
             if (Application.isPlaying)
             {
