@@ -2,10 +2,10 @@
     "name": "Toolkit",
     "references": [
         "Unity.TextMeshPro",
-        "Evolunity.Runtime",
-        "NaughtyAttributes.Core",
-        "Toolkit.Common",
         "Unity.InputSystem",
+        "NaughtyAttributes.Core",
+        "Evolunity.Runtime",
+        "Toolkit.Common",
         "Toolkit.Tweens"
     ],
     "includePlatforms": [],
