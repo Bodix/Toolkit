@@ -1,9 +1,9 @@
 ﻿namespace DebugSelector
 {
-    public interface ISelectable
-    {
-        void Select();
+	public interface ISelectable
+	{
+		void Select();
 
-        void Unselect();
-    }
+		void Unselect();
+	}
 }
