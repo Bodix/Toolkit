@@ -1,0 +1,36 @@
+{
+    "name": "com.evolutex.toolkit.wcontainer",
+    "version": "1.0.0",
+    "description": "Utilities for VContainer package",
+    "displayName": "Toolkit.WContainer",
+    "unity": "2019.4",
+    "author": {
+        "name": "Bodix",
+        "email": "bodix321@gmail.com",
+        "url": "https://github.com/Bodix/Unity.Toolkit.WContainer"
+    },
+    "keywords": [
+        "package",
+        "library",
+        "extensions",
+        "utility",
+        "utilities",
+        "utility-library",
+        "utilities-library",
+        "tool",
+        "tools",
+        "toolkit",
+        "scripts",
+        "scripting",
+        "scripts-collection",
+        "productivity",
+        "unity",
+        "unity3d",
+        "unity-development",
+        "asset",
+        "DI",
+        "dependency-injection",
+        "container",
+        "VContainer"
+    ]
+}
