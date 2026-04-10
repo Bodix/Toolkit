@@ -10,7 +10,7 @@ namespace Toolkit.WContainer
 		[SerializeField]
 		private InjectionMethod _injectionMethod;
 		[SerializeField]
-		private ParentReference _parentReference;
+		private ParentReference _targetLifetimeScope;
 
 		private void Awake()
 		{
@@ -19,9 +19,9 @@ namespace Toolkit.WContainer
 
 		private void Inject()
 		{
-			if (_parentReference.Object != null)
+			if (_targetLifetimeScope.Object != null)
 			{
-				InjectWithSelectedMethod(_parentReference.Object.Container);
+				InjectWithSelectedMethod(_targetLifetimeScope.Object.Container);
 			}
 			else
 			{
