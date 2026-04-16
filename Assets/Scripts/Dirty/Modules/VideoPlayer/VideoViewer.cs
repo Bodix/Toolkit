@@ -1,91 +1,91 @@
 ﻿using DG.Tweening;
-using Toolkit.Tweens.Animations;
+using Toolkit.Tweens.Transitions;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Dirty.VideoPlayer
 {
-    [RequireComponent(typeof(UnityEngine.Video.VideoPlayer))]
-    public class VideoViewer : MonoBehaviour
-    {
-        [SerializeField]
-        private Timeline timeline = null;
-        [SerializeField]
-        private VolumeSlider volumeSlider = null;
-        [SerializeField]
-        private Toggle playPauseToggle = null;
-        [SerializeField]
-        private new CanvasGroupFadeAnimation animation = null;
-        [SerializeField]
-        private Color backgroundColor = Color.black;
+	[RequireComponent(typeof(UnityEngine.Video.VideoPlayer))]
+	public class VideoViewer : MonoBehaviour
+	{
+		[SerializeField]
+		private Timeline timeline = null;
+		[SerializeField]
+		private VolumeSlider volumeSlider = null;
+		[SerializeField]
+		private Toggle playPauseToggle = null;
+		[SerializeField]
+		private new CanvasGroupFadeTransition animation = null;
+		[SerializeField]
+		private Color backgroundColor = Color.black;
 
-        private UnityEngine.Video.VideoPlayer videoPlayer;
-        private string lastVideoPath;
+		private UnityEngine.Video.VideoPlayer videoPlayer;
+		private string lastVideoPath;
 
-        private float Duration => videoPlayer.frameCount / videoPlayer.frameRate;
-        private double NormalizedTime => videoPlayer.time / Duration;
+		private float Duration => videoPlayer.frameCount / videoPlayer.frameRate;
+		private double NormalizedTime => videoPlayer.time / Duration;
 
-        private void Awake()
-        {
-            videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
+		private void Awake()
+		{
+			videoPlayer = GetComponent<UnityEngine.Video.VideoPlayer>();
 
-            // TODO: Move to extension method.
-            videoPlayer.targetTexture.Release();
-            videoPlayer.targetTexture.width = Screen.width;
-            videoPlayer.targetTexture.height = Screen.height;
+			// TODO: Move to extension method.
+			videoPlayer.targetTexture.Release();
+			videoPlayer.targetTexture.width = Screen.width;
+			videoPlayer.targetTexture.height = Screen.height;
 
-            timeline.PointerDown += () => videoPlayer.Pause();
-            timeline.PointerUp += () => videoPlayer.Play();
-            timeline.Slider.onValueChanged
-                .AddListener(value => videoPlayer.time = value * Duration);
+			timeline.PointerDown += () => videoPlayer.Pause();
+			timeline.PointerUp += () => videoPlayer.Play();
+			timeline.Slider.onValueChanged
+				.AddListener(value => videoPlayer.time = value * Duration);
 
-            volumeSlider.ValueSlider.onValueChanged
-                .AddListener(value => videoPlayer.SetDirectAudioVolume(0, value));
+			volumeSlider.ValueSlider.onValueChanged
+				.AddListener(value => videoPlayer.SetDirectAudioVolume(0, value));
 
-            playPauseToggle.onValueChanged.AddListener(isOn =>
-            {
-                if (isOn)
-                    videoPlayer.Play();
-                else
-                    videoPlayer.Pause();
-            });
-        }
+			playPauseToggle.onValueChanged.AddListener(isOn =>
+			{
+				if (isOn)
+					videoPlayer.Play();
+				else
+					videoPlayer.Pause();
+			});
+		}
 
-        private void Update()
-        {
-            if (!videoPlayer.isPrepared || timeline.IsUsing)
-                return;
+		private void Update()
+		{
+			if (!videoPlayer.isPrepared || timeline.IsUsing)
+				return;
 
-            // timeline.Slider.SetValueWithoutNotify((float) NormalizedTime);
-        }
+			// timeline.Slider.SetValueWithoutNotify((float) NormalizedTime);
+		}
 
-        public void OpenVideo(string videoPath)
-        {
-            gameObject.SetActive(true);
+		public void OpenVideo(string videoPath)
+		{
+			gameObject.SetActive(true);
 
-            // Fix transparent image on opening.
-            RenderTexture.active = videoPlayer.targetTexture;
-            GL.Clear(true, true, backgroundColor);
-            RenderTexture.active = null;
+			// Fix transparent image on opening.
+			RenderTexture.active = videoPlayer.targetTexture;
+			GL.Clear(true, true, backgroundColor);
+			RenderTexture.active = null;
 
-            videoPlayer.url = videoPath;
-            lastVideoPath = videoPath;
+			videoPlayer.url = videoPath;
+			lastVideoPath = videoPath;
 
-            animation.PlayIn()
-                .OnComplete(() => { videoPlayer.Play(); });
-        }
+			animation.PlayIn()
+				.OnComplete(() => { videoPlayer.Play(); });
+		}
 
-        public void Close()
-        {
-            videoPlayer.Stop();
+		public void Close()
+		{
+			videoPlayer.Stop();
 
-            animation.PlayOut()
-                .OnComplete(() =>
-                {
-                    timeline.Reset();
+			animation.PlayOut()
+				.OnComplete(() =>
+				{
+					timeline.Reset();
 
-                    gameObject.SetActive(false);
-                });
-        }
-    }
+					gameObject.SetActive(false);
+				});
+		}
+	}
 }
