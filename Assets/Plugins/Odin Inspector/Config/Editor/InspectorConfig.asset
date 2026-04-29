@@ -214,3 +214,35 @@ MonoBehaviour:
       EditorTypeName: 
     - DrawnTypeName: Toolkit.Tweens.Animations.RigidbodyMoveAnimation, Toolkit.Tweens
       EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.DisableOnAwake, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.InternetChecker, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.LevelBordersRect, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.LookAt, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.LookAtCamera, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.SetParentOnAwake, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Timer, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UnparentOnAwake, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.DebugSelector.DebugArraySelector,
+        Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.DebugSelector.DebugSelector, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Physics.Projectile, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Triggers.ButtonTrigger, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.Triggers.HeightThresholdTrigger,
+        Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UI.DisableButtonAfterClick, Evolunity.Runtime
+      EditorTypeName: 
+    - DrawnTypeName: Evolutex.Evolunity.Components.UI.ProgressBar, Evolunity.Runtime
+      EditorTypeName: 
