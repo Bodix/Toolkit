@@ -13,9 +13,6 @@
 [submodule "Assets/Packages/Toolkit.Resettables"]
 	path = Assets/Packages/Toolkit.Resettables
 	url = https://github.com/Bodix/Unity.Toolkit.Resettables.git
-[submodule "Assets/Packages/MobileConsoleKit"]
-	path = Assets/Packages/MobileConsoleKit
-	url = https://github.com/Bodix/MobileConsoleKit.git
 [submodule "Assets/Packages/Toolkit.Styles"]
 	path = Assets/Packages/Toolkit.Styles
 	url = https://github.com/Bodix/Unity.Toolkit.Styles.git
