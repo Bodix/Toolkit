@@ -25,12 +25,12 @@ namespace Dirty.VideoPlayer
 
 		private void Start()
 		{
-			animation.CanvasGroup.alpha = 0;
+			animation.Target.alpha = 0;
 		}
 
 		public void AddValue(float deltaValue)
 		{
-			animation.CanvasGroup.alpha = 1;
+			animation.Target.alpha = 1;
 
 			ValueSlider.value += deltaValue * Sensitivity;
 		}
