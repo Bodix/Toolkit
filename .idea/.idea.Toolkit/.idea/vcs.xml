@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Evolutex/Evolunity" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Assets/Packages/MobileConsoleKit" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Common" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.InputSystem" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Resettables" vcs="Git" />
