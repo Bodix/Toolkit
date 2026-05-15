@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Evolutex.Evolunity.Components.UI;
+using TMPro;
 using UnityEngine;
 
 namespace _WIP.UI
