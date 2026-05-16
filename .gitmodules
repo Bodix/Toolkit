@@ -1,5 +1,5 @@
 [submodule "Assets/Packages/Evolunity"]
-	path = Assets/Packages/Evolutex/Evolunity
+	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
 [submodule "Assets/Packages/Toolkit.Common"]
 	path = Assets/Packages/Toolkit.Common
