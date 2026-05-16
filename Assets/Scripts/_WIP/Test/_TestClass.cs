@@ -1,5 +1,5 @@
 ﻿using System;
-using Evolutex.Evolunity.Attributes;
+using Bodix.Evolunity.Attributes;
 using UnityEngine;
 
 namespace _WIP.Test

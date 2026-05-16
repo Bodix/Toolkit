@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
-using Evolutex.Evolunity.Extensions;
-using Evolutex.Evolunity.Utilities;
+using Bodix.Evolunity.Extensions;
+using Bodix.Evolunity.Utilities;
 using UnityEngine;
 
 namespace _WIP

@@ -1,4 +1,4 @@
-using Evolutex.Evolunity.Utilities.Gizmos;
+using Bodix.Evolunity.Utilities.Gizmos;
 using UnityEngine;
 #if UNITY_EDITOR
 using Handles = UnityEditor.Handles;

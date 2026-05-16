@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Evolutex.Evolunity.Components.Animations;
+using Bodix.Evolunity.Components;
 
 namespace _WIP.Test
 {

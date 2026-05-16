@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Evolutex.Evolunity.Components.Physics;
+using Bodix.Evolunity.Components;
 using NaughtyAttributes;
 using UnityEngine;
 
