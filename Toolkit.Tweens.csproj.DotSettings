@@ -2,5 +2,8 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Canimations/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Cdraganddrop_005Cdraggable/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Cdraganddrop_005Csnappable/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Cdraganddrop_005Csnappingslot/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Cscreens_005Cimplementations/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Ctoolkit_002Etweens_005Cscripts_005Cstructs/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
