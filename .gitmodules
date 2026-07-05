@@ -7,9 +7,6 @@
 [submodule "Assets/Packages/Toolkit.InputSystem"]
 	path = Assets/Packages/Toolkit.InputSystem
 	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
-[submodule "Assets/Packages/Toolkit.Inventory"]
-	path = Assets/Packages/Toolkit.Inventory
-	url = https://github.com/Bodix/Unity.Toolkit.Inventory.git
 [submodule "Assets/Packages/Toolkit.Tweens"]
 	path = Assets/Packages/Toolkit.Tweens
 	url = https://github.com/Bodix/Unity.Toolkit.Tweens.git
@@ -22,3 +19,6 @@
 [submodule "Assets/Packages/Toolkit.WContainer"]
 	path = Assets/Packages/Toolkit.WContainer
 	url = https://github.com/Bodix/Unity.Toolkit.WContainer.git
+[submodule "Assets/Packages/Toolkit.Inventory"]
+	path = Assets/Packages/Toolkit.Inventory
+	url = https://github.com/Bodix/Unity.Toolkit.Inventory.git
