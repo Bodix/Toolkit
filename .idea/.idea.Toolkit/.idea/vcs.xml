@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Evolunity" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Common" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.InputSystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Inventory" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Resettables" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Styles" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Tweens" vcs="Git" />
