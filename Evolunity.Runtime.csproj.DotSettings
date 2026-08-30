@@ -10,6 +10,7 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cscenes/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Csensors/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cspawners/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Ctransform/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Ctriggers/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Ctriggers_005Cimplementations/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cpackages_005Cevolunity_005Cscripts_005Cruntime_005Ccomponents_005Cui_005Celements/@EntryIndexedValue">True</s:Boolean>
