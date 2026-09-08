@@ -1,0 +1,35 @@
+{
+    "name": "com.bodix.toolkit.quests",
+    "version": "1.0.0",
+    "description": "Data-driven quest system",
+    "displayName": "Toolkit.Quests",
+    "unity": "2019.3",
+    "author": {
+        "name": "Bodix",
+        "email": "bodix321@gmail.com",
+        "url": "https://github.com/Bodix/Unity.Toolkit.Quests"
+    },
+    "keywords": [
+        "package",
+        "library",
+        "extensions",
+        "utility",
+        "utilities",
+        "utility-library",
+        "utilities-library",
+        "tool",
+        "tools",
+        "toolkit",
+        "scripts",
+        "scripting",
+        "scripts-collection",
+        "productivity",
+        "unity",
+        "unity3d",
+        "unity-development",
+        "asset",
+        "quest",
+        "quests",
+        "quest-system"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Toolkit.Quests.Example",
+    "references": [
+        "Toolkit.Quests",
+        "Toolkit.Quests.VContainer",
+        "Evolunity.Runtime",
+        "NaughtyAttributes.Core",
+        "VContainer"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
