@@ -6,7 +6,7 @@ namespace Toolkit.Quests
 	[System.Serializable]
 	public class QuestState
 	{
-		public string QuestId;
+		public QuestConfig Quest;
 		public QuestStatus Status;
 	}
 }

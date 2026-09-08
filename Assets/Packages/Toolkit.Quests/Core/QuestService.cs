@@ -24,11 +24,11 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void AcceptQuest(QuestConfig config)
 		{
-			QuestState state = new QuestState { QuestId = config.Id, Status = QuestStatus.NotStarted };
+			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
 			List<IQuestObjective> objectives = new List<IQuestObjective>();
 
-			foreach (string objId in config.ObjectiveIds)
-				objectives.Add(_questFactory.CreateObjective(objId));
+			foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
+				objectives.Add(_questFactory.CreateObjective(objectiveConfig));
 
 			QuestInstance instance = new QuestInstance(config, state, objectives, _eventBus);
 			_activeQuests.Add(instance);

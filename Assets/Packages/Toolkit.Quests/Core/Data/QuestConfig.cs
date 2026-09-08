@@ -15,19 +15,19 @@ namespace Toolkit.Quests
 		[SerializeField]
 		private string _description;
 		[SerializeField]
-		private string[] _objectiveIds;
+		private QuestObjectiveConfig[] _objectives;
 		[SerializeField]
-		private string[] _rewardIds;
+		private QuestRewardConfig[] _rewards;
 
 		public string Title => _title;
 		public string Description => _description;
 		/// <summary>
 		/// List of objective IDs that the factory will build.
 		/// </summary>
-		public string[] ObjectiveIds => _objectiveIds;
+		public QuestObjectiveConfig[] Objectives => _objectives;
 		/// <summary>
 		/// List of objective IDs that the factory will build.
 		/// </summary>
-		public string[] RewardIds => _rewardIds;
+		public QuestRewardConfig[] Rewards => _rewards;
 	}
 }

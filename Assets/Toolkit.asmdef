@@ -6,7 +6,8 @@
         "NaughtyAttributes.Core",
         "Evolunity.Runtime",
         "Toolkit.Common",
-        "Toolkit.Tweens"
+        "Toolkit.Tweens",
+        "VContainer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

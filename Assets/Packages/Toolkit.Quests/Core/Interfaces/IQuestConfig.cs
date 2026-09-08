@@ -5,7 +5,7 @@
 		string Id { get; }
 		string Title { get; }
 		string Description { get; }
-		string[] ObjectiveIds { get; }
-		string[] RewardIds { get; }
+		QuestObjectiveConfig[] Objectives { get; }
+		QuestRewardConfig[] Rewards { get; }
 	}
 }

@@ -2,7 +2,7 @@
 {
 	public interface IQuestFactory
 	{
-		IQuestObjective CreateObjective(string objectiveId);
-		IQuestReward CreateReward(string rewardId);
+		IQuestObjective CreateObjective(QuestObjectiveConfig config);
+		IQuestReward CreateReward(QuestRewardConfig config);
 	}
 }
