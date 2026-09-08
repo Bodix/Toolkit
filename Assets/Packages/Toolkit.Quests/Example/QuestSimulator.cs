@@ -51,7 +51,7 @@ namespace Toolkit.Quests.Example
 
 			var objective = instance.Objectives
 				.OfType<LogQuestObjective>()
-				.FirstOrDefault(o => !o.IsCompleted);
+				.FirstOrDefault(o => !o.State.IsCompleted);
 
 			if (objective != null)
 			{

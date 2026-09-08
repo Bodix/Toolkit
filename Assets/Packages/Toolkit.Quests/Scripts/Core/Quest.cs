@@ -46,11 +46,8 @@ namespace Toolkit.Quests
 			for (int i = 0; i < _objectives.Count; i++)
 			{
 				IQuestObjective objective = _objectives[i];
-				objective.Initialize(_eventBus, OnObjectiveProgressUpdated);
-
-				if (State.ObjectiveStates != null && i < State.ObjectiveStates.Count)
-					if (!string.IsNullOrEmpty(State.ObjectiveStates[i]))
-						objective.RestoreState(State.ObjectiveStates[i]);
+				QuestObjectiveState objState = State.ObjectiveStates[i];
+				objective.Initialize(_eventBus, objState, OnObjectiveProgressUpdated);
 			}
 
 			// Immediately check in case objectives are instantly completable.
@@ -68,18 +65,8 @@ namespace Toolkit.Quests
 
 		private void OnObjectiveProgressUpdated()
 		{
-			SaveObjectiveStates();
 			Updated?.Invoke(this);
 			CheckCompletion();
-		}
-
-		private void SaveObjectiveStates()
-		{
-			State.ObjectiveStates = State.ObjectiveStates ?? new List<string>();
-			State.ObjectiveStates.Clear();
-
-			foreach (IQuestObjective objective in _objectives)
-				State.ObjectiveStates.Add(objective.GetSerializedState());
 		}
 
 		/// <summary>
@@ -90,11 +77,10 @@ namespace Toolkit.Quests
 			if (State.Status != QuestStatus.Active)
 				return;
 
-			if (_objectives.All(o => o.IsCompleted))
+			if (State.ObjectiveStates.All(s => s.IsCompleted))
 			{
 				State.Status = QuestStatus.Completed;
 
-				SaveObjectiveStates();
 				GrantRewards();
 				StopQuest();
 
@@ -109,7 +95,6 @@ namespace Toolkit.Quests
 
 			State.Status = QuestStatus.Failed;
 
-			SaveObjectiveStates();
 			StopQuest();
 
 			Failed?.Invoke(this);

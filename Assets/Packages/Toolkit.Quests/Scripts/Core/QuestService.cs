@@ -33,6 +33,11 @@ namespace Toolkit.Quests
 		public Quest AcceptQuest(QuestConfig config)
 		{
 			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
+
+			if (config.Objectives != null)
+				foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
+					state.ObjectiveStates.Add(objectiveConfig.CreateState());
+
 			Quest instance = RestoreQuest(state);
 
 			QuestAccepted?.Invoke(instance);

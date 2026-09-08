@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081ad6f103e9d6d4a82e5b1c5d569a16, type: 3}
   m_Name: NewQuest_DebugQuestObjectiveConfig_b48c9
   m_EditorClassIdentifier: 
-  _id: toolkit_quests:newquest_debugquestobjectiveconfig_b48c9
-  TargetActionName: Click the button
+  _id: example:newquest_debugquestobjectiveconfig_b48c9
+  Log: Click the button
 --- !u!114 &-2421135181745719959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b008744855547e996e0f71e211de716, type: 3}
   m_Name: NewQuest
   m_EditorClassIdentifier: 
-  _id: toolkit_quests:newquest
+  _id: example:newquest
   _title: 
   _description: 
   _objectives:
@@ -60,5 +60,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081ad6f103e9d6d4a82e5b1c5d569a16, type: 3}
   m_Name: NewQuest_DebugQuestObjectiveConfig_35639
   m_EditorClassIdentifier: 
-  _id: toolkit_quests:newquest_debugquestobjectiveconfig_35639
-  TargetActionName: Click the button
+  _id: example:newquest_debugquestobjectiveconfig_35639
+  Log: Click the button

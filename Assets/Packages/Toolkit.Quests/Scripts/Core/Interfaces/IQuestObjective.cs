@@ -4,17 +4,13 @@ using Bodix.Evolunity.Patterns;
 namespace Toolkit.Quests
 {
 	/// <summary>
-	/// Defines the base contract for any quest objective.
+	/// Defines the base contract for any quest objective logic.
 	/// </summary>
 	public interface IQuestObjective
 	{
-		bool IsCompleted { get; }
-		float Progress { get; }
+		QuestObjectiveState State { get; }
 
-		void Initialize(IEventBus eventBus, Action onProgressUpdated);
+		void Initialize(IEventBus eventBus, QuestObjectiveState state, Action onProgressUpdated);
 		void Dispose();
-
-		string GetSerializedState();
-		void RestoreState(string state);
 	}
 }

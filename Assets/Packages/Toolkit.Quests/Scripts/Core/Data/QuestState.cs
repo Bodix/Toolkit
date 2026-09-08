@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Toolkit.Quests
 {
@@ -10,6 +11,8 @@ namespace Toolkit.Quests
 	{
 		public QuestConfig Quest;
 		public QuestStatus Status;
-		public List<string> ObjectiveStates = new List<string>();
+		
+		[SerializeReference]
+		public List<QuestObjectiveState> ObjectiveStates = new List<QuestObjectiveState>();
 	}
 }

@@ -6,8 +6,7 @@ namespace Toolkit.Quests.Example
 {
 	public class LogQuestObjective : IQuestObjective
 	{
-		public bool IsCompleted { get; private set; }
-		public float Progress => IsCompleted ? 1f : 0f;
+		public QuestObjectiveState State { get; private set; }
 
 		private readonly LogQuestObjectiveConfig _config;
 		private Action _onProgressUpdated;
@@ -17,20 +16,20 @@ namespace Toolkit.Quests.Example
 			_config = config;
 		}
 
-		public void Initialize(IEventBus eventBus, Action onProgressUpdated)
+		public void Initialize(IEventBus eventBus, QuestObjectiveState state, Action onProgressUpdated)
 		{
+			State = state;
 			_onProgressUpdated = onProgressUpdated;
-			IsCompleted = false;
 
 			Debug.Log($"[Quest Objective] Initialized: {_config.Log}");
 		}
 
 		public void CompleteManually()
 		{
-			if (IsCompleted)
+			if (State.IsCompleted)
 				return;
 
-			IsCompleted = true;
+			State.IsCompleted = true;
 			_onProgressUpdated?.Invoke();
 
 			Debug.Log($"[Quest Objective] Completed: {_config.Log}");
@@ -39,17 +38,6 @@ namespace Toolkit.Quests.Example
 		public void Dispose()
 		{
 			Debug.Log($"[Quest Objective] Disposed: {_config.Log}");
-		}
-
-		public string GetSerializedState()
-		{
-			return IsCompleted.ToString();
-		}
-
-		public void RestoreState(string state)
-		{
-			if (bool.TryParse(state, out bool isCompleted))
-				IsCompleted = isCompleted;
 		}
 	}
 }
