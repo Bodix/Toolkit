@@ -1,4 +1,5 @@
-﻿using Bodix.Evolunity.Collections;
+﻿using System.Collections.Generic;
+using Bodix.Evolunity.Collections;
 using UnityEngine;
 
 namespace Toolkit.Quests
@@ -15,7 +16,7 @@ namespace Toolkit.Quests
 		[SerializeField]
 		private string _description;
 		[SerializeField]
-		private QuestObjectiveConfig[] _objectives;
+		private List<QuestObjectiveConfig> _objectives;
 		[SerializeField]
 		private QuestRewardConfig[] _rewards;
 
@@ -24,7 +25,7 @@ namespace Toolkit.Quests
 		/// <summary>
 		/// List of objectives that the factory will build.
 		/// </summary>
-		public QuestObjectiveConfig[] Objectives => _objectives;
+		public List<QuestObjectiveConfig> Objectives => _objectives;
 		/// <summary>
 		/// List of objectives that the factory will build.
 		/// </summary>

@@ -1,11 +1,13 @@
-﻿namespace Toolkit.Quests
+﻿using System.Collections.Generic;
+
+namespace Toolkit.Quests
 {
 	public interface IQuestConfig
 	{
 		string Id { get; }
 		string Title { get; }
 		string Description { get; }
-		QuestObjectiveConfig[] Objectives { get; }
+		List<QuestObjectiveConfig> Objectives { get; }
 		QuestRewardConfig[] Rewards { get; }
 	}
 }
