@@ -7,6 +7,7 @@ namespace Toolkit.Quests.Example
 	public class LogQuestObjective : IQuestObjective
 	{
 		public bool IsCompleted { get; private set; }
+		public float Progress => IsCompleted ? 1f : 0f;
 
 		private readonly LogQuestObjectiveConfig _config;
 		private Action _onProgressUpdated;
@@ -38,6 +39,17 @@ namespace Toolkit.Quests.Example
 		public void Dispose()
 		{
 			Debug.Log($"[Quest Objective] Disposed: {_config.Log}");
+		}
+
+		public string GetSerializedState()
+		{
+			return IsCompleted.ToString();
+		}
+
+		public void RestoreState(string state)
+		{
+			if (bool.TryParse(state, out bool isCompleted))
+				IsCompleted = isCompleted;
 		}
 	}
 }

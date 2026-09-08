@@ -20,6 +20,8 @@ namespace Toolkit.Quests
 		public IReadOnlyList<IQuestReward> Rewards => _rewards;
 
 		public event Action<Quest> Completed;
+		public event Action<Quest> Updated;
+		public event Action<Quest> Failed;
 
 		public Quest(QuestConfig config, QuestState state,
 			List<IQuestObjective> objectives, List<IQuestReward> rewards, IEventBus eventBus)
@@ -36,13 +38,20 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void StartQuest()
 		{
-			if (State.Status == QuestStatus.Completed)
+			if (State.Status == QuestStatus.Completed || State.Status == QuestStatus.Failed)
 				return;
 
 			State.Status = QuestStatus.Active;
 
-			foreach (IQuestObjective objective in _objectives)
-				objective.Initialize(_eventBus, CheckCompletion);
+			for (int i = 0; i < _objectives.Count; i++)
+			{
+				IQuestObjective objective = _objectives[i];
+				objective.Initialize(_eventBus, OnObjectiveProgressUpdated);
+
+				if (State.ObjectiveStates != null && i < State.ObjectiveStates.Count)
+					if (!string.IsNullOrEmpty(State.ObjectiveStates[i]))
+						objective.RestoreState(State.ObjectiveStates[i]);
+			}
 
 			// Immediately check in case objectives are instantly completable.
 			CheckCompletion();
@@ -57,6 +66,22 @@ namespace Toolkit.Quests
 				objective.Dispose();
 		}
 
+		private void OnObjectiveProgressUpdated()
+		{
+			SaveObjectiveStates();
+			Updated?.Invoke(this);
+			CheckCompletion();
+		}
+
+		private void SaveObjectiveStates()
+		{
+			State.ObjectiveStates = State.ObjectiveStates ?? new List<string>();
+			State.ObjectiveStates.Clear();
+
+			foreach (IQuestObjective objective in _objectives)
+				State.ObjectiveStates.Add(objective.GetSerializedState());
+		}
+
 		/// <summary>
 		/// Checks if all objectives are completed.
 		/// </summary>
@@ -69,11 +94,25 @@ namespace Toolkit.Quests
 			{
 				State.Status = QuestStatus.Completed;
 
+				SaveObjectiveStates();
 				GrantRewards();
 				StopQuest();
 
 				Completed?.Invoke(this);
 			}
+		}
+
+		public void FailQuest()
+		{
+			if (State.Status != QuestStatus.Active)
+				return;
+
+			State.Status = QuestStatus.Failed;
+
+			SaveObjectiveStates();
+			StopQuest();
+
+			Failed?.Invoke(this);
 		}
 
 		private void GrantRewards()

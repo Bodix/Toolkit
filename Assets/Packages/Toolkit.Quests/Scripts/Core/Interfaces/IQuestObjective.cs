@@ -9,8 +9,12 @@ namespace Toolkit.Quests
 	public interface IQuestObjective
 	{
 		bool IsCompleted { get; }
+		float Progress { get; }
 
 		void Initialize(IEventBus eventBus, Action onProgressUpdated);
 		void Dispose();
+
+		string GetSerializedState();
+		void RestoreState(string state);
 	}
 }

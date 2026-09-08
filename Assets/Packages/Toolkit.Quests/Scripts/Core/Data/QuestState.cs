@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Toolkit.Quests
 {
 	/// <summary>
@@ -8,5 +10,6 @@ namespace Toolkit.Quests
 	{
 		public QuestConfig Quest;
 		public QuestStatus Status;
+		public List<string> ObjectiveStates = new List<string>();
 	}
 }

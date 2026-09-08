@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Bodix.Evolunity.Patterns;
 
@@ -14,6 +15,11 @@ namespace Toolkit.Quests
 
 		public IReadOnlyList<Quest> ActiveQuests => _activeQuests;
 
+		public event Action<Quest> QuestAccepted;
+		public event Action<Quest> QuestCompleted;
+		public event Action<Quest> QuestFailed;
+		public event Action<Quest> QuestUpdated;
+
 		public QuestService(IEventBus eventBus, IQuestFactory questFactory)
 		{
 			_eventBus = eventBus;
@@ -24,13 +30,25 @@ namespace Toolkit.Quests
 		/// <summary>
 		/// Starts a new quest based on the provided definition.
 		/// </summary>
-		public void AcceptQuest(QuestConfig config)
+		public Quest AcceptQuest(QuestConfig config)
 		{
 			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
+			Quest instance = RestoreQuest(state);
+			QuestAccepted?.Invoke(instance);
+			return instance;
+		}
+
+		/// <summary>
+		/// Restores a quest from a saved state.
+		/// </summary>
+		public Quest RestoreQuest(QuestState state)
+		{
+			if (state.Quest == null)
+				return null;
 
 			List<IQuestObjective> objectives = new List<IQuestObjective>();
-			if (config.Objectives != null)
-				foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
+			if (state.Quest.Objectives != null)
+				foreach (QuestObjectiveConfig objectiveConfig in state.Quest.Objectives)
 				{
 					IQuestObjective objective = _questFactory.CreateObjective(objectiveConfig);
 					if (objective != null)
@@ -38,28 +56,51 @@ namespace Toolkit.Quests
 				}
 
 			List<IQuestReward> rewards = new List<IQuestReward>();
-			if (config.Rewards != null)
-				foreach (QuestRewardConfig rewardConfig in config.Rewards)
+			if (state.Quest.Rewards != null)
+				foreach (QuestRewardConfig rewardConfig in state.Quest.Rewards)
 				{
 					IQuestReward reward = _questFactory.CreateReward(rewardConfig);
 					if (reward != null)
 						rewards.Add(reward);
 				}
 
-			Quest instance = new Quest(config, state, objectives, rewards, _eventBus);
+			Quest instance = new Quest(state.Quest, state, objectives, rewards, _eventBus);
 
-			instance.Completed += RemoveFromActiveQuests;
+			instance.Completed += OnQuestCompleted;
+			instance.Failed += OnQuestFailed;
+			instance.Updated += OnQuestUpdated;
 
 			_activeQuests.Add(instance);
 
 			instance.StartQuest();
+
+			return instance;
 		}
 
-		private void RemoveFromActiveQuests(Quest instance)
+		private void OnQuestCompleted(Quest instance)
 		{
-			instance.Completed -= RemoveFromActiveQuests;
-
+			UnsubscribeQuest(instance);
 			_activeQuests.Remove(instance);
+			QuestCompleted?.Invoke(instance);
+		}
+
+		private void OnQuestFailed(Quest instance)
+		{
+			UnsubscribeQuest(instance);
+			_activeQuests.Remove(instance);
+			QuestFailed?.Invoke(instance);
+		}
+
+		private void OnQuestUpdated(Quest instance)
+		{
+			QuestUpdated?.Invoke(instance);
+		}
+
+		private void UnsubscribeQuest(Quest instance)
+		{
+			instance.Completed -= OnQuestCompleted;
+			instance.Failed -= OnQuestFailed;
+			instance.Updated -= OnQuestUpdated;
 		}
 
 		/// <summary>
@@ -71,7 +112,7 @@ namespace Toolkit.Quests
 			for (int i = _activeQuests.Count - 1; i >= 0; i--)
 			{
 				Quest quest = _activeQuests[i];
-				quest.Completed -= RemoveFromActiveQuests;
+				UnsubscribeQuest(quest);
 				quest.StopQuest();
 			}
 
@@ -82,11 +123,7 @@ namespace Toolkit.Quests
 		{
 			if (_activeQuests.Contains(instance))
 			{
-				instance.Completed -= RemoveFromActiveQuests;
-				instance.State.Status = QuestStatus.Failed;
-				instance.StopQuest();
-
-				_activeQuests.Remove(instance);
+				instance.FailQuest();
 			}
 		}
 	}
