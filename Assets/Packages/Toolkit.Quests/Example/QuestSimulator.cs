@@ -1,5 +1,4 @@
 using System.Linq;
-using Bodix.Evolunity.Patterns;
 using NaughtyAttributes;
 using UnityEngine;
 using VContainer;
@@ -51,7 +50,7 @@ namespace Toolkit.Quests.Example
 			}
 
 			var objective = instance.Objectives
-				.OfType<DebugQuestObjective>()
+				.OfType<LogQuestObjective>()
 				.FirstOrDefault(o => !o.IsCompleted);
 
 			if (objective != null)
@@ -87,14 +86,5 @@ namespace Toolkit.Quests.Example
 			_questService.DisposeAll();
 			Debug.Log("[Quest Simulator] Disposed all active quests.");
 		}
-	}
-
-	/// <summary>
-	/// Dummy implementation of IEventBus for simulation purposes.
-	/// </summary>
-	public class DummyEventBus : IEventBus
-	{
-		public void Subscribe<T>(System.Action<T> handler) { }
-		public void Unsubscribe<T>(System.Action<T> handler) { }
 	}
 }

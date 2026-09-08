@@ -4,15 +4,14 @@ using UnityEngine;
 
 namespace Toolkit.Quests.Example
 {
-	public class DebugQuestObjective : IQuestObjective
+	public class LogQuestObjective : IQuestObjective
 	{
-		public string Id => _config.Id;
 		public bool IsCompleted { get; private set; }
 
-		private readonly DebugQuestObjectiveConfig _config;
+		private readonly LogQuestObjectiveConfig _config;
 		private Action _onProgressUpdated;
 
-		public DebugQuestObjective(DebugQuestObjectiveConfig config)
+		public LogQuestObjective(LogQuestObjectiveConfig config)
 		{
 			_config = config;
 		}
@@ -21,21 +20,24 @@ namespace Toolkit.Quests.Example
 		{
 			_onProgressUpdated = onProgressUpdated;
 			IsCompleted = false;
-			Debug.Log($"[Quest Objective] Initialized: {_config.TargetActionName}");
+
+			Debug.Log($"[Quest Objective] Initialized: {_config.Log}");
 		}
 
 		public void CompleteManually()
 		{
-			if (IsCompleted) return;
-			
+			if (IsCompleted)
+				return;
+
 			IsCompleted = true;
-			Debug.Log($"[Quest Objective] Completed: {_config.TargetActionName}");
 			_onProgressUpdated?.Invoke();
+
+			Debug.Log($"[Quest Objective] Completed: {_config.Log}");
 		}
 
 		public void Dispose()
 		{
-			Debug.Log($"[Quest Objective] Disposed: {_config.TargetActionName}");
+			Debug.Log($"[Quest Objective] Disposed: {_config.Log}");
 		}
 	}
 }

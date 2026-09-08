@@ -8,7 +8,6 @@ namespace Toolkit.Quests
 	/// </summary>
 	public interface IQuestObjective
 	{
-		string Id { get; }
 		bool IsCompleted { get; }
 
 		void Initialize(IEventBus eventBus, Action onProgressUpdated);
