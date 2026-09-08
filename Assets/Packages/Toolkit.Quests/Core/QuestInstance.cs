@@ -9,16 +9,16 @@ namespace Toolkit.Quests
 	/// </summary>
 	public class QuestInstance
 	{
-		public QuestDefinition Definition { get; private set; }
+		public QuestConfig Config { get; private set; }
 		public QuestState State { get; private set; }
 
 		private readonly List<IQuestObjective> _objectives;
 		private readonly IEventBus _eventBus;
 
-		public QuestInstance(QuestDefinition definition, QuestState state,
+		public QuestInstance(QuestConfig config, QuestState state,
 			List<IQuestObjective> objectives, IEventBus eventBus)
 		{
-			Definition = definition;
+			Config = config;
 			State = state;
 			_objectives = objectives;
 			_eventBus = eventBus;
