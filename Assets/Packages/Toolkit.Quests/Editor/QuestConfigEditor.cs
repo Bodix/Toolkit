@@ -42,6 +42,14 @@ namespace Toolkit.Quests.Editor
 		{
 			var quest = (QuestConfig)target;
 
+			if (GUILayout.Button("Regenerate ID", GUILayout.Height(25)))
+			{
+				quest.GenerateId();
+				EditorUtility.SetDirty(quest);
+				AssetDatabase.SaveAssets();
+			}
+			EditorGUILayout.Space(5);
+
 			serializedObject.Update();
 
 			// Draws default fields (Title, Description, etc.) but hides the default lists to prevent duplication.
@@ -138,12 +146,7 @@ namespace Toolkit.Quests.Editor
 			list.Add(subAsset);
 
 			// Forces your framework to generate the ID immediately.
-			// Using reflection or dynamic to call GenerateId since it's defined on DataAsset or a base class.
-			var generateIdMethod = typeof(DataAsset).GetMethod("GenerateId", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-			if (generateIdMethod != null)
-			{
-				generateIdMethod.Invoke(subAsset, null);
-			}
+			subAsset.GenerateId();
 
 			_foldoutStates[subAsset] = true;
 

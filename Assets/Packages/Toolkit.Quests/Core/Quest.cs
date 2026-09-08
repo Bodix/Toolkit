@@ -8,18 +8,20 @@ namespace Toolkit.Quests
 	/// <summary>
 	/// Represents an active quest during gameplay.
 	/// </summary>
-	public class QuestInstance
+	public class Quest
 	{
-		public QuestConfig Config { get; private set; }
-		public QuestState State { get; private set; }
-
 		private readonly List<IQuestObjective> _objectives;
 		private readonly List<IQuestReward> _rewards;
 		private readonly IEventBus _eventBus;
 
-		public event Action<QuestInstance> Completed;
+		public QuestConfig Config { get; private set; }
+		public QuestState State { get; private set; }
+		public IReadOnlyList<IQuestObjective> Objectives => _objectives;
+		public IReadOnlyList<IQuestReward> Rewards => _rewards;
 
-		public QuestInstance(QuestConfig config, QuestState state,
+		public event Action<Quest> Completed;
+
+		public Quest(QuestConfig config, QuestState state,
 			List<IQuestObjective> objectives, List<IQuestReward> rewards, IEventBus eventBus)
 		{
 			Config = config;

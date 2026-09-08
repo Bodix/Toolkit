@@ -10,13 +10,15 @@ namespace Toolkit.Quests
 	{
 		private readonly IEventBus _eventBus;
 		private readonly IQuestFactory _questFactory;
-		private readonly List<QuestInstance> _activeQuests;
+		private readonly List<Quest> _activeQuests;
+
+		public IReadOnlyList<Quest> ActiveQuests => _activeQuests;
 
 		public QuestService(IEventBus eventBus, IQuestFactory questFactory)
 		{
 			_eventBus = eventBus;
 			_questFactory = questFactory;
-			_activeQuests = new List<QuestInstance>();
+			_activeQuests = new List<Quest>();
 		}
 
 		/// <summary>
@@ -28,14 +30,12 @@ namespace Toolkit.Quests
 
 			List<IQuestObjective> objectives = new List<IQuestObjective>();
 			if (config.Objectives != null)
-			{
 				foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
 				{
 					IQuestObjective objective = _questFactory.CreateObjective(objectiveConfig);
 					if (objective != null)
 						objectives.Add(objective);
 				}
-			}
 
 			List<IQuestReward> rewards = new List<IQuestReward>();
 			if (config.Rewards != null)
@@ -46,9 +46,8 @@ namespace Toolkit.Quests
 						rewards.Add(reward);
 				}
 
-			QuestInstance instance = new QuestInstance(config, state, objectives, rewards, _eventBus);
+			Quest instance = new Quest(config, state, objectives, rewards, _eventBus);
 
-			// Optional: Remove quest from active list when completed
 			instance.Completed += RemoveFromActiveQuests;
 
 			_activeQuests.Add(instance);
@@ -56,7 +55,7 @@ namespace Toolkit.Quests
 			instance.StartQuest();
 		}
 
-		private void RemoveFromActiveQuests(QuestInstance instance)
+		private void RemoveFromActiveQuests(Quest instance)
 		{
 			instance.Completed -= RemoveFromActiveQuests;
 
@@ -68,15 +67,27 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void DisposeAll()
 		{
-			// Loop backwards to safely remove elements if StopQuest() triggers anything
+			// Loop backwards to safely remove elements if StopQuest() triggers anything.
 			for (int i = _activeQuests.Count - 1; i >= 0; i--)
 			{
-				var quest = _activeQuests[i];
+				Quest quest = _activeQuests[i];
 				quest.Completed -= RemoveFromActiveQuests;
 				quest.StopQuest();
 			}
 
 			_activeQuests.Clear();
+		}
+
+		public void CancelQuest(Quest instance)
+		{
+			if (_activeQuests.Contains(instance))
+			{
+				instance.Completed -= RemoveFromActiveQuests;
+				instance.State.Status = QuestStatus.Failed;
+				instance.StopQuest();
+
+				_activeQuests.Remove(instance);
+			}
 		}
 	}
 }
