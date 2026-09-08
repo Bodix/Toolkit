@@ -1,5 +1,4 @@
-﻿using Toolkit.Quests.Example;
-using VContainer;
+﻿using VContainer;
 
 namespace Toolkit.Quests.VContainer
 {
@@ -14,38 +13,24 @@ namespace Toolkit.Quests.VContainer
 
 		public IQuestObjective CreateObjective(QuestObjectiveConfig config)
 		{
-			if (config is DebugQuestObjectiveConfig debugObjective)
-			{
-				return new DebugQuestObjective(debugObjective.Id, debugObjective.TargetActionName);
-			}
+			if (config == null)
+				return null;
 
-			// Example with VContainer injection:
-			// if (config is SinkShipObjectiveConfig sinkObjective)
-			// {
-			// 	var objective = _resolver.Resolve<SinkShipRuntimeObjective>();
-			// 	objective.SetupData(sinkObjective);
-			// 	return objective;
-			// }
+			IQuestObjective objective = config.CreateInstance();
+			_resolver.Inject(objective);
 
-			return null;
+			return objective;
 		}
 
 		public IQuestReward CreateReward(QuestRewardConfig config)
 		{
-			if (config is LogQuestRewardConfig logReward)
-			{
-				return new LogQuestReward(logReward.RewardName);
-			}
+			if (config == null)
+				return null;
 
-			// Example with VContainer injection:
-			// if (config is ItemRewardConfig itemReward)
-			// {
-			// 	var reward = _resolver.Resolve<ItemQuestReward>();
-			// 	reward.SetupData(itemReward);
-			// 	return reward;
-			// }
+			IQuestReward reward = config.CreateInstance();
+			_resolver.Inject(reward);
 
-			return null;
+			return reward;
 		}
 	}
 }
