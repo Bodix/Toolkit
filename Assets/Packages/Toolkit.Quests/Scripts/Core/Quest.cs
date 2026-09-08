@@ -14,14 +14,14 @@ namespace Toolkit.Quests
 		private readonly List<IQuestReward> _rewards;
 		private readonly IEventBus _eventBus;
 
+		public event Action<Quest> Completed;
+		public event Action<Quest> Updated;
+		public event Action<Quest> Failed;
+
 		public QuestConfig Config { get; private set; }
 		public QuestState State { get; private set; }
 		public IReadOnlyList<IQuestObjective> Objectives => _objectives;
 		public IReadOnlyList<IQuestReward> Rewards => _rewards;
-
-		public event Action<Quest> Completed;
-		public event Action<Quest> Updated;
-		public event Action<Quest> Failed;
 
 		public Quest(QuestConfig config, QuestState state,
 			List<IQuestObjective> objectives, List<IQuestReward> rewards, IEventBus eventBus)

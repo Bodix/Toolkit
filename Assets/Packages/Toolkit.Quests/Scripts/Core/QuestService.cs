@@ -13,12 +13,12 @@ namespace Toolkit.Quests
 		private readonly IQuestFactory _questFactory;
 		private readonly List<Quest> _activeQuests;
 
-		public IReadOnlyList<Quest> ActiveQuests => _activeQuests;
-
 		public event Action<Quest> QuestAccepted;
 		public event Action<Quest> QuestCompleted;
 		public event Action<Quest> QuestFailed;
 		public event Action<Quest> QuestUpdated;
+
+		public IReadOnlyList<Quest> ActiveQuests => _activeQuests;
 
 		public QuestService(IEventBus eventBus, IQuestFactory questFactory)
 		{
