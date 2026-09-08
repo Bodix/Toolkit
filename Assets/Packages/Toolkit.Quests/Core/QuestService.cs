@@ -25,15 +25,42 @@ namespace Toolkit.Quests
 		public void AcceptQuest(QuestConfig config)
 		{
 			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
+
 			List<IQuestObjective> objectives = new List<IQuestObjective>();
+			if (config.Objectives != null)
+			{
+				foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
+				{
+					IQuestObjective objective = _questFactory.CreateObjective(objectiveConfig);
+					if (objective != null)
+						objectives.Add(objective);
+				}
+			}
 
-			foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
-				objectives.Add(_questFactory.CreateObjective(objectiveConfig));
+			List<IQuestReward> rewards = new List<IQuestReward>();
+			if (config.Rewards != null)
+				foreach (QuestRewardConfig rewardConfig in config.Rewards)
+				{
+					IQuestReward reward = _questFactory.CreateReward(rewardConfig);
+					if (reward != null)
+						rewards.Add(reward);
+				}
 
-			QuestInstance instance = new QuestInstance(config, state, objectives, _eventBus);
+			QuestInstance instance = new QuestInstance(config, state, objectives, rewards, _eventBus);
+
+			// Optional: Remove quest from active list when completed
+			instance.Completed += RemoveFromActiveQuests;
+
 			_activeQuests.Add(instance);
 
 			instance.StartQuest();
+		}
+
+		private void RemoveFromActiveQuests(QuestInstance instance)
+		{
+			instance.Completed -= RemoveFromActiveQuests;
+
+			_activeQuests.Remove(instance);
 		}
 
 		/// <summary>
@@ -41,8 +68,13 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void DisposeAll()
 		{
-			foreach (QuestInstance quest in _activeQuests)
+			// Loop backwards to safely remove elements if StopQuest() triggers anything
+			for (int i = _activeQuests.Count - 1; i >= 0; i--)
+			{
+				var quest = _activeQuests[i];
+				quest.Completed -= RemoveFromActiveQuests;
 				quest.StopQuest();
+			}
 
 			_activeQuests.Clear();
 		}

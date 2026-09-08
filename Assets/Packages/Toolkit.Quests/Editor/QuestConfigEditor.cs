@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bodix.Evolunity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,20 +12,30 @@ namespace Toolkit.Quests.Editor
 	{
 		private Type[] _objectiveTypes;
 		private string[] _objectiveNames;
-		private int _selectedIndex;
+		private int _selectedObjectiveIndex;
+
+		private Type[] _rewardTypes;
+		private string[] _rewardNames;
+		private int _selectedRewardIndex;
 
 		// Stores foldout states for each sub-asset.
-		private Dictionary<QuestObjectiveConfig, bool> _foldoutStates = new Dictionary<QuestObjectiveConfig, bool>();
+		private Dictionary<DataAsset, bool> _foldoutStates = new Dictionary<DataAsset, bool>();
 
 		private void OnEnable()
 		{
-			// Finds all valid subclasses of QuestObjectiveDefinition via reflection.
-			_objectiveTypes = AppDomain.CurrentDomain.GetAssemblies()
-				.SelectMany(a => a.GetTypes())
-				.Where(t => t.IsSubclassOf(typeof(QuestObjectiveConfig)) && !t.IsAbstract)
-				.ToArray();
-
+			_objectiveTypes = GetSubAssetTypes<QuestObjectiveConfig>();
 			_objectiveNames = _objectiveTypes.Select(t => t.Name).ToArray();
+
+			_rewardTypes = GetSubAssetTypes<QuestRewardConfig>();
+			_rewardNames = _rewardTypes.Select(t => t.Name).ToArray();
+		}
+
+		private Type[] GetSubAssetTypes<T>() where T : DataAsset
+		{
+			return AppDomain.CurrentDomain.GetAssemblies()
+				.SelectMany(a => a.GetTypes())
+				.Where(t => t.IsSubclassOf(typeof(T)) && !t.IsAbstract)
+				.ToArray();
 		}
 
 		public override void OnInspectorGUI()
@@ -33,88 +44,90 @@ namespace Toolkit.Quests.Editor
 
 			serializedObject.Update();
 
-			// Draws default fields (Title, Description, etc.) but hides the default Objectives list.
-			DrawPropertiesExcluding(serializedObject, "Objectives");
+			// Draws default fields (Title, Description, etc.) but hides the default lists to prevent duplication.
+			DrawPropertiesExcluding(serializedObject, "m_Script", "_objectives", "_rewards");
 			serializedObject.ApplyModifiedProperties();
 
 			EditorGUILayout.Space(10);
-			DrawObjectivesList(quest);
+			DrawSubAssetList("Objectives", quest, quest.Objectives, _objectiveTypes, _objectiveNames, ref _selectedObjectiveIndex);
 
 			EditorGUILayout.Space(10);
-			DrawSubAssetBuilder(quest);
+			DrawSubAssetList("Rewards", quest, quest.Rewards, _rewardTypes, _rewardNames, ref _selectedRewardIndex);
 		}
 
-		private void DrawObjectivesList(QuestConfig quest)
+		private void DrawSubAssetList<T>(string title, QuestConfig quest, List<T> list, Type[] types, string[] typeNames, ref int selectedIndex) where T : DataAsset
 		{
-			EditorGUILayout.LabelField("Objectives", EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(title, EditorStyles.boldLabel);
 
-			if (quest.Objectives == null || quest.Objectives.Count == 0)
+			if (list == null || list.Count == 0)
 			{
-				EditorGUILayout.HelpBox("No objectives added yet.", MessageType.Info);
-				return;
+				EditorGUILayout.HelpBox($"No {title.ToLower()} added yet.", MessageType.Info);
 			}
-
-			for (int i = 0; i < quest.Objectives.Count; i++)
+			else
 			{
-				var objective = quest.Objectives[i];
-				if (objective == null) continue;
-
-				if (!_foldoutStates.ContainsKey(objective))
-					_foldoutStates[objective] = true;
-
-				EditorGUILayout.BeginVertical("box");
-				EditorGUILayout.BeginHorizontal();
-
-				// Draws the foldout header.
-				_foldoutStates[objective] = EditorGUILayout.Foldout(_foldoutStates[objective], objective.GetType().Name, true);
-
-				// Delete button that immediately removes the sub-asset from memory.
-				if (GUILayout.Button("X", GUILayout.Width(25)))
+				for (int i = 0; i < list.Count; i++)
 				{
-					RemoveSubAsset(quest, objective);
-					i--; // Adjusts index after list modification.
+					var subAsset = list[i];
+					if (subAsset == null) continue;
+
+					if (!_foldoutStates.ContainsKey(subAsset))
+						_foldoutStates[subAsset] = true;
+
+					EditorGUILayout.BeginVertical("box");
+					EditorGUILayout.BeginHorizontal();
+
+					// Draws the foldout header.
+					_foldoutStates[subAsset] = EditorGUILayout.Foldout(_foldoutStates[subAsset], subAsset.GetType().Name, true);
+
+					// Delete button that immediately removes the sub-asset from memory.
+					if (GUILayout.Button("X", GUILayout.Width(25)))
+					{
+						RemoveSubAsset(quest, list, subAsset);
+						i--; // Adjusts index after list modification.
+						EditorGUILayout.EndHorizontal();
+						EditorGUILayout.EndVertical();
+						continue;
+					}
+
 					EditorGUILayout.EndHorizontal();
+
+					// Draws the actual sub-asset inspector if expanded.
+					if (_foldoutStates[subAsset])
+					{
+						EditorGUI.indentLevel++;
+
+						// Creates or reuses a native Unity Editor for the sub-asset.
+						UnityEditor.Editor subAssetEditor = null;
+						CreateCachedEditor(subAsset, null, ref subAssetEditor);
+						if (subAssetEditor != null)
+						{
+							subAssetEditor.OnInspectorGUI();
+						}
+
+						EditorGUI.indentLevel--;
+					}
+
 					EditorGUILayout.EndVertical();
-					continue;
 				}
-
-				EditorGUILayout.EndHorizontal();
-
-				// Draws the actual sub-asset inspector if expanded.
-				if (_foldoutStates[objective])
-				{
-					EditorGUI.indentLevel++;
-
-					// Creates or reuses a native Unity Editor for the sub-asset.
-					UnityEditor.Editor objectiveEditor = null;
-					CreateCachedEditor(objective, null, ref objectiveEditor);
-					objectiveEditor.OnInspectorGUI();
-
-					EditorGUI.indentLevel--;
-				}
-
-				EditorGUILayout.EndVertical();
 			}
-		}
 
-		private void DrawSubAssetBuilder(QuestConfig quest)
-		{
-			EditorGUILayout.LabelField("Add New Objective", EditorStyles.boldLabel);
-
+			EditorGUILayout.Space(5);
+			EditorGUILayout.LabelField($"Add New {title.TrimEnd('s')}", EditorStyles.boldLabel);
+			
 			using (new EditorGUILayout.HorizontalScope())
 			{
-				_selectedIndex = EditorGUILayout.Popup(_selectedIndex, _objectiveNames);
+				selectedIndex = EditorGUILayout.Popup(selectedIndex, typeNames);
 
-				if (GUILayout.Button("Add", GUILayout.Width(80)))
+				if (GUILayout.Button("Add", GUILayout.Width(80)) && types.Length > 0)
 				{
-					AddSubAsset(quest, _objectiveTypes[_selectedIndex]);
+					AddSubAsset(quest, list, types[selectedIndex]);
 				}
 			}
 		}
 
-		private void AddSubAsset(QuestConfig quest, Type type)
+		private void AddSubAsset<T>(QuestConfig quest, List<T> list, Type type) where T : DataAsset
 		{
-			var subAsset = (QuestObjectiveConfig)CreateInstance(type);
+			var subAsset = (T)CreateInstance(type);
 
 			// Generates a unique name to ensure DataAsset creates a unique ID without duplicates.
 			string uniqueHash = Guid.NewGuid().ToString().Substring(0, 5);
@@ -122,10 +135,15 @@ namespace Toolkit.Quests.Editor
 
 			// Natively binds the new DataAsset inside the main Quest file.
 			AssetDatabase.AddObjectToAsset(subAsset, quest);
-			quest.Objectives.Add(subAsset);
+			list.Add(subAsset);
 
 			// Forces your framework to generate the ID immediately.
-			subAsset.GenerateId();
+			// Using reflection or dynamic to call GenerateId since it's defined on DataAsset or a base class.
+			var generateIdMethod = typeof(DataAsset).GetMethod("GenerateId", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+			if (generateIdMethod != null)
+			{
+				generateIdMethod.Invoke(subAsset, null);
+			}
 
 			_foldoutStates[subAsset] = true;
 
@@ -133,12 +151,12 @@ namespace Toolkit.Quests.Editor
 			AssetDatabase.SaveAssets();
 		}
 
-		private void RemoveSubAsset(QuestConfig quest, QuestObjectiveConfig objective)
+		private void RemoveSubAsset<T>(QuestConfig quest, List<T> list, T subAsset) where T : DataAsset
 		{
-			quest.Objectives.Remove(objective);
+			list.Remove(subAsset);
 
 			// Destroys the asset completely, preventing orphan files in the project.
-			DestroyImmediate(objective, true);
+			DestroyImmediate(subAsset, true);
 
 			EditorUtility.SetDirty(quest);
 			AssetDatabase.SaveAssets();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bodix.Evolunity.Patterns;
 
@@ -13,14 +14,18 @@ namespace Toolkit.Quests
 		public QuestState State { get; private set; }
 
 		private readonly List<IQuestObjective> _objectives;
+		private readonly List<IQuestReward> _rewards;
 		private readonly IEventBus _eventBus;
 
+		public event Action<QuestInstance> Completed;
+
 		public QuestInstance(QuestConfig config, QuestState state,
-			List<IQuestObjective> objectives, IEventBus eventBus)
+			List<IQuestObjective> objectives, List<IQuestReward> rewards, IEventBus eventBus)
 		{
 			Config = config;
 			State = state;
 			_objectives = objectives;
+			_rewards = rewards;
 			_eventBus = eventBus;
 		}
 
@@ -29,10 +34,16 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void StartQuest()
 		{
+			if (State.Status == QuestStatus.Completed)
+				return;
+
 			State.Status = QuestStatus.Active;
 
 			foreach (IQuestObjective objective in _objectives)
 				objective.Initialize(_eventBus, CheckCompletion);
+
+			// Immediately check in case objectives are instantly completable.
+			CheckCompletion();
 		}
 
 		/// <summary>
@@ -56,8 +67,18 @@ namespace Toolkit.Quests
 			{
 				State.Status = QuestStatus.Completed;
 
+				GrantRewards();
 				StopQuest();
+
+				Completed?.Invoke(this);
 			}
+		}
+
+		private void GrantRewards()
+		{
+			if (_rewards != null)
+				foreach (IQuestReward reward in _rewards)
+					reward?.GrantReward();
 		}
 	}
 }

@@ -16,9 +16,9 @@ namespace Toolkit.Quests
 		[SerializeField]
 		private string _description;
 		[SerializeField]
-		private List<QuestObjectiveConfig> _objectives;
+		private List<QuestObjectiveConfig> _objectives = new List<QuestObjectiveConfig>();
 		[SerializeField]
-		private QuestRewardConfig[] _rewards;
+		private List<QuestRewardConfig> _rewards = new List<QuestRewardConfig>();
 
 		public string Title => _title;
 		public string Description => _description;
@@ -27,8 +27,8 @@ namespace Toolkit.Quests
 		/// </summary>
 		public List<QuestObjectiveConfig> Objectives => _objectives;
 		/// <summary>
-		/// List of objectives that the factory will build.
+		/// List of rewards that the factory will build.
 		/// </summary>
-		public QuestRewardConfig[] Rewards => _rewards;
+		public List<QuestRewardConfig> Rewards => _rewards;
 	}
 }

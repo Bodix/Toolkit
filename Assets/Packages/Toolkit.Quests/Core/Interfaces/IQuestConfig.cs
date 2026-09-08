@@ -8,6 +8,6 @@ namespace Toolkit.Quests
 		string Title { get; }
 		string Description { get; }
 		List<QuestObjectiveConfig> Objectives { get; }
-		QuestRewardConfig[] Rewards { get; }
+		List<QuestRewardConfig> Rewards { get; }
 	}
 }
