@@ -22,11 +22,11 @@ namespace Toolkit.Quests
 		public string Title => _title;
 		public string Description => _description;
 		/// <summary>
-		/// List of objective IDs that the factory will build.
+		/// List of objectives that the factory will build.
 		/// </summary>
 		public QuestObjectiveConfig[] Objectives => _objectives;
 		/// <summary>
-		/// List of objective IDs that the factory will build.
+		/// List of objectives that the factory will build.
 		/// </summary>
 		public QuestRewardConfig[] Rewards => _rewards;
 	}

@@ -1,6 +1,6 @@
 ﻿using VContainer;
 
-namespace Toolkit.Quests.Integrations
+namespace Toolkit.Quests.VContainer
 {
 	public class QuestFactory : IQuestFactory
 	{
