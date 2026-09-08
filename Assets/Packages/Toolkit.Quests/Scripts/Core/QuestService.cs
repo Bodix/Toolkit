@@ -34,7 +34,9 @@ namespace Toolkit.Quests
 		{
 			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
 			Quest instance = RestoreQuest(state);
+
 			QuestAccepted?.Invoke(instance);
+
 			return instance;
 		}
 
@@ -71,7 +73,6 @@ namespace Toolkit.Quests
 			instance.Updated += OnQuestUpdated;
 
 			_activeQuests.Add(instance);
-
 			instance.StartQuest();
 
 			return instance;
@@ -81,6 +82,7 @@ namespace Toolkit.Quests
 		{
 			UnsubscribeQuest(instance);
 			_activeQuests.Remove(instance);
+
 			QuestCompleted?.Invoke(instance);
 		}
 
@@ -88,6 +90,7 @@ namespace Toolkit.Quests
 		{
 			UnsubscribeQuest(instance);
 			_activeQuests.Remove(instance);
+
 			QuestFailed?.Invoke(instance);
 		}
 
@@ -112,6 +115,7 @@ namespace Toolkit.Quests
 			for (int i = _activeQuests.Count - 1; i >= 0; i--)
 			{
 				Quest quest = _activeQuests[i];
+
 				UnsubscribeQuest(quest);
 				quest.StopQuest();
 			}
@@ -122,9 +126,7 @@ namespace Toolkit.Quests
 		public void CancelQuest(Quest instance)
 		{
 			if (_activeQuests.Contains(instance))
-			{
 				instance.FailQuest();
-			}
 		}
 	}
 }
