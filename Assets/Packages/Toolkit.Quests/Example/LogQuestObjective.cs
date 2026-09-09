@@ -21,8 +21,7 @@ namespace Toolkit.Quests.Example
 			if (State.IsCompleted)
 				return;
 
-			State.IsCompleted = true;
-			NotifyProgressUpdated();
+			Complete();
 
 			Debug.Log($"[Quest Objective] Completed: {_config.Log}");
 		}

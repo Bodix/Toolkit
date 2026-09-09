@@ -38,5 +38,17 @@ namespace Toolkit.Quests
 		{
 			_onProgressUpdated?.Invoke();
 		}
+
+		/// <summary>
+		/// Marks the objective as completed and notifies the quest system.
+		/// </summary>
+		protected void Complete()
+		{
+			if (State.IsCompleted)
+				return;
+
+			State.IsCompleted = true;
+			NotifyProgressUpdated();
+		}
 	}
 }

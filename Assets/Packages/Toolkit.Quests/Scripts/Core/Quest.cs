@@ -46,6 +46,9 @@ namespace Toolkit.Quests
 			for (int i = 0; i < _objectives.Count; i++)
 			{
 				IQuestObjective objective = _objectives[i];
+				if (objective == null)
+					continue;
+				
 				QuestObjectiveState objState = State.ObjectiveStates[i];
 				objective.Initialize(_eventBus, objState, OnObjectiveProgressUpdated);
 			}
@@ -60,7 +63,7 @@ namespace Toolkit.Quests
 		public void StopQuest()
 		{
 			foreach (IQuestObjective objective in _objectives)
-				objective.Dispose();
+				objective?.Dispose();
 		}
 
 		private void OnObjectiveProgressUpdated()

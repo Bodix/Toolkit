@@ -11,6 +11,7 @@ namespace Toolkit.Quests
 	{
 		private readonly IEventBus _eventBus;
 		private readonly IQuestFactory _questFactory;
+		
 		private readonly List<Quest> _activeQuests;
 
 		public event Action<Quest> QuestAccepted;
@@ -55,12 +56,26 @@ namespace Toolkit.Quests
 
 			List<IQuestObjective> objectives = new List<IQuestObjective>();
 			if (state.Quest.Objectives != null)
+			{
+				// Ensure the number of objective states perfectly matches the current config.
+				// This acts as a safe migration for older save files when a game gets updated:
+				// - If a developer ADDS a new objective in a patch, this adds a fresh default state for it.
+				// - If a developer REMOVES an objective, this safely truncates the obsolete state, preventing out-of-bounds errors.
+				while (state.ObjectiveStates.Count < state.Quest.Objectives.Count)
+				{
+					state.ObjectiveStates.Add(state.Quest.Objectives[state.ObjectiveStates.Count].CreateState());
+				}
+				if (state.ObjectiveStates.Count > state.Quest.Objectives.Count)
+				{
+					state.ObjectiveStates.RemoveRange(state.Quest.Objectives.Count, state.ObjectiveStates.Count - state.Quest.Objectives.Count);
+				}
+
 				foreach (QuestObjectiveConfig objectiveConfig in state.Quest.Objectives)
 				{
 					IQuestObjective objective = _questFactory.CreateObjective(objectiveConfig);
-					if (objective != null)
-						objectives.Add(objective);
+					objectives.Add(objective);
 				}
+			}
 
 			List<IQuestReward> rewards = new List<IQuestReward>();
 			if (state.Quest.Rewards != null)
