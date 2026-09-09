@@ -22,3 +22,6 @@
 [submodule "Assets/Packages/Toolkit.WContainer"]
 	path = Assets/Packages/Toolkit.WContainer
 	url = https://github.com/Bodix/Unity.Toolkit.WContainer.git
+[submodule "Assets/Packages/Toolkit.Quests"]
+	path = Assets/Packages/Toolkit.Quests
+	url = https://github.com/Bodix/Unity.Toolkit.Quests.git
