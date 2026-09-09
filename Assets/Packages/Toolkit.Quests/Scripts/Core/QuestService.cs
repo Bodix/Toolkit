@@ -39,8 +39,8 @@ namespace Toolkit.Quests
 				return null;
 
 			_activeQuests.Add(instance);
-			instance.StartQuest();
 			QuestAccepted?.Invoke(instance);
+			instance.StartQuest();
 
 			return instance;
 		}
@@ -54,8 +54,11 @@ namespace Toolkit.Quests
 			if (instance == null)
 				return null;
 
-			_activeQuests.Add(instance);
-			instance.StartQuest();
+			if (state.Status != QuestStatus.Completed && state.Status != QuestStatus.Failed)
+			{
+				_activeQuests.Add(instance);
+				instance.StartQuest();
+			}
 
 			return instance;
 		}
@@ -73,7 +76,8 @@ namespace Toolkit.Quests
 				// - If a developer ADDS a new objective in a patch, this adds a fresh default state for it.
 				while (state.ObjectiveStates.Count < state.Quest.Objectives.Count)
 				{
-					state.ObjectiveStates.Add(state.Quest.Objectives[state.ObjectiveStates.Count].CreateState());
+					QuestObjectiveConfig objConfig = state.Quest.Objectives[state.ObjectiveStates.Count];
+					state.ObjectiveStates.Add(objConfig != null ? objConfig.CreateState() : new QuestObjectiveState());
 				}
 
 				// - If a developer REMOVES an objective, this safely truncates the obsolete state, preventing out-of-bounds errors.

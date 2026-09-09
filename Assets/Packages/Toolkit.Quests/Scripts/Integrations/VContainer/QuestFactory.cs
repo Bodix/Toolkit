@@ -17,7 +17,8 @@ namespace Toolkit.Quests.VContainer
 				return null;
 
 			IQuestObjective objective = config.CreateInstance();
-			_resolver.Inject(objective);
+			if (objective != null)
+				_resolver.Inject(objective);
 
 			return objective;
 		}
@@ -28,7 +29,8 @@ namespace Toolkit.Quests.VContainer
 				return null;
 
 			IQuestReward reward = config.CreateInstance();
-			_resolver.Inject(reward);
+			if (reward != null)
+				_resolver.Inject(reward);
 
 			return reward;
 		}

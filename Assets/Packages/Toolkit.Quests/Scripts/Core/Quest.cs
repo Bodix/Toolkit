@@ -38,7 +38,7 @@ namespace Toolkit.Quests
 		/// </summary>
 		public void StartQuest()
 		{
-			if (State.Status == QuestStatus.Completed || State.Status == QuestStatus.Failed)
+			if (State.Status != QuestStatus.NotStarted)
 				return;
 
 			State.Status = QuestStatus.Active;
