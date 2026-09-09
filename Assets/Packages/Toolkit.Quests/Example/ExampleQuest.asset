@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867a41ed7af4d934db416af718b99931, type: 3}
   m_Name: NewQuest_LogQuestRewardConfig_09f30
   m_EditorClassIdentifier: 
-  _id: toolkit_quests:newquest_logquestrewardconfig_09f30
+  _id: example:newquest_logquestrewardconfig_09f30
   RewardName: COOL_ITEM
 --- !u!114 &11400000
 MonoBehaviour:
@@ -38,9 +38,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b008744855547e996e0f71e211de716, type: 3}
-  m_Name: NewQuest
+  m_Name: ExampleQuest
   m_EditorClassIdentifier: 
-  _id: example:newquest
+  _id: example:examplequest
   _title: 
   _description: 
   _objectives:
