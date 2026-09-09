@@ -45,10 +45,18 @@ namespace Toolkit.Quests
 
 			for (int i = 0; i < _objectives.Count; i++)
 			{
+				// Prevents initializing remaining objectives if the quest was instantly completed.
+				if (State.Status != QuestStatus.Active)
+					break;
+
 				IQuestObjective objective = _objectives[i];
 				if (objective == null)
+				{
+					State.ObjectiveStates[i].IsCompleted = true;
+
 					continue;
-				
+				}
+
 				QuestObjectiveState objState = State.ObjectiveStates[i];
 				objective.Initialize(_eventBus, objState, OnObjectiveProgressUpdated);
 			}
@@ -63,7 +71,10 @@ namespace Toolkit.Quests
 		public void StopQuest()
 		{
 			foreach (IQuestObjective objective in _objectives)
-				objective?.Dispose();
+			{
+				if (objective != null && objective.State != null)
+					objective.Dispose();
+			}
 		}
 
 		private void OnObjectiveProgressUpdated()

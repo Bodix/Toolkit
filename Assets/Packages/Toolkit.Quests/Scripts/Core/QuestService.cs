@@ -11,7 +11,6 @@ namespace Toolkit.Quests
 	{
 		private readonly IEventBus _eventBus;
 		private readonly IQuestFactory _questFactory;
-		
 		private readonly List<Quest> _activeQuests;
 
 		public event Action<Quest> QuestAccepted;
@@ -35,12 +34,12 @@ namespace Toolkit.Quests
 		{
 			QuestState state = new QuestState { Quest = config, Status = QuestStatus.NotStarted };
 
-			if (config.Objectives != null)
-				foreach (QuestObjectiveConfig objectiveConfig in config.Objectives)
-					state.ObjectiveStates.Add(objectiveConfig.CreateState());
+			Quest instance = CreateQuestInstance(state);
+			if (instance == null)
+				return null;
 
-			Quest instance = RestoreQuest(state);
-
+			_activeQuests.Add(instance);
+			instance.StartQuest();
 			QuestAccepted?.Invoke(instance);
 
 			return instance;
@@ -51,6 +50,18 @@ namespace Toolkit.Quests
 		/// </summary>
 		public Quest RestoreQuest(QuestState state)
 		{
+			Quest instance = CreateQuestInstance(state);
+			if (instance == null)
+				return null;
+
+			_activeQuests.Add(instance);
+			instance.StartQuest();
+
+			return instance;
+		}
+
+		private Quest CreateQuestInstance(QuestState state)
+		{
 			if (state.Quest == null)
 				return null;
 
@@ -60,11 +71,12 @@ namespace Toolkit.Quests
 				// Ensure the number of objective states perfectly matches the current config.
 				// This acts as a safe migration for older save files when a game gets updated:
 				// - If a developer ADDS a new objective in a patch, this adds a fresh default state for it.
-				// - If a developer REMOVES an objective, this safely truncates the obsolete state, preventing out-of-bounds errors.
 				while (state.ObjectiveStates.Count < state.Quest.Objectives.Count)
 				{
 					state.ObjectiveStates.Add(state.Quest.Objectives[state.ObjectiveStates.Count].CreateState());
 				}
+
+				// - If a developer REMOVES an objective, this safely truncates the obsolete state, preventing out-of-bounds errors.
 				if (state.ObjectiveStates.Count > state.Quest.Objectives.Count)
 				{
 					state.ObjectiveStates.RemoveRange(state.Quest.Objectives.Count, state.ObjectiveStates.Count - state.Quest.Objectives.Count);
@@ -91,9 +103,6 @@ namespace Toolkit.Quests
 			instance.Completed += OnQuestCompleted;
 			instance.Failed += OnQuestFailed;
 			instance.Updated += OnQuestUpdated;
-
-			_activeQuests.Add(instance);
-			instance.StartQuest();
 
 			return instance;
 		}
