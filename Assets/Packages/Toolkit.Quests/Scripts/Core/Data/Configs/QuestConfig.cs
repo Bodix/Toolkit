@@ -8,7 +8,7 @@ namespace Toolkit.Quests
 	/// Contains static data for a quest template.
 	/// </summary>
 	[CreateAssetMenu(fileName = "NewQuest", menuName = "Configs/Quest")]
-	public class QuestConfig : DataAsset, IQuestConfig
+	public class QuestConfig : DataAsset
 	{
 		[SerializeField]
 		private string _title;
