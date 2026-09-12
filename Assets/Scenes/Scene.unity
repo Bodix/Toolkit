@@ -721,12 +721,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 20
+    m_Right: 20
+    m_Top: 20
+    m_Bottom: 20
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -760,6 +760,8 @@ MonoBehaviour:
   _offersContainer: {fileID: 404556813}
   _offerPrefab: {fileID: 4457700340692282409, guid: 8a09c742381703c4b87de578418ab5ee,
     type: 3}
+  _removeOfferOnAccept: 0
+  _removeOfferOnCancel: 0
 --- !u!114 &404556816
 MonoBehaviour:
   m_ObjectHideFlags: 0
