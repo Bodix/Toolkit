@@ -1,3 +1,15 @@
+[submodule "Assets/Packages/PerfectCore"]
+	path = Assets/Packages/PerfectCore
+	url = https://github.com/Bodix/PerfectCore.git
+[submodule "Assets/Packages/PerfectUI"]
+	path = Assets/Packages/PerfectUI
+	url = https://github.com/Bodix/PerfectUI.git
+[submodule "Assets/Packages/PerfectInventory"]
+	path = Assets/Packages/PerfectInventory
+	url = https://github.com/Bodix/Unity.Toolkit.Inventory.git
+[submodule "Assets/Packages/PerfectQuests"]
+	path = Assets/Packages/PerfectQuests
+	url = https://github.com/Bodix/Unity.Toolkit.Quests.git
 [submodule "Assets/Packages/Evolunity"]
 	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
@@ -7,9 +19,6 @@
 [submodule "Assets/Packages/Toolkit.InputSystem"]
 	path = Assets/Packages/Toolkit.InputSystem
 	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
-[submodule "Assets/Packages/Toolkit.Inventory"]
-	path = Assets/Packages/PerfectInventory
-	url = https://github.com/Bodix/Unity.Toolkit.Inventory.git
 [submodule "Assets/Packages/Toolkit.Resettables"]
 	path = Assets/Packages/Toolkit.Resettables
 	url = https://github.com/Bodix/Unity.Toolkit.Resettables.git
@@ -22,12 +31,3 @@
 [submodule "Assets/Packages/Toolkit.WContainer"]
 	path = Assets/Packages/Toolkit.WContainer
 	url = https://github.com/Bodix/Unity.Toolkit.WContainer.git
-[submodule "Assets/Packages/Toolkit.Quests"]
-	path = Assets/Packages/PerfectQuests
-	url = https://github.com/Bodix/Unity.Toolkit.Quests.git
-[submodule "Assets/Packages/PerfectCore"]
-	path = Assets/Packages/PerfectCore
-	url = https://github.com/Bodix/PerfectCore.git
-[submodule "Assets/Packages/PerfectUI"]
-	path = Assets/Packages/PerfectUI
-	url = https://github.com/Bodix/PerfectUI.git
