@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEditor.Animations;
-using UnityEngine;
 
 namespace BattleJourney.Gameplay
 {

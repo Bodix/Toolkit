@@ -2,7 +2,6 @@
 // Copyright © 2020 Bogdan Nikolayev <bodix321@gmail.com>
 // All Rights Reserved
 
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 

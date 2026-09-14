@@ -1,5 +1,4 @@
-﻿using System;
-using Bodix.Evolunity.Extensions;
+﻿using Bodix.Evolunity.Extensions;
 using UnityEditor.Animations;
 using UnityEngine;
 
