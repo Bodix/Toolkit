@@ -1,0 +1,21 @@
+{
+    "name": "PerfectCore.PerfectQuests.UI",
+    "references": [
+        "PerfectCore",
+        "PerfectCore.PerfectUI",
+        "PerfectCore.PerfectQuests",
+        "PerfectCore.PerfectQuests.Inventory",
+        "PerfectCore.PerfectInventory",
+        "PerfectCore.PerfectInventory.UI",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

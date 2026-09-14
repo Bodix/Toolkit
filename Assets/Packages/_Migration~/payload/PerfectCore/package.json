@@ -1,0 +1,29 @@
+{
+    "name": "net.perfectcore.perfectcore",
+    "version": "1.0.0",
+    "displayName": "Perfect Core",
+    "description": "Shared foundation for Perfect Core packages: data assets with stable IDs, an event bus, a [SerializeReference] type selector and animation contracts.",
+    "unity": "2019.3",
+    "author": {
+        "name": "Perfect Core",
+        "email": "bodix321@gmail.com",
+        "url": "https://perfectcore.net"
+    },
+    "keywords": [
+        "unity",
+        "unity3d",
+        "asset",
+        "package",
+        "tool",
+        "tools",
+        "toolkit",
+        "perfect",
+        "perfect-core",
+        "core",
+        "event-bus",
+        "scriptableobject",
+        "serializereference",
+        "type-selector",
+        "utility"
+    ]
+}
