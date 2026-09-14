@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Bodix.Evolunity.Components;
-using NaughtyAttributes;
+using PerfectCore.NaughtyAttributes;
 using UnityEngine;
 
 namespace Dirty.Modules.Physics

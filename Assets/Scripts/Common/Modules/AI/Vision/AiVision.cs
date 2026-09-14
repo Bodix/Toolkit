@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bodix.Evolunity.Components;
-using NaughtyAttributes;
+using PerfectCore.NaughtyAttributes;
 using UnityEngine;
 
 namespace AI

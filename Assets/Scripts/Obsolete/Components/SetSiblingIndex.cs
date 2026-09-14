@@ -1,5 +1,5 @@
 ﻿using System;
-using NaughtyAttributes;
+using PerfectCore.NaughtyAttributes;
 using UnityEngine;
 
 namespace Obsolete.Components
