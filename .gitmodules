@@ -1,15 +1,15 @@
 [submodule "Assets/Packages/PerfectCore"]
 	path = Assets/Packages/PerfectCore
 	url = https://github.com/Bodix/PerfectCore.git
-[submodule "Assets/Packages/PerfectUI"]
-	path = Assets/Packages/PerfectUI
+[submodule "Assets/Packages/PerfectCore.PerfectUI"]
+	path = Assets/Packages/PerfectCore.PerfectUI
 	url = https://github.com/Bodix/PerfectUI.git
-[submodule "Assets/Packages/PerfectInventory"]
-	path = Assets/Packages/PerfectInventory
-	url = https://github.com/Bodix/Unity.Toolkit.Inventory.git
-[submodule "Assets/Packages/PerfectQuests"]
-	path = Assets/Packages/PerfectQuests
-	url = https://github.com/Bodix/Unity.Toolkit.Quests.git
+[submodule "Assets/Packages/PerfectCore.PerfectInventory"]
+	path = Assets/Packages/PerfectCore.PerfectInventory
+	url = https://github.com/Bodix/PerfectInventory.git
+[submodule "Assets/Packages/PerfectCore.PerfectQuests"]
+	path = Assets/Packages/PerfectCore.PerfectQuests
+	url = https://github.com/Bodix/PerfectQuests.git
 [submodule "Assets/Packages/Evolunity"]
 	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
