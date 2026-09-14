@@ -3,13 +3,13 @@
     "references": [
         "Unity.TextMeshPro",
         "Unity.InputSystem",
-        "PerfectCore.NaughtyAttributes",
-        "Evolunity.Runtime",
-        "Toolkit.Common",
-        "Toolkit.Tweens",
         "VContainer",
         "PerfectCore",
-        "PerfectCore.PerfectUI"
+        "PerfectCore.NaughtyAttributes",
+        "PerfectCore.PerfectUI",
+        "Evolunity.Runtime",
+        "Toolkit.Common",
+        "Toolkit.Tweens"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
