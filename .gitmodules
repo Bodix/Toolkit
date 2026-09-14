@@ -1,3 +1,6 @@
+[submodule "Assets/Packages/Evolunity"]
+	path = Assets/Packages/Evolunity
+	url = https://github.com/Bodix/Evolunity.git
 [submodule "Assets/Packages/PerfectCore"]
 	path = Assets/Packages/PerfectCore
 	url = https://github.com/Bodix/PerfectCore.git
@@ -10,9 +13,6 @@
 [submodule "Assets/Packages/PerfectCore.PerfectQuests"]
 	path = Assets/Packages/PerfectCore.PerfectQuests
 	url = https://github.com/Bodix/PerfectQuests.git
-[submodule "Assets/Packages/Evolunity"]
-	path = Assets/Packages/Evolunity
-	url = https://github.com/Bodix/Evolunity.git
 [submodule "Assets/Packages/Toolkit.Common"]
 	path = Assets/Packages/Toolkit.Common
 	url = https://github.com/Bodix/Unity.Toolkit.Common.git
