@@ -3,10 +3,12 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Evolunity" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectCore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectInventory" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectQuests" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectUI" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Common" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.InputSystem" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Inventory" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Quests" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Resettables" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Styles" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Tweens" vcs="Git" />
