@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Dirty.VideoPlayer
+namespace Dirty.Modules.VideoPlayer
 {
 	[RequireComponent(typeof(Graphic))]
 	public class VideoViewerRect : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler

@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Draws the file size of assets into the project window.

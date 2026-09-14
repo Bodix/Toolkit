@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Draws the file suffix of assets into the project window.

@@ -5,7 +5,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor
+namespace Dirty.Editor.ProjectWindow
 {
     [InitializeOnLoad]
     internal class ProjectWindowExtensions

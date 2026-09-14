@@ -2,7 +2,7 @@
 using Bodix.Evolunity.Patterns;
 using UnityEngine;
 
-namespace Dirty.Test
+namespace Dirty.Modules.StateMachine
 {
     [Serializable]
     public class IdleState : State

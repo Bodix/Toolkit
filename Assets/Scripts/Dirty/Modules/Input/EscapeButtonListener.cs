@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Dirty.Input
+namespace Dirty.Modules.Input
 {
     public class EscapeButtonListener : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Dirty.Test
+namespace Dirty.Modules.StateMachine
 {
     public class StateMachineBehaviour : MonoBehaviour
     {

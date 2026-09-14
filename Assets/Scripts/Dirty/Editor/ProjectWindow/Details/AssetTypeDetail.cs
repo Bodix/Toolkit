@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Draws the type of assets into the project window.

@@ -2,7 +2,7 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace BattleJourney.Gameplay
+namespace _WIP.AnimatorRecorders
 {
     public class AnimatorRecorder : MonoBehaviour
     {

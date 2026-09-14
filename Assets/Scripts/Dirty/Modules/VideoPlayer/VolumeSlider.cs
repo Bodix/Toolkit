@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dirty.VideoPlayer
+namespace Dirty.Modules.VideoPlayer
 {
 	// Must be executed before VideoViewer's Awake().
 	[DefaultExecutionOrder(-100)]

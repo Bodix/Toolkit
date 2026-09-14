@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Draws the length of animation clips into the project window.

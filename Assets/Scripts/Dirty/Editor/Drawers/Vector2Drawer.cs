@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Evolutex.Evolunity.Editor.Drawers.Materials
+namespace Dirty.Editor.Drawers
 {
     // TODO: Fix double-lined property view on short width.
 

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Dirty.Editor.ProjectWindow.Details;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow
 {
     // Copyright (c) InnoGames.
     // https://tech.innogames.com/customizing-unitys-project-window/

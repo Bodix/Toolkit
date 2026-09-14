@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace _WIP.Editor
+namespace Dirty.Editor
 {
     // https://gist.github.com/nicoplv/df2d1064be62cf894b202b33d050d54f
     

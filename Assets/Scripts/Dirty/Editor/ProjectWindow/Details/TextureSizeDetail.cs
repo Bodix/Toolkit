@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Draws the width and height of texture assets into the project window.

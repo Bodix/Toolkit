@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Dirty.Input
+namespace Dirty.Modules.Input
 {
     public delegate void PositionHandler(Vector2 position);
 

@@ -3,7 +3,7 @@ using Toolkit.Tweens.Transitions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dirty.VideoPlayer
+namespace Dirty.Modules.VideoPlayer
 {
 	[RequireComponent(typeof(UnityEngine.Video.VideoPlayer))]
 	public class VideoViewer : MonoBehaviour

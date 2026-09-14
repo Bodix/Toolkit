@@ -1,11 +1,10 @@
 ﻿using UnityEditor;
 using UnityEditor.Animations;
-
-namespace BattleJourney.Gameplay
-{
 using UnityEngine;
 
-public class AnimatorRecorder2 : MonoBehaviour
+namespace _WIP.AnimatorRecorders
+{
+	public class AnimatorRecorder2 : MonoBehaviour
 {
     [System.Serializable]
     public struct AnimatorParamsData

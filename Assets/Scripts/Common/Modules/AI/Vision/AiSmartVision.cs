@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace AI
+namespace AI.Vision
 {
     public class AiSmartVision : AiVision
     {

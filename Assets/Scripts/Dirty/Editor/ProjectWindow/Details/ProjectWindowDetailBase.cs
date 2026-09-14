@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Evolutex.Evolunity.Editor.ProjectWindow
+namespace Dirty.Editor.ProjectWindow.Details
 {
 	/// <summary>
 	/// Base class of custom columns to be drawn by ProjectWindowDetails
