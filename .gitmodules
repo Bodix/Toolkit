@@ -1,9 +1,9 @@
 [submodule "Assets/Packages/Evolunity"]
 	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
-[submodule "Assets/Packages/PerfectCore"]
+[submodule "Assets/Packages/PerfectCore.PerfectFoundation"]
 	path = Assets/Packages/PerfectCore.PerfectFoundation
-	url = https://github.com/Bodix/PerfectCore.git
+	url = https://github.com/Bodix/PerfectFoundation.git
 [submodule "Assets/Packages/PerfectCore.PerfectUI"]
 	path = Assets/Packages/PerfectCore.PerfectUI
 	url = https://github.com/Bodix/PerfectUI.git
