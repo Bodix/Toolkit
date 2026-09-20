@@ -4,8 +4,8 @@
         "Unity.TextMeshPro",
         "Toolkit",
         "Evolunity.Runtime",
-        "PerfectCore.PerfectFoundation"
-        "PerfectCore.PerfectFoundation.NaughtyAttributes",
+        "PerfectCore.PerfectFoundation",
+        "PerfectCore.PerfectFoundation.NaughtyAttributes"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
