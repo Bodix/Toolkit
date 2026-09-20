@@ -1,11 +1,11 @@
 {
     "name": "Toolkit.WIP",
     "references": [
-        "PerfectCore.NaughtyAttributes",
         "Unity.TextMeshPro",
         "Toolkit",
         "Evolunity.Runtime",
-        "PerfectCore"
+        "PerfectCore.PerfectFoundation"
+        "PerfectCore.PerfectFoundation.NaughtyAttributes",
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

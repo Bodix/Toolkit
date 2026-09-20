@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections;
-using PerfectCore.NaughtyAttributes;
+using PerfectCore.PerfectFoundation.NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 

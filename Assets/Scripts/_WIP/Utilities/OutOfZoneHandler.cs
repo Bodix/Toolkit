@@ -1,6 +1,6 @@
 ﻿using System;
-using PerfectCore;
-using PerfectCore.NaughtyAttributes;
+using PerfectCore.PerfectFoundation;
+using PerfectCore.PerfectFoundation.NaughtyAttributes;
 using UnityEngine;
 
 namespace _WIP.Utilities

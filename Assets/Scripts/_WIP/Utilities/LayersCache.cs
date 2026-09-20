@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _WIP.Utilities.Dictionary;
-using PerfectCore.NaughtyAttributes;
+using PerfectCore.PerfectFoundation.NaughtyAttributes;
 using UnityEngine;
 
 namespace _WIP.Utilities
