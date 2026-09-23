@@ -35,11 +35,3 @@ public class PercentHealEffect : IEffect
 	public void Apply(Health target) =>
 		target.Heal(Mathf.RoundToInt(target.Max * _percent));
 }
-
-public class Potion : MonoBehaviour
-{
-	[SerializeReference, TypeSelector] private IEffect _effect;
-
-	private void OnTriggerEnter(Collider other) =>
-		_effect.Apply(other.GetComponent<Health>());
-}
