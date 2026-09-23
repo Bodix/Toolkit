@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Evolunity" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectCore.PerfectFoundation" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectCore.PerfectInventory" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectCore.PerfectQuests" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/PerfectCore.PerfectUI" vcs="Git" />
