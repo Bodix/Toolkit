@@ -5,7 +5,7 @@
 	path = Packages/net.perfectcore.perfectfoundation
 	url = https://github.com/Bodix/PerfectFoundation.git
 [submodule "Assets/Packages/PerfectCore.PerfectUI"]
-	path = Assets/Packages/PerfectCore.PerfectUI
+	path = Packages/net.perfectcore.perfectui
 	url = https://github.com/Bodix/PerfectUI.git
 [submodule "Assets/Packages/PerfectCore.PerfectInventory"]
 	path = Assets/Packages/PerfectCore.PerfectInventory
