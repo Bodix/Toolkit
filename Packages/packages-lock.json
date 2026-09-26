@@ -98,6 +98,16 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "net.perfectcore.perfectui": {
+      "version": "file:net.perfectcore.perfectui",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "net.perfectcore.perfectfoundation": "1.0.1",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.textmeshpro": "3.0.6"
+      }
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
