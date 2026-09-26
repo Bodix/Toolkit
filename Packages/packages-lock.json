@@ -92,6 +92,12 @@
       "dependencies": {},
       "hash": "ae12048ca8fb9900518f40bb691bca5266efc760"
     },
+    "net.perfectcore.perfectfoundation": {
+      "version": "file:net.perfectcore.perfectfoundation",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

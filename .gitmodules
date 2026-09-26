@@ -2,7 +2,7 @@
 	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
 [submodule "Assets/Packages/PerfectCore.PerfectFoundation"]
-	path = Assets/Packages/PerfectCore.PerfectFoundation
+	path = Packages/net.perfectcore.perfectfoundation
 	url = https://github.com/Bodix/PerfectFoundation.git
 [submodule "Assets/Packages/PerfectCore.PerfectUI"]
 	path = Assets/Packages/PerfectCore.PerfectUI
