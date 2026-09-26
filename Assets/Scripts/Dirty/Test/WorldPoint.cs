@@ -1,165 +1,166 @@
 ﻿#if UNITY_2020_1_OR_NEWER
 using System;
-using Evolutex.Evolunity.Extensions;
-using NaughtyAttributes;
+using Bodix.Evolunity.Extensions;
+using Evolutex.Evolunity.Collections;
+using PerfectCore.PerfectFoundation.NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
 
 namespace Dirty.Test
 {
-    // TODO: Handle behaviour in disabled state.
-    
-    [ExecuteAlways]
-    public class WorldPoint : MonoBehaviour
-    {
-        public ObservableList<WorldPoint> ConnectedPoints;
+	// TODO: Handle behaviour in disabled state.
 
-        [SerializeField] private WorldPoint _connectionSlot;
+	[ExecuteAlways]
+	public class WorldPoint : MonoBehaviour
+	{
+		public ObservableList<WorldPoint> ConnectedPoints;
 
-        public bool IsDestroyed { get; private set; }
+		[SerializeField] private WorldPoint _connectionSlot;
 
-        private void Awake()
-        {
-            // For new points, the list is not instanced in OnEnable method yet.
-            ConnectedPoints = ConnectedPoints ?? new ObservableList<WorldPoint>();
+		public bool IsDestroyed { get; private set; }
 
-            // Update links after point duplication or restore links after undoing point deletion.
-            foreach (WorldPoint point in ConnectedPoints)
-                if (!point.ConnectedPoints.Contains(this))
-                    point.ConnectPoint(this);
-        }
+		private void Awake()
+		{
+			// For new points, the list is not instanced in OnEnable method yet.
+			ConnectedPoints = ConnectedPoints ?? new ObservableList<WorldPoint>();
 
-        private void OnEnable()
-        {
-            ConnectedPoints.ItemAdded += OnPointAdded;
-            ConnectedPoints.ItemRemoved += OnPointRemoved;
-        }
+			// Update links after point duplication or restore links after undoing point deletion.
+			foreach (WorldPoint point in ConnectedPoints)
+				if (!point.ConnectedPoints.Contains(this))
+					point.ConnectPoint(this);
+		}
 
-        private void OnDisable()
-        {
-            ConnectedPoints.ItemAdded -= OnPointAdded;
-            ConnectedPoints.ItemRemoved -= OnPointRemoved;
-        }
+		private void OnEnable()
+		{
+			ConnectedPoints.ItemAdded += OnPointAdded;
+			ConnectedPoints.ItemRemoved += OnPointRemoved;
+		}
 
-        private void OnDestroy()
-        {
-            IsDestroyed = true;
+		private void OnDisable()
+		{
+			ConnectedPoints.ItemAdded -= OnPointAdded;
+			ConnectedPoints.ItemRemoved -= OnPointRemoved;
+		}
 
-            foreach (WorldPoint point in ConnectedPoints)
-                point.DisconnectPoint(this);
-        }
+		private void OnDestroy()
+		{
+			IsDestroyed = true;
 
-        private void OnValidate()
-        {
-            enabled = true;
+			foreach (WorldPoint point in ConnectedPoints)
+				point.DisconnectPoint(this);
+		}
 
-            ConnectedPoints.RemoveDuplicates();
+		private void OnValidate()
+		{
+			enabled = true;
 
-            if (_connectionSlot == this)
-            {
-                Debug.LogError("Unable to connect to itself");
+			ConnectedPoints.RemoveDuplicates();
 
-                _connectionSlot = null;
-            }
+			if (_connectionSlot == this)
+			{
+				Debug.LogError("Unable to connect to itself");
 
-            if (ConnectedPoints.Contains(_connectionSlot))
-            {
-                Debug.LogError("This point is already connected");
+				_connectionSlot = null;
+			}
 
-                _connectionSlot = null;
-            }
-        }
+			if (ConnectedPoints.Contains(_connectionSlot))
+			{
+				Debug.LogError("This point is already connected");
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawSphere(transform.position, 0.5f);
+				_connectionSlot = null;
+			}
+		}
 
-            foreach (WorldPoint point in ConnectedPoints)
-                Gizmos.DrawLine(point.transform.position, transform.position);
-        }
+		private void OnDrawGizmos()
+		{
+			Gizmos.DrawSphere(transform.position, 0.5f);
 
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(transform.position, 0.5f);
-        }
+			foreach (WorldPoint point in ConnectedPoints)
+				Gizmos.DrawLine(point.transform.position, transform.position);
+		}
 
-        [Button("Connect From Slot")]
-        private void ConnectFromSlot()
-        {
-            if (_connectionSlot)
-            {
-                ConnectPoint(_connectionSlot);
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.green;
+			Gizmos.DrawSphere(transform.position, 0.5f);
+		}
 
-                _connectionSlot = null;
-            }
-            else
-            {
-                Debug.LogError("Assign a point in the connection slot");
-            }
-        }
+		[Button("Connect From Slot")]
+		private void ConnectFromSlot()
+		{
+			if (_connectionSlot)
+			{
+				ConnectPoint(_connectionSlot);
 
-        [Button("Connect New")]
-        public WorldPoint ConnectNewPoint()
-        {
-            WorldPoint point = CreateNewPoint();
-            ConnectPoint(point);
+				_connectionSlot = null;
+			}
+			else
+			{
+				Debug.LogError("Assign a point in the connection slot");
+			}
+		}
 
-            return point;
-        }
+		[Button("Connect New")]
+		public WorldPoint ConnectNewPoint()
+		{
+			WorldPoint point = CreateNewPoint();
+			ConnectPoint(point);
 
-        [Button("Create New")]
-        public void CreateNew()
-        {
-            CreateNewPoint();
-        }
+			return point;
+		}
 
-        public void ConnectPoint(WorldPoint point)
-        {
-            if (!ConnectedPoints.Contains(point))
-                ConnectedPoints.Add(point);
-            else throw new InvalidOperationException("Point already connected");
-        }
+		[Button("Create New")]
+		public void CreateNew()
+		{
+			CreateNewPoint();
+		}
 
-        public bool DisconnectPoint(WorldPoint point)
-        {
-            return ConnectedPoints.Remove(point);
-        }
+		public void ConnectPoint(WorldPoint point)
+		{
+			if (!ConnectedPoints.Contains(point))
+				ConnectedPoints.Add(point);
+			else throw new InvalidOperationException("Point already connected");
+		}
 
-        private void OnPointAdded(ObservableList<WorldPoint> sender, ListChangeEventArgs<WorldPoint> e)
-        {
-            // Prevent a null item when adding a first item or removing existing item through the Inspector.
-            if (!e.Item)
-            {
-                ConnectedPoints.Remove(e.Item);
+		public bool DisconnectPoint(WorldPoint point)
+		{
+			return ConnectedPoints.Remove(point);
+		}
 
-                return;
-            }
+		private void OnPointAdded(ObservableList<WorldPoint> sender, ListChangeEventArgs<WorldPoint> e)
+		{
+			// Prevent a null item when adding a first item or removing existing item through the Inspector.
+			if (!e.Item)
+			{
+				ConnectedPoints.Remove(e.Item);
 
-            if (!e.Item.ConnectedPoints.Contains(this))
-                e.Item.ConnectPoint(this);
-        }
+				return;
+			}
 
-        private void OnPointRemoved(ObservableList<WorldPoint> sender, ListChangeEventArgs<WorldPoint> e)
-        {
-            if (!e.Item)
-                return;
+			if (!e.Item.ConnectedPoints.Contains(this))
+				e.Item.ConnectPoint(this);
+		}
 
-            if (!e.Item.IsDestroyed)
-                e.Item.DisconnectPoint(this);
-        }
+		private void OnPointRemoved(ObservableList<WorldPoint> sender, ListChangeEventArgs<WorldPoint> e)
+		{
+			if (!e.Item)
+				return;
 
-        private WorldPoint CreateNewPoint()
-        {
-            WorldPoint point = new GameObject("Point").AddComponent<WorldPoint>();
-            point.transform.SetParent(transform.parent);
-            point.transform.position = transform.position + new Vector3().Randomize().WithY(0).normalized;
+			if (!e.Item.IsDestroyed)
+				e.Item.DisconnectPoint(this);
+		}
 
-            Selection.activeGameObject = point.gameObject;
+		private WorldPoint CreateNewPoint()
+		{
+			WorldPoint point = new GameObject("Point").AddComponent<WorldPoint>();
+			point.transform.SetParent(transform.parent);
+			point.transform.position = transform.position + new Vector3().Randomize().WithY(0).normalized;
 
-            return point;
-        }
-    }
+			Selection.activeGameObject = point.gameObject;
+
+			return point;
+		}
+	}
 }
 
 #endif

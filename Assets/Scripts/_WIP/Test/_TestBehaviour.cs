@@ -1,5 +1,5 @@
 using System;
-using Sirenix.OdinInspector;
+using PerfectCore.PerfectFoundation.NaughtyAttributes;
 using UnityEngine;
 
 namespace _WIP.Test

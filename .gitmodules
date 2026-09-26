@@ -13,9 +13,6 @@
 [submodule "Assets/Packages/PerfectCore.PerfectQuests"]
 	path = Assets/Packages/PerfectCore.PerfectQuests
 	url = https://github.com/Bodix/PerfectQuests.git
-[submodule "Assets/Packages/Toolkit.Common"]
-	path = Assets/Packages/Toolkit.Common
-	url = https://github.com/Bodix/Unity.Toolkit.Common.git
 [submodule "Assets/Packages/Toolkit.InputSystem"]
 	path = Assets/Packages/Toolkit.InputSystem
 	url = https://github.com/Bodix/Unity.Toolkit.InputSystem.git
