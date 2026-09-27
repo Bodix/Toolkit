@@ -2,8 +2,6 @@
 
 Status: 27 September 2026.
 
-This file lives in two places: `D:\Projects\My\Toolkit\Asset Store Publishing Plan.md` (in git) and `Publishing/Asset Store Publishing Plan.md` in the Perfect Core project in Claude. Keep both copies the same.
-
 This is the working document for publishing the Perfect Core packages on the Unity Asset Store. A new chat with no other context can continue from here: read it once, then take the next unchecked task.
 
 ## How we work
