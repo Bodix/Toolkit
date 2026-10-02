@@ -29,10 +29,7 @@
 | Пакеты, готовые к магазину | `Toolkit/Packages/net.perfectcore.perfectfoundation`, `Toolkit/Packages/net.perfectcore.perfectui` |
 | Пакеты, которые ещё не перенесены | `Toolkit/Assets/Packages/` |
 | Архивы пакетов (tarball) | `Toolkit/_packages/*.tgz`. PerfectCore ставит их через ссылки `file:`. |
-| Идеи по коду каждого пакета | `Documentation~/TODO.md` в пакете (внутренний файл, в пакет не попадает). Задачи по публикации ведутся только в этом плане. |
 | Инструменты для медиа и стиль серии | `Toolkit/.claude/skills/asset-store-media` (`SKILL.md`, `Visual Style.md`, `scripts/`) |
-| Заметки о заморозке Unity 2019.4 | `Toolkit/LAST-2019.4.md` |
-| Работа над логотипом | `PerfectCore/Assets/PerfectCore/Branding`: `Brand Design Brief.md`, `Logo History.md`, скрипты-генераторы в `Source~`, листы в `History~` |
 | Репозитории | GitHub `Bodix/Toolkit`, по одному сабмодулю на пакет: `Bodix/PerfectFoundation`, `PerfectUI`, `PerfectInventory`, `PerfectQuests`, `Evolunity`, `Unity.Toolkit.*` |
 
 ## Состояние
@@ -45,8 +42,6 @@
 | Perfect Quests | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Evolunity | 4.0.0 | Всё ещё на Unity 2019.3 | Версия 5.0.0 для 2022.3 |
 | Toolkit.InputSystem, Resettables, Styles, Tweens, WContainer | 1.0.x | Всё ещё на Unity 2019.x | Перевести на 2022.3 |
-
-Perfect Foundation 1.0.0 отклонили по двум причинам: ошибки компиляции в новейшей Unity и неполная страница издателя. Версия 1.0.1 исправляет ошибки. Страница издателя — это задача 1.
 
 ## 1. Профиль издателя — сделать в первую очередь
 
