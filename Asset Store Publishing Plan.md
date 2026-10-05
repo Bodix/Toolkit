@@ -1,6 +1,6 @@
 # Perfect Core — план публикации в Asset Store
 
-Состояние на 2 октября 2026.
+Состояние на 5 октября 2026.
 
 Это рабочий документ для публикации пакетов Perfect Core в Unity Asset Store.
 
@@ -38,7 +38,7 @@
 | Пакет | Версия | Состояние | Следующий шаг |
 |---|---|---|---|
 | Perfect Foundation | 1.0.1 | На проверке | Доделать профиль издателя, потом ждать проверки |
-| Perfect UI | 1.0.0 | Код готов. Глиф и теглайн выбраны, медиа нет. | Пересобрать tarball и пройти проверки в Unity. Потом медиа и страница в магазине. Загрузить, когда Foundation появится в магазине. |
+| Perfect UI | 1.0.0 | Код и медиа готовы | Страница в магазине. Загрузить, когда Foundation появится в магазине. |
 | Perfect Inventory | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Perfect Quests | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Evolunity | 4.0.0 | Всё ещё на Unity 2019.3 | Версия 5.0.0 для 2022.3 |
@@ -61,19 +61,20 @@
 
 - [x] Теглайн: "Clean ready-made uGUI elements".
 - [x] Глиф лежит в `Media~/PerfectUI_Logo.svg` и `Media~/PerfectUI_Logo_1024.png`.
-- [ ] Фон: владелец пришлёт новый (см. Открытые вопросы).
-- [ ] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630.
-- [ ] Скриншоты 1950×1300:
-  - Prefabs
-  - API `UiElement`
-  - API `UiConfirmationDialog`
+- [x] Фон: "dark shiny background" от starline с Magnific.com (см. Открытые вопросы).
+- [x] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630.
+- [x] Скриншоты 1950×1300:
+  - Prefabs — кадры Unity из `PerfectCore/Recordings`, фон кадров перекрашен в #282828
+  - UiElement — API `UiElement`, `IShowHideAnimations`, `IAnimation`, `UiElementState`
+  - Confirmation Dialog — API `UiConfirmationDialog` и `UiConfirmationDialogPayload`, кадр диалога
+- [ ] Перенести `_asset-store-work/PerfectUI/perfect_ui.py` в `scripts/` скилла. Рабочая папка: `Toolkit/_asset-store-work/PerfectUI` (фон и кадры Unity лежат там).
 
 Страница в магазине и загрузка:
 
 - [ ] Цена: бесплатно.
 - [ ] Описание: указать, что нужен Perfect Foundation (бесплатный). Добавить строку: "Asset uses uLayout under MIT License and Rubik under SIL Open Font License 1.1; see Third-Party Notices.txt file in package for details."
 - [ ] Технические детали: Unity 2022.3+; Built-in, URP и HDRP (uGUI работает во всех); зависимости; состав пакета.
-- [ ] Строка с указанием автора фона в описании, если текущий фон останется (см. Открытые вопросы).
+- [ ] Строка с указанием автора фона в описании: "Background image designed by starline - Magnific.com (https://www.magnific.com)".
 - [ ] Заметка для команды Curation: "Perfect UI depends on Perfect Foundation. Perfect Inventory and Perfect Quests depend on it too, so it is published as its own free product, as the Asset Store documentation recommends for a dependency shared by several products. The validator cannot check this and reports it as a Cross-Product Dependencies warning. The SRP Compatible Materials warning lists TextMeshPro font materials: they use the standard TextMeshPro UI shaders, which render on a Canvas in the Built-in Render Pipeline, URP and HDRP."
 - [ ] Загрузить, когда Perfect Foundation появится в магазине: Unity → Window → Tools → Asset Store → Uploader → UPM Packages → Upload. Потом заполнить Publisher Portal и отправить.
 - [ ] После публикации поставить из My Assets и проверить, что в `Library/PackageCache` нет `Documentation~`.
@@ -118,11 +119,12 @@
 ## Открытые вопросы
 
 1. Поставится ли Perfect Foundation вместе с Perfect UI, если пользователь не добавил Foundation в My Assets? Проверить после публикации или спросить поддержку Asset Store.
-2. Фон медиа пакетов. Владелец пришлёт новый фон для Perfect UI. Медиа Foundation сейчас на фоне "black shiny wallpaper" от starline с Magnific.com, по бесплатной лицензии с такими условиями:
+2. Фон медиа пакетов. Оба фона от одного автора, starline с Magnific.com: у Foundation — "black shiny wallpaper", у Perfect UI — "dark shiny background" (https://www.magnific.com/free-photo/dark-shiny-background_1104832.htm). Бесплатная лицензия с указанием автора, условия такие:
    - в каждом описании нужна строка "Background image designed by starline - Magnific.com (https://www.magnific.com)";
+   - контент Magnific нельзя распространять и выкладывать для скачивания, в том числе изменённый. Поэтому картинки с фоном не должны попадать в публичный git. Сейчас `Media~` Foundation с фоном лежит в git;
    - изображение нельзя использовать в товарном знаке, поэтому оно не должно стоять за логотипом или за иконкой 160×160;
    - использование "for AI purposes" (в целях ИИ) запрещено, и эта формулировка широкая;
-   - сертификат выдан на "Anonymous user", поэтому изображение нужно скачать заново со своего аккаунта.
+   - оба сертификата выданы на "Anonymous user", поэтому изображения нужно скачать заново со своего аккаунта.
 
 
 ## Ключевые факты и решения
