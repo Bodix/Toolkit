@@ -63,7 +63,10 @@
 - [x] Глиф лежит в `Media~/PerfectUI_Logo.svg` и `Media~/PerfectUI_Logo_1024.png`.
 - [ ] Фон: владелец пришлёт новый (см. Открытые вопросы).
 - [ ] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630.
-- [ ] Скриншоты 1950×1300, по одному на функцию: Prefabs (все префабы на Canvas), Show and Hide (код анимации → инспектор `UiElement` со списком Animations), Dialogs (вызов `ShowConfirmationDialog` → диалог), Flexible Layout Group (настройки → сетка при двух ширинах), Aspect Ratio Adaptation (один экран при 7:3 и 4:3). Кадры Unity снимаются в тестовой сцене.
+- [ ] Скриншоты 1950×1300:
+  - Prefabs
+  - API `UiElement`
+  - API `UiConfirmationDialog`
 
 Страница в магазине и загрузка:
 
