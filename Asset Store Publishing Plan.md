@@ -2,7 +2,7 @@
 
 Состояние на 2 октября 2026.
 
-Это рабочий документ для публикации пакетов Perfect Core в Unity Asset Store. Новый чат без другого контекста может продолжить работу отсюда: прочитать документ один раз и взять следующую невыполненную задачу.
+Это рабочий документ для публикации пакетов Perfect Core в Unity Asset Store.
 
 ## Как мы работаем
 
@@ -30,7 +30,7 @@
 | Пакеты, которые ещё не перенесены | `Toolkit/Assets/Packages/` |
 | Архивы пакетов (tarball) | `Toolkit/_packages/*.tgz`. PerfectCore ставит их через ссылки `file:`. |
 | Инструменты для медиа и стиль серии | `Toolkit/.claude/skills/asset-store-media` (`SKILL.md`, `Visual Style.md`, `scripts/`) |
-| Упаковка пакета в tarball: выделить пакет → Assets → Pack Package. Файл появляется в `Toolkit/_packages`. |
+| Упаковка пакета в tarball | Выделить пакет → Assets → Pack Package. Файл появляется в `Toolkit/_packages`. |
 | Репозитории | GitHub `Bodix/Toolkit`, по одному сабмодулю на пакет: `Bodix/PerfectFoundation`, `PerfectUI`, `PerfectInventory`, `PerfectQuests`, `Evolunity`, `Unity.Toolkit.*` |
 
 ## Состояние
@@ -44,42 +44,23 @@
 | Evolunity | 4.0.0 | Всё ещё на Unity 2019.3 | Версия 5.0.0 для 2022.3 |
 | Toolkit.InputSystem, Resettables, Styles, Tweens, WContainer | 1.0.x | Всё ещё на Unity 2019.x | Перевести на 2022.3 |
 
-## 1. Профиль издателя — сделать в первую очередь
+## 1. Профиль издателя
 
-Магазин требует картинку профиля, промо-баннер, вступление (Introduction) и деловые контакты. Сайт и ссылки на соцсети необязательны.
 
-- [x] Выбрать логотип. См. Brand Design Brief и Logo History.
-- [x] Узнать размеры изображений в Publisher Portal → Profile.
-- [x] Экспортировать картинку профиля и промо-баннер из выбранного логотипа.
-- [x] Написать Introduction: заголовок и один абзац.
 - [ ] Поддержка клиентов: ссылка на поддержку (GitHub Issues).
 - [ ] Ссылки на соцсети: GitHub.
 - [ ] Сайт: оставить пустым, пока на perfectcore.net нет сайта (задача 8).
 
 ## 2. Perfect Foundation 1.0.1
 
-- [x] Переведён на Unity 2022.3. Встроенный NaughtyAttributes обновлён с 2.0.7 до 2.1.6: пространство имён переименовано, наши GUID сохранены. Пакет компилируется на Unity 6000.6.
-- [x] Валидатор: осталось одно предупреждение, Static Variables (статические кэши). Оно объяснено в заметке для проверяющих.
-- [x] Отправлен на проверку.
 - [ ] После публикации поставить Perfect Foundation в PerfectCore из My Assets вместо tarball. Проверить, что в `Library/PackageCache` нет `Media~` и `Documentation~`.
 
 ## 3. Perfect UI 1.0.0
 
-Уже сделано: uLayout обновлён с 1.7.1 до 1.7.2 с исправлениями, новые GUID для встроенного uLayout, перенос в `Packages/net.perfectcore.perfectui`, CHANGELOG 1.0.0, `.npmignore`, явные ссылки на `UnityEngine.UI`, TextMeshPro 3.0.7.
-
-Проверки:
-
-- [x] Пересобрать tarball Foundation и Perfect UI: Assets → Pack Package. Старые tarball собраны 26 сентября, до пересериализации: код тот же, но 95 файлов Perfect UI и 30 файлов Foundation отличаются (meta, префабы, шрифт).
-- [x] PerfectCore компилируется с новыми tarball. Проверить, что `Library/PackageCache` совпадает с новыми tarball. Последний лог на старых tarball (1 октября) — без ошибок CS.
-- [x] Префабы правильно выглядят на Canvas в URP: тестовая сцена, режимы Screen Space - Overlay и Screen Space - Camera, диалог.
-- [x] Play Mode с выключенным Domain Reload: нажатия на элементы без ошибок (правило 2.5.h). В коде Perfect UI нет статического состояния.
-- [x] Чистый проект Unity 6000.6 (Unity 6 LTS не установлена): поставить Perfect Foundation, потом Perfect UI из tarball. Там `com.unity.textmeshpro` превращается в пустой пакет 5.0.0 типа `shim`, который тянет uGUI 2.x. Это нормально. Не должно быть ошибок CS0433 о дублирующихся типах TMP.
-- [x] Валидатор (UPM): без ошибок. Ожидаются два предупреждения: Cross-Product Dependencies и SRP Compatible Materials. Оба объяснены в заметке для проверяющих.
-
 Медиа (через скилл asset-store-media):
 
 - [x] Теглайн: "Clean ready-made uGUI elements".
-- [x] Глиф: вариант A — угловые скобки рамки и раскладка из трёх блоков (высокий слева, два справа). Нарисован с нуля по мотивам образца владельца с Flaticon, который использовать нельзя. Лежит в `Media~/PerfectUI_Logo.svg` и `Media~/PerfectUI_Logo_1024.png`.
+- [x] Глиф лежит в `Media~/PerfectUI_Logo.svg` и `Media~/PerfectUI_Logo_1024.png`.
 - [ ] Фон: владелец пришлёт новый (см. Открытые вопросы).
 - [ ] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630.
 - [ ] Скриншоты 1950×1300, по одному на функцию: Prefabs (все префабы на Canvas), Show and Hide (код анимации → инспектор `UiElement` со списком Animations), Dialogs (вызов `ShowConfirmationDialog` → диалог), Flexible Layout Group (настройки → сетка при двух ширинах), Aspect Ratio Adaptation (один экран при 7:3 и 4:3). Кадры Unity снимаются в тестовой сцене.
