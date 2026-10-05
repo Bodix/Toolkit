@@ -1,6 +1,6 @@
 # Perfect Core — план публикации в Asset Store
 
-Состояние на 27 сентября 2026.
+Состояние на 2 октября 2026.
 
 Это рабочий документ для публикации пакетов Perfect Core в Unity Asset Store. Новый чат без другого контекста может продолжить работу отсюда: прочитать документ один раз и взять следующую невыполненную задачу.
 
@@ -30,6 +30,7 @@
 | Пакеты, которые ещё не перенесены | `Toolkit/Assets/Packages/` |
 | Архивы пакетов (tarball) | `Toolkit/_packages/*.tgz`. PerfectCore ставит их через ссылки `file:`. |
 | Инструменты для медиа и стиль серии | `Toolkit/.claude/skills/asset-store-media` (`SKILL.md`, `Visual Style.md`, `scripts/`) |
+| Упаковка пакета в tarball: выделить пакет → Assets → Pack Package. Файл появляется в `Toolkit/_packages`. |
 | Репозитории | GitHub `Bodix/Toolkit`, по одному сабмодулю на пакет: `Bodix/PerfectFoundation`, `PerfectUI`, `PerfectInventory`, `PerfectQuests`, `Evolunity`, `Unity.Toolkit.*` |
 
 ## Состояние
@@ -37,7 +38,7 @@
 | Пакет | Версия | Состояние | Следующий шаг |
 |---|---|---|---|
 | Perfect Foundation | 1.0.1 | На проверке | Доделать профиль издателя, потом ждать проверки |
-| Perfect UI | 1.0.0 | Код готов, медиа нет | Проверки, медиа и страница в магазине. Загрузить, когда Foundation появится в магазине. |
+| Perfect UI | 1.0.0 | Код готов. Глиф и теглайн выбраны, медиа нет. | Пересобрать tarball и пройти проверки в Unity. Потом медиа и страница в магазине. Загрузить, когда Foundation появится в магазине. |
 | Perfect Inventory | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Perfect Quests | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Evolunity | 4.0.0 | Всё ещё на Unity 2019.3 | Версия 5.0.0 для 2022.3 |
@@ -68,23 +69,26 @@
 
 Проверки:
 
-- [ ] PerfectCore компилируется с новыми tarball.
-- [ ] Префабы правильно выглядят на Canvas в URP.
-- [ ] Чистый проект Unity 6 LTS: поставить Perfect Foundation и Perfect UI с диска. В Unity 6 TextMeshPro входит в uGUI 2.0. TMP не должен появиться отдельным пакетом, и не должно быть ошибок CS0433 о дублирующихся типах TMP.
-- [ ] Валидатор (UPM): без ошибок. Ожидаются два предупреждения: Cross-Product Dependencies и SRP Compatible Materials. Оба объяснены в заметке для проверяющих.
+- [x] Пересобрать tarball Foundation и Perfect UI: Assets → Pack Package. Старые tarball собраны 26 сентября, до пересериализации: код тот же, но 95 файлов Perfect UI и 30 файлов Foundation отличаются (meta, префабы, шрифт).
+- [x] PerfectCore компилируется с новыми tarball. Проверить, что `Library/PackageCache` совпадает с новыми tarball. Последний лог на старых tarball (1 октября) — без ошибок CS.
+- [x] Префабы правильно выглядят на Canvas в URP: тестовая сцена, режимы Screen Space - Overlay и Screen Space - Camera, диалог.
+- [x] Play Mode с выключенным Domain Reload: нажатия на элементы без ошибок (правило 2.5.h). В коде Perfect UI нет статического состояния.
+- [x] Чистый проект Unity 6000.6 (Unity 6 LTS не установлена): поставить Perfect Foundation, потом Perfect UI из tarball. Там `com.unity.textmeshpro` превращается в пустой пакет 5.0.0 типа `shim`, который тянет uGUI 2.x. Это нормально. Не должно быть ошибок CS0433 о дублирующихся типах TMP.
+- [x] Валидатор (UPM): без ошибок. Ожидаются два предупреждения: Cross-Product Dependencies и SRP Compatible Materials. Оба объяснены в заметке для проверяющих.
 
 Медиа (через скилл asset-store-media):
 
-- [ ] Согласовать глиф и слоган из 2–4 слов. Текущая идея глифа — окно или панель с кнопкой.
-- [ ] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630, логотип в SVG и в PNG 1024.
-- [ ] Скриншоты 1950×1300, по одному на функцию: префабы, анимации показа и скрытия, диалоги, Flexible Layout Group, адаптация к соотношению сторон.
+- [x] Теглайн: "Clean ready-made uGUI elements".
+- [x] Глиф: вариант A — угловые скобки рамки и раскладка из трёх блоков (высокий слева, два справа). Нарисован с нуля по мотивам образца владельца с Flaticon, который использовать нельзя. Лежит в `Media~/PerfectUI_Logo.svg` и `Media~/PerfectUI_Logo_1024.png`.
+- [ ] Фон: владелец пришлёт новый (см. Открытые вопросы).
+- [ ] Icon 160×160, Card 420×280, Marketing 1950×1300, Social 1200×630.
+- [ ] Скриншоты 1950×1300, по одному на функцию: Prefabs (все префабы на Canvas), Show and Hide (код анимации → инспектор `UiElement` со списком Animations), Dialogs (вызов `ShowConfirmationDialog` → диалог), Flexible Layout Group (настройки → сетка при двух ширинах), Aspect Ratio Adaptation (один экран при 7:3 и 4:3). Кадры Unity снимаются в тестовой сцене.
 
 Страница в магазине и загрузка:
 
 - [ ] Цена: бесплатно.
 - [ ] Описание: указать, что нужен Perfect Foundation (бесплатный). Добавить строку: "Asset uses uLayout under MIT License and Rubik under SIL Open Font License 1.1; see Third-Party Notices.txt file in package for details."
 - [ ] Технические детали: Unity 2022.3+; Built-in, URP и HDRP (uGUI работает во всех); зависимости; состав пакета.
-- [ ] Раскрытие использования ИИ: выбрать формулировку. README и медиа сделаны с помощью Claude.
 - [ ] Строка с указанием автора фона в описании, если текущий фон останется (см. Открытые вопросы).
 - [ ] Заметка для команды Curation: "Perfect UI depends on Perfect Foundation. Perfect Inventory and Perfect Quests depend on it too, so it is published as its own free product, as the Asset Store documentation recommends for a dependency shared by several products. The validator cannot check this and reports it as a Cross-Product Dependencies warning. The SRP Compatible Materials warning lists TextMeshPro font materials: they use the standard TextMeshPro UI shaders, which render on a Canvas in the Built-in Render Pipeline, URP and HDRP."
 - [ ] Загрузить, когда Perfect Foundation появится в магазине: Unity → Window → Tools → Asset Store → Uploader → UPM Packages → Upload. Потом заполнить Publisher Portal и отправить.
@@ -116,7 +120,7 @@
 ## 7. Поддержка
 
 - [ ] Скрипт или скилл, который обновляет встроенные библиотеки (NaughtyAttributes, uLayout). Он берёт тег оригинальной библиотеки, переименовывает пространство имён, сохраняет наши GUID и применяет наши исправления. Он может сопоставлять оригинальные GUID с нашими по совпадению путей файлов в оригинальном пакете и в нашей копии.
-- [ ] Инструмент упаковки: пункт меню Evolunity, который упаковывает выбранный пакет через `Client.Pack` в `_packages` так же, как его собирает магазин.
+- [x] Инструмент упаковки: пункт меню Evolunity, который упаковывает выбранный пакет через `Client.Pack` в `_packages` так же, как его собирает магазин. Assets → Pack Package, работает и для нескольких выделенных пакетов.
 - [ ] Проверить заморозку Unity 2019.4. Склонировать `last-2019.4` с сабмодулями в отдельную папку и открыть в Unity 2019.4.41f2 (см. `LAST-2019.4.md`).
 - [ ] Необязательно: правила GitHub (rulesets) в публичных репозиториях (Toolkit, PerfectFoundation). Они запрещают удалять ветку `legacy/2019.4`, делать в неё force-push и двигать тег `last-2019.4`. Порядок работы один и тот же с правилами и без них: никогда не сливать master в `legacy/2019.4`, тег никогда не двигается.
 
@@ -129,20 +133,13 @@
 
 ## Открытые вопросы
 
-1. Логотип и слоган. См. Brand Design Brief.
-2. Размеры картинки профиля и промо-баннера (Publisher Portal → Profile).
-3. Поставится ли Perfect Foundation вместе с Perfect UI, если пользователь не добавил Foundation в My Assets? Проверить после публикации или спросить поддержку Asset Store.
-4. Формулировка раскрытия использования ИИ (правило 1.6.a).
-5. Фон медиа пакетов. Это "black shiny wallpaper" от starline с Magnific.com, по бесплатной лицензии с такими условиями:
+1. Поставится ли Perfect Foundation вместе с Perfect UI, если пользователь не добавил Foundation в My Assets? Проверить после публикации или спросить поддержку Asset Store.
+2. Фон медиа пакетов. Владелец пришлёт новый фон для Perfect UI. Медиа Foundation сейчас на фоне "black shiny wallpaper" от starline с Magnific.com, по бесплатной лицензии с такими условиями:
    - в каждом описании нужна строка "Background image designed by starline - Magnific.com (https://www.magnific.com)";
    - изображение нельзя использовать в товарном знаке, поэтому оно не должно стоять за логотипом или за иконкой 160×160;
    - использование "for AI purposes" (в целях ИИ) запрещено, и эта формулировка широкая;
    - сертификат выдан на "Anonymous user", поэтому изображение нужно скачать заново со своего аккаунта.
 
-   Оставить его или заменить?
-6. Глиф и слоган Perfect UI.
-7. Цены Perfect Inventory и Perfect Quests.
-8. Какие из Evolunity и пакетов Toolkit пойдут в магазин, если вообще пойдут.
 
 ## Ключевые факты и решения
 
@@ -155,6 +152,11 @@
 - Предупреждение SRP Compatible Materials у Perfect UI перечисляет материалы шрифтов TextMeshPro. Они используют стандартные UI-шейдеры TMP, которые работают на Canvas в любом пайплайне.
 - В манифесте проекта прямая зависимость важнее версии, которую запрашивает пакет.
 - Все ассеты пересериализованы в Unity 2022.3. Изменился только формат: GUID и значения не менялись.
+- `Client.Pack` добавляет в `package.json` внутри tarball поле `repository` с адресом и ревизией git.
+- В Unity 6 пакет `com.unity.textmeshpro` превращается в пустой пакет 5.0.0 типа `shim`. Он только тянет uGUI 2.x, где теперь живёт TMP. Поэтому зависимость Perfect UI от TMP 3.0.7 не даёт дублей типов.
+- Шейдеры TMP приходят только с TMP Essential Resources, и в 2022.3, и в Unity 6. Пока их не импортировали, тексты префабов не рисуются. README Perfect UI называет это требованием.
+- Логотипы и фоны медиа, сделанные с помощью ИИ, раскрывать не нужно. Функциональные части пакета, сделанные с помощью ИИ, раскрывать нужно, в поле AI description (правило 1.6.b).
+- Глифы пакетов рисуются с нуля. Картинки с Flaticon, Freepik и похожих сайтов можно брать только как образец смысла.
 
 ## Правила магазина, на которые мы опираемся
 
@@ -165,7 +167,6 @@
 | 1.1.b, 2.5.i | Пакет не выдаёт ошибок и предупреждений |
 | 1.1.c | Зависимости указаны в описании |
 | 1.2.a | Сторонние компоненты упомянуты в описании |
-| 1.6.a | Использование ИИ раскрыто |
 | 2.5.h | Пакет работает с выключенным Domain Reload |
 | 3.1.b | Технические детали и состав пакета перечислены |
 | 4.1 | Ссылки должны работать: для `author.url` нужен рабочий сайт |
