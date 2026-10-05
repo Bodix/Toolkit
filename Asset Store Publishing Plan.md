@@ -71,11 +71,8 @@
 
 Страница в магазине и загрузка:
 
-- [ ] Цена: бесплатно.
-- [ ] Описание: указать, что нужен Perfect Foundation (бесплатный). Добавить строку: "Asset uses uLayout under MIT License and Rubik under SIL Open Font License 1.1; see Third-Party Notices.txt file in package for details."
-- [ ] Технические детали: Unity 2022.3+; Built-in, URP и HDRP (uGUI работает во всех); зависимости; состав пакета.
-- [ ] Строка с указанием автора фона в описании: "Background image designed by starline - Magnific.com (https://www.magnific.com)".
-- [ ] Заметка для команды Curation: "Perfect UI depends on Perfect Foundation. Perfect Inventory and Perfect Quests depend on it too, so it is published as its own free product, as the Asset Store documentation recommends for a dependency shared by several products. The validator cannot check this and reports it as a Cross-Product Dependencies warning. The SRP Compatible Materials warning lists TextMeshPro font materials: they use the standard TextMeshPro UI shaders, which render on a Canvas in the Built-in Render Pipeline, URP and HDRP."
+- [ ] Тексты страницы: черновик всех полей лежит в `Packages/net.perfectcore.perfectui/Documentation~/Asset Store Page.md`.
+- [ ] Подставить в описание ссылку на Perfect Foundation, когда он появится в магазине.
 - [ ] Загрузить, когда Perfect Foundation появится в магазине: Unity → Window → Tools → Asset Store → Uploader → UPM Packages → Upload. Потом заполнить Publisher Portal и отправить.
 - [ ] После публикации поставить из My Assets и проверить, что в `Library/PackageCache` нет `Documentation~`.
 - [ ] После одобрения следить за отзывами. Исправления выпускать новыми версиями (semver) с записью в CHANGELOG.
@@ -135,7 +132,7 @@
 - Unity сама добавляет `UnityEngine.UI` и `UnityEditor.UI` в каждую сборку, но Check Dependencies в валидаторе видит только явные ссылки. Поэтому `UnityEngine.UI` подключён явно: `GUID:2bafac87e7f4b9b418d9448d219b01ab`.
 - Check Dependencies сравнивает объявленную и установленную версии как текст. Для `com.unity.textmeshpro` указана версия 3.0.7, версия по умолчанию в 2022.3.62f3.
 - Зависимость, общая для нескольких продуктов, должна быть отдельным продуктом (документация Publisher Portal). Поэтому Perfect Foundation — отдельный бесплатный продукт.
-- Предупреждение SRP Compatible Materials у Perfect UI перечисляет материалы шрифтов TextMeshPro. Они используют стандартные UI-шейдеры TMP, которые работают на Canvas в любом пайплайне.
+- Предупреждение SRP Compatible Materials у Perfect UI перечисляет два вида материалов. "Font Material" — это материалы, которые TrueType Font Importer создаёт для каждого .ttf Rubik (встроенный GUI/Text Shader), пакет их не использует. "Rubik-Regular SDF Material" — материал шрифта TextMeshPro со стандартным шейдером TextMeshPro/Distance Field. Оба работают на Canvas в любом пайплайне.
 - В манифесте проекта прямая зависимость важнее версии, которую запрашивает пакет.
 - Все ассеты пересериализованы в Unity 2022.3. Изменился только формат: GUID и значения не менялись.
 - `Client.Pack` добавляет в `package.json` внутри tarball поле `repository` с адресом и ревизией git.
