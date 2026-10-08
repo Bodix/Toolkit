@@ -154,3 +154,8 @@
 | 3.1.b | Технические детали и состав пакета перечислены |
 | 4.1 | Ссылки должны работать: для `author.url` нужен рабочий сайт |
 | 5.2.c | Зависимости от других продуктов; Perfect Foundation — отдельный бесплатный продукт |
+
+## Источники
+
+- [Submission Guidelines](https://assetstore.unity.com/publishing/submission-guidelines): правила магазина. Номера правил в этом плане взяты отсюда.
+- [UPM product publishing workflow](https://docs.unity.com/en-us/asset-store/publishing/upm-packages/publish): как загрузить UPM-пакет и отправить его на проверку.
