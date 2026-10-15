@@ -1,12 +1,15 @@
 [submodule "Assets/Packages/Evolunity"]
 	path = Assets/Packages/Evolunity
 	url = https://github.com/Bodix/Evolunity.git
-[submodule "Assets/Packages/PerfectCore.PerfectFoundation"]
+[submodule "Packages/net.perfectcore.perfectfoundation"]
 	path = Packages/net.perfectcore.perfectfoundation
 	url = https://github.com/Bodix/PerfectFoundation.git
-[submodule "Assets/Packages/PerfectCore.PerfectUI"]
+[submodule "Packages/net.perfectcore.perfectui"]
 	path = Packages/net.perfectcore.perfectui
 	url = https://github.com/Bodix/PerfectUI.git
+[submodule "Packages/net.perfectcore.perfectloottables"]
+	path = Packages/net.perfectcore.perfectloottables
+	url = https://github.com/Bodix/PerfectLootTables.git
 [submodule "Assets/Packages/PerfectCore.PerfectInventory"]
 	path = Assets/Packages/PerfectCore.PerfectInventory
 	url = https://github.com/Bodix/PerfectInventory.git

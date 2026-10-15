@@ -122,6 +122,14 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "net.perfectcore.perfectloottables": {
+      "version": "file:net.perfectcore.perfectloottables",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "net.perfectcore.perfectfoundation": "1.0.1"
+      }
+    },
     "net.perfectcore.perfectui": {
       "version": "file:net.perfectcore.perfectui",
       "depth": 0,
