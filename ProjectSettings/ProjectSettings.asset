@@ -803,7 +803,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: ODIN_INSPECTOR;ODIN_INSPECTOR_3;DISABLE_UCE_ASSOCIATION;DOTWEEN
+    Android: ODIN_INSPECTOR;ODIN_INSPECTOR_3;DISABLE_UCE_ASSOCIATION;DOTWEEN;PERFECT_INVENTORY
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN
     LinuxHeadlessSimulation: DOTWEEN
@@ -812,10 +812,10 @@ PlayerSettings:
     PS5: DOTWEEN
     Stadia: DOTWEEN
     Standalone: DISABLE_UCE_ASSOCIATION;ODIN_INSPECTOR;ODIN_INSPECTOR_3;DOTWEEN;PERFECT_INVENTORY
-    WebGL: DOTWEEN;ODIN_INSPECTOR;ODIN_INSPECTOR_3
+    WebGL: DOTWEEN;ODIN_INSPECTOR;ODIN_INSPECTOR_3;PERFECT_INVENTORY
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
-    iPhone: DOTWEEN
+    iPhone: DOTWEEN;PERFECT_INVENTORY
     tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
