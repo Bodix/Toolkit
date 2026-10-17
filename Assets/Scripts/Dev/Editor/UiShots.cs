@@ -15,7 +15,8 @@ namespace Toolkit.Dev.Editor
 	public static class UiShots
 	{
 		public const string Folder = "Screenshots/UiShots";
-		private const int WaitFrames = 6;
+		// Nested uLayout layouts settle one level per frame.
+		private const int WaitFrames = 15;
 
 		private static readonly Queue<(string path, int width, int height)> _queue = new Queue<(string, int, int)>();
 		private static (string path, int width, int height) _current;
@@ -100,6 +101,8 @@ namespace Toolkit.Dev.Editor
 
 			return $"Capture queued: {_queue.Count}";
 		}
+
+		public static bool IsBusy => _stage != 0;
 
 		/// <summary>"busy N left" or "done" with the saved files.</summary>
 		public static string Status()

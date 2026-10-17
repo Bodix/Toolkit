@@ -23,7 +23,7 @@ namespace Toolkit.Dev.Editor
 	/// Scenes for the UI sheet (D-112): every element in all its states. NewScene() in Edit Mode, then Play Mode,
 	/// then a scene method, then <see cref="UiShots.Capture"/>. Called from Unity MCP.
 	/// </summary>
-	public static class UiSheetScenes
+	public static partial class UiSheetScenes
 	{
 		private const string ExampleConfigs = QuestFolder + "Example/Configs/";
 
@@ -31,7 +31,8 @@ namespace Toolkit.Dev.Editor
 		public static string NewScene()
 		{
 			var active = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-			if (active.isDirty)
+			// An untitled scene is an earlier sheet scene: it is never saved.
+			if (active.isDirty && !string.IsNullOrEmpty(active.path))
 				return $"Scene {active.path} has unsaved changes";
 
 			EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
@@ -92,7 +93,7 @@ namespace Toolkit.Dev.Editor
 			var states = new QuestDefinition { Title = "States" };
 			var stateList = new List<QuestObjectiveState>();
 			AddObjective(states, stateList, "Deliver 20 crates of rum", 1f, "20/20", completed: true);
-			AddObjective(states, stateList, "Escort the merchant convoy", 0.4f, "2/5", failed: true);
+			AddObjective(states, stateList, "Escort the convoy", 0.4f, "2/5", failed: true);
 			AddObjective(states, stateList, "Keep at least half of the hull", 0.5f, "50%", optional: true, bonus: new QuestReward[] { Gold(50) });
 			ShowObjectives(Card(columns, "Done, failed, optional"), states, stateList);
 
@@ -188,6 +189,9 @@ namespace Toolkit.Dev.Editor
 		public string Text;
 		public float Progress;
 		public string ProgressText;
+		/// <summary>For the pages with a quest service: the state of the objective there.</summary>
+		public bool Done;
+		public bool Failed;
 
 		public override IQuestObjectiveTracker CreateTracker() => null;
 		public override string GetDescription() => Text;

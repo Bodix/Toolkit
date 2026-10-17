@@ -34,7 +34,10 @@ namespace Toolkit.Dev.Editor
 
 			GameObject text = Child("Text", root.transform);
 			TextMeshProUGUI tmp = Text(text, "Label", 28, White, TextAlignmentOptions.Center);
-			Limits(Item<LayoutText>(text, SizingMode.FitContent, SizingMode.FitContent), maxWidth: 360);
+			var textItem = Item<LayoutText>(text, SizingMode.FitContent, SizingMode.FitContent);
+			Limits(textItem, maxWidth: 360);
+			// Never wider than its container: a narrow column cuts the text with an ellipsis.
+			Set(textItem, "m_fitAvailableWidth", true);
 
 			var label = root.AddComponent<UiText>();
 			Set(label, "text", tmp);

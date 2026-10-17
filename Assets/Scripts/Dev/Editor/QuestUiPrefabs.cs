@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Toolkit.Dev.Editor.UiBuild;
+using ULayout = PerfectCore.PerfectUI.uLayout.Layout;
 
 namespace Toolkit.Dev.Editor
 {
@@ -84,76 +85,160 @@ namespace Toolkit.Dev.Editor
 			Save(root, RewardList);
 		}
 
-		private static void BuildObjective()
+		/// <summary>Sizes of an objective: the full one for cards and the compact one for the tracker.</summary>
+		public sealed class ObjectiveStyle
 		{
-			GameObject root = Root("Quest Objective");
-			Column(root, 12, SizingMode.Grow, SizingMode.FitContent);
+			/// <summary>The height of the status and of the first line: the status sits in the middle of it.</summary>
+			public float StatusSize;
+			public float DotSize;
+			public float TextSize;
+			/// <summary>Above and below the description, so one line of it is as high as the status.</summary>
+			public float DescriptionMargin;
+			public float Gap;
+			public float BarHeight;
+			public float ProgressTextSize;
+			/// <summary>The progress text at the end of the first line and no bar: one line per objective.</summary>
+			public bool InlineProgress;
+			public bool BonusRewards;
+		}
 
-			GameObject header = Child("Header", root.transform);
-			Row(header, 16, SizingMode.Grow, SizingMode.FitContent);
+		// A line of Rubik 36 is 42.7 high, of Rubik 28 is 33.2. A label is 49.2 high.
+		public static readonly ObjectiveStyle FullObjective = new ObjectiveStyle
+		{
+			StatusSize = 50, DotSize = 16, TextSize = 36, DescriptionMargin = 4, Gap = 12, BarHeight = 20,
+			ProgressTextSize = 32, BonusRewards = true
+		};
 
-			GameObject completed = Child("Completed Mark", header.transform);
-			Size(completed, 44, 44);
-			Image(completed, Icon("check-mark-colored"), White).preserveAspect = true;
-			Item<LayoutItem>(completed, SizingMode.Fixed, SizingMode.Fixed);
+		public static readonly ObjectiveStyle CompactObjective = new ObjectiveStyle
+		{
+			StatusSize = 44, DotSize = 12, TextSize = 28, DescriptionMargin = 5, Gap = 8, BarHeight = 14,
+			ProgressTextSize = 26, InlineProgress = true, BonusRewards = false
+		};
+
+		private static void BuildObjective() => BuildObjective("Quest Objective", Objective, FullObjective);
+
+		public static void BuildObjective(string name, string path, ObjectiveStyle style)
+		{
+			GameObject root = Root(name);
+			Row(root, 16, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.Start);
+
+			// The status keeps one place in every state, so the texts of all objectives start on one line.
+			GameObject status = Child("Status", root.transform);
+			Size(status, style.StatusSize, style.StatusSize);
+			Item<LayoutItem>(status, SizingMode.Fixed, SizingMode.Fixed);
+
+			GameObject pending = Child("Pending Mark", status.transform);
+			Size(pending, style.DotSize, style.DotSize);
+			Image(pending, Load<Sprite>(UiFolder + "Textures/Cirlces/Circle_64px.png"), Muted).type = UnityEngine.UI.Image.Type.Simple;
+			GameObject completed = Mark(status, "Completed Mark", "check-mark-colored");
+			GameObject failed = Mark(status, "Failed Mark", "close-colored");
+
+			// Everything but the status fades when the objective is finished. With the progress inline,
+			// the body is a row: the text and the progress text at the right edge.
+			GameObject body = Child("Body", root.transform);
+			if (style.InlineProgress)
+				Row(body, 16, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.Start);
+			else
+				Column(body, style.Gap, SizingMode.Grow, SizingMode.FitContent);
+			var finished = body.AddComponent<CanvasGroup>();
+			finished.interactable = false;
+			finished.blocksRaycasts = false;
+
+			// The optional mark follows a short text on its line and wraps to the next line under a long one.
+			// A text that shares a line with the mark is one line high, so both sit in the middle of the line.
+			GameObject header = Child("Header", body.transform);
+			Layout headerRow = Row(header, 16, SizingMode.Grow, SizingMode.FitContent);
+			Wrap(headerRow, 8);
+			Limits(headerRow, minHeight: style.StatusSize);
 
 			GameObject description = Child("Description Text", header.transform);
-			TextMeshProUGUI descriptionText = Text(description, "Objective", 36, White, wrap: true, overflow: TextOverflowModes.Overflow);
-			Item<LayoutText>(description, SizingMode.Grow, SizingMode.FitContent);
+			TextMeshProUGUI descriptionText = Text(description, "Objective", style.TextSize, White, wrap: true, overflow: TextOverflowModes.Overflow);
+			var descriptionItem = Item<LayoutText>(description, SizingMode.FitContent, SizingMode.FitContent);
+			UiBuild.Margins(descriptionItem, 0, 0, style.DescriptionMargin, style.DescriptionMargin);
+			Set(descriptionItem, "m_fitAvailableWidth", true);
 			var descriptionView = description.AddComponent<UiText>();
 			Set(descriptionView, "text", descriptionText);
 
 			GameObject optional = Nested(UiPrefabs + "Label.prefab", header.transform, "Optional Mark");
 			optional.GetComponentInChildren<TMP_Text>().text = "Optional";
 
-			GameObject failed = Nested(UiPrefabs + "Label.prefab", header.transform, "Failed Mark");
-			failed.GetComponentInChildren<TMP_Text>().text = "Failed";
-			failed.transform.Find("Background").GetComponent<Image>().color = Red;
+			var view = root.AddComponent<UiQuestObjective>();
+			Set(view, "_descriptionText", descriptionView);
+			Set(view, "_optionalMark", optional);
+			Set(view, "_pendingMark", pending);
+			Set(view, "_completedMark", completed);
+			Set(view, "_failedMark", failed);
+			Set(view, "_finishedGroup", finished);
 
-			GameObject progress = Child("Progress", root.transform);
+			if (style.InlineProgress)
+			{
+				// On the first line, at the right edge: as high as the description line.
+				GameObject inlineText = Child("Progress Text", body.transform);
+				TextMeshProUGUI inlineTmp = Text(inlineText, "0/0", style.ProgressTextSize, Muted, TextAlignmentOptions.Right);
+				var inlineItem = Item<LayoutText>(inlineText, SizingMode.FitContent, SizingMode.FitContent);
+				float lineHeight = style.TextSize * 42.66f / 36f;
+				UiBuild.Margins(inlineItem, 0, 0, style.DescriptionMargin + (lineHeight - style.ProgressTextSize * 42.66f / 36f) / 2, 0);
+				var inlineView = inlineText.AddComponent<UiText>();
+				Set(inlineView, "text", inlineTmp);
+				Set(view, "_progressText", inlineView);
+				Save(root, path);
+				return;
+			}
+
+			GameObject progress = Child("Progress", body.transform);
 			Row(progress, 16, SizingMode.Grow, SizingMode.FitContent);
 
 			GameObject bar = Nested(UiPrefabs + "Progress Bar.prefab", progress.transform, "Progress Bar");
-			Size(bar, 100, 20);
+			Size(bar, 100, style.BarHeight);
 			Item<LayoutItem>(bar, SizingMode.Grow, SizingMode.Fixed);
+			// Sliced circles: the corner radius is half the height, so the pixels per unit follow the height.
 			var barBackground = bar.transform.Find("Background").GetComponent<Image>();
 			barBackground.color = Dark;
 			barBackground.raycastTarget = false;
-			barBackground.pixelsPerUnitMultiplier = 25.6f;
+			barBackground.pixelsPerUnitMultiplier = 512f / style.BarHeight;
 			var barFill = bar.transform.Find("Background/Fill Image").GetComponent<Image>();
-			barFill.rectTransform.sizeDelta = new Vector2(-8, -8);
-			barFill.pixelsPerUnitMultiplier = 42.7f;
+			float fillHeight = style.BarHeight * 0.6f;
+			barFill.rectTransform.sizeDelta = new Vector2(fillHeight - style.BarHeight, fillHeight - style.BarHeight);
+			barFill.pixelsPerUnitMultiplier = 512f / fillHeight;
 			barFill.raycastTarget = false;
 
 			GameObject progressTextObject = Child("Progress Text", progress.transform);
-			TextMeshProUGUI progressText = Text(progressTextObject, "0/0", 32, Muted, TextAlignmentOptions.Right);
+			TextMeshProUGUI progressText = Text(progressTextObject, "0/0", style.ProgressTextSize, Muted, TextAlignmentOptions.Right);
 			Item<LayoutText>(progressTextObject, SizingMode.FitContent, SizingMode.FitContent);
 			var progressView = progressTextObject.AddComponent<UiText>();
 			Set(progressView, "text", progressText);
 
-			GameObject bonus = Nested(RewardList, root.transform, "Bonus Rewards");
-			bonus.transform.Find("Title Text").GetComponent<TMP_Text>().text = "Bonus";
+			if (style.BonusRewards)
+			{
+				GameObject bonus = Nested(RewardList, body.transform, "Bonus Rewards");
+				bonus.transform.Find("Title Text").GetComponent<TMP_Text>().text = "Bonus";
+				Set(view, "_bonusRewards", bonus.GetComponent<UiQuestRewardList>());
+			}
 
-			var view = root.AddComponent<UiQuestObjective>();
-			Set(view, "_descriptionText", descriptionView);
 			Set(view, "_progressText", progressView);
 			Set(view, "_progressBar", bar.GetComponent<UiProgressBar>());
 			Set(view, "_progressGroup", progress);
-			Set(view, "_optionalMark", optional);
-			Set(view, "_failedMark", failed);
-			Set(view, "_completedMark", completed);
-			Set(view, "_bonusRewards", bonus.GetComponent<UiQuestRewardList>());
-			Save(root, Objective);
+			Save(root, path);
 		}
 
-		private static void BuildObjectiveList()
+		private static GameObject Mark(GameObject status, string name, string icon)
 		{
-			GameObject root = Root("Quest Objective List");
-			Column(root, 24, SizingMode.Grow, SizingMode.FitContent);
+			GameObject mark = Child(name, status.transform);
+			Stretch(mark, 3, 3, 3, 3);
+			Image(mark, Icon(icon), White).preserveAspect = true;
+			return mark;
+		}
+
+		private static void BuildObjectiveList() => BuildObjectiveList("Quest Objective List", ObjectiveList, Objective, 24);
+
+		public static void BuildObjectiveList(string name, string path, string objectivePath, float gap)
+		{
+			GameObject root = Root(name);
+			Column(root, gap, SizingMode.Grow, SizingMode.FitContent);
 			var list = root.AddComponent<UiQuestObjectiveList>();
 			Set(list, "_container", root.transform);
-			Set(list, "_objectivePrefab", Load<GameObject>(Objective).GetComponent<UiQuestObjective>());
-			Save(root, ObjectiveList);
+			Set(list, "_objectivePrefab", Load<GameObject>(objectivePath).GetComponent<UiQuestObjective>());
+			Save(root, path);
 		}
 	}
 }
