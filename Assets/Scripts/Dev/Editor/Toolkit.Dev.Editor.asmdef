@@ -1,0 +1,28 @@
+{
+    "name": "Toolkit.Dev.Editor",
+    "rootNamespace": "Toolkit.Dev.Editor",
+    "references": [
+        "PerfectCore.PerfectFoundation",
+        "PerfectCore.PerfectUI",
+        "PerfectCore.PerfectUI.uLayout",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "PerfectCore.PerfectInventory",
+        "PerfectCore.PerfectInventory.UI",
+        "PerfectCore.PerfectQuests",
+        "PerfectCore.PerfectQuests.UI",
+        "PerfectCore.PerfectQuests.Inventory",
+        "PerfectCore.PerfectQuests.Inventory.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
