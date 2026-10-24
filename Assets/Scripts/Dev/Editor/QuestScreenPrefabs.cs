@@ -35,6 +35,7 @@ namespace Toolkit.Dev.Editor
 		private static readonly Color TabPlate = Hex("999999");
 		private static readonly Color TabText = Hex("4C4C4C");
 
+		/// <summary>Builds the compact objective, the cards, tracker, journal, offer and board.</summary>
 		public static string BuildScreens()
 		{
 			try

@@ -22,6 +22,7 @@ namespace Toolkit.Dev.Editor
 	/// <summary>
 	/// Scenes for the UI sheet (D-112): every element in all its states. NewScene() in Edit Mode, then Play Mode,
 	/// then a scene method, then <see cref="UiShots.Capture"/>. Called from Unity MCP.
+	/// The sheet image is built from the shots by Sheet~/ui_sheet.py.
 	/// </summary>
 	public static partial class UiSheetScenes
 	{

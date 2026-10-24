@@ -10,6 +10,7 @@ namespace Toolkit.Dev.Editor
 	/// <summary>Builders of new Perfect UI prefabs (D-112). Called from Unity MCP.</summary>
 	public static class PerfectUiPrefabs
 	{
+		/// <summary>Builds Label and Window. The Perfect Quests builders nest them, so after a change run this first.</summary>
 		public static string BuildAll()
 		{
 			try

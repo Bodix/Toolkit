@@ -21,6 +21,7 @@ namespace Toolkit.Dev.Editor
 		public const string Objective = QuestPrefabs + "Quest Objective.prefab";
 		public const string ObjectiveList = QuestPrefabs + "Quest Objective List.prefab";
 
+		/// <summary>Builds the reward and objective blocks. They nest Perfect UI prefabs: see <see cref="PerfectUiPrefabs.BuildAll" />.</summary>
 		public static string BuildBlocks()
 		{
 			try

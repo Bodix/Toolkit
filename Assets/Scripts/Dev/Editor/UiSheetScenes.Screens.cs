@@ -24,7 +24,7 @@ namespace Toolkit.Dev.Editor
 
 		/// <summary>
 		/// Play Mode: opens each page and captures it, one after another, e.g. "blocks_rewards,screens_board".
-		/// The name of a page is the name of its files. Poll <see cref="CaptureAllStatus" /> until it says done.
+		/// The name of a page is the name of its files, the list of names is in <see cref="OpenPage" />. Poll <see cref="CaptureAllStatus" /> until it says done.
 		/// </summary>
 		public static string CaptureAll(string pages)
 		{
