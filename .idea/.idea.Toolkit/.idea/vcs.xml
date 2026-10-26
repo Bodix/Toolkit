@@ -11,6 +11,7 @@
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.Tweens" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/Toolkit.WContainer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Packages/net.perfectcore.perfectfoundation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Packages/net.perfectcore.perfectloottables" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Packages/net.perfectcore.perfectui" vcs="Git" />
   </component>
 </project>
