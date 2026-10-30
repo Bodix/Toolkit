@@ -198,33 +198,52 @@ namespace Toolkit.Dev.Editor
 
 		private static void BuildOffer()
 		{
-			// The board sets the width of an offer, see LayoutColumns. The status plate sits in the middle.
+			// The board sets the width of an offer, see LayoutColumns. The height is fixed: the body scrolls the text
+			// that does not fit, and the footer with the rewards and the buttons stays at the bottom.
 			GameObject root = Root("Quest Offer");
-			Size(root, 600, 800);
-			Padding(Column(root, CardGap, SizingMode.Fixed, SizingMode.FitContent, ULayout.Alignment.Center), CardPadding);
+			Size(root, 600, 720);
+			Padding(Column(root, CardGap, SizingMode.Fixed, SizingMode.Fixed, ULayout.Alignment.Center), CardPadding);
 			Background(root.transform, Dark, ppu: 7);
 
-			UiText title = TextBlock(root.transform, "Title Text", "Quest title", 44, White, maxLines: 2);
-			UiText description = TextBlock(root.transform, "Description Text", "Description", 32, Muted);
-			UiQuestObjectiveList objectives = ObjectiveSection(root.transform);
-			GameObject rewards = Nested(QuestUiPrefabs.RewardList, root.transform, "Rewards");
+			// A drag to the side goes past the body to the board, see NestedScrollDrag.
+			GameObject body = ScrollView(root.transform, "Body");
+			Item<LayoutItem>(body, SizingMode.Grow, SizingMode.Grow);
+			body.GetComponent<ScrollRect>().verticalScrollbarSpacing = 20;
+			body.transform.Find("Viewport").gameObject.AddComponent<NestedScrollDrag>();
+			// Names of their own here and below: a prefab saved over keeps the IDs of its objects by their names,
+			// and two objects of one name under the scroll view swap or lose their IDs.
+			Transform text = body.transform.Find("Viewport/Content");
+			text.name = "Body Content";
+			// The width follows the viewport through Grow, not through the anchors: the layout itself notices that the scrollbar
+			// showed or hid and wraps the text again.
+			RectTransform textRect = Rt(text.gameObject);
+			textRect.anchorMin = new Vector2(0, 1);
+			textRect.anchorMax = new Vector2(0, 1);
+			Column(text.gameObject, CardGap, SizingMode.Grow, SizingMode.FitContent);
 
-			GameObject footer = Child("Footer", root.transform);
-			Column(footer, 12, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.Center);
-			// Side by side while each button has room for its label, one under the other in a narrow card.
-			GameObject buttons = Child("Buttons", footer.transform);
-			Wrap(Row(buttons, 20, SizingMode.Grow, SizingMode.FitContent), 16);
-			var buttonColumns = buttons.AddComponent<LayoutColumns>();
-			Set(buttonColumns, "minColumnWidth", 240f);
-			Set(buttonColumns, "maxColumns", 2);
-			GameObject decline = OfferButton(buttons.transform, "Decline Button", "Decline", "close-colored");
-			GameObject accept = OfferButton(buttons.transform, "Accept Button", "Accept", "check-mark-colored");
-			UiText unavailable = TextBlock(footer.transform, "Unavailable Text", "Why the quest cannot be accepted", 28, Muted);
+			UiText title = TextBlock(text, "Title Text", "Quest title", 44, White, maxLines: 2);
+			UiText description = TextBlock(text, "Description Text", "Description", 32, Muted);
+			UiQuestObjectiveList objectives = ObjectiveSection(text);
+			objectives.transform.parent.Find("Title Text").name = "Objectives Title Text";
+
+			// Across the card, right above the buttons it explains.
+			UiText unavailable = TextBlock(root.transform, "Unavailable Text", "Why the quest cannot be accepted", 28, Muted);
 			unavailable.Text.alignment = TextAlignmentOptions.Center;
 			unavailable.gameObject.SetActive(false);
 
-			// As high as the buttons, so the card keeps its height when the plate replaces them.
-			GameObject status = Nested(UiPrefabs + "Label.prefab", root.transform, "Status Plate");
+			// The rewards on the left, the buttons or the status plate on the right.
+			GameObject footer = Child("Footer", root.transform);
+			Row(footer, 20, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.End);
+			GameObject rewards = Nested(QuestUiPrefabs.RewardList, footer.transform, "Rewards");
+			// One line: the rewards that do not fit go under the buttons for now.
+			Set(rewards.transform.Find("Rewards").GetComponent<ULayout>(), "m_wrap", false);
+			// One under the other, so the rewards keep the width. The main button is at the bottom right.
+			GameObject buttons = Child("Buttons", footer.transform);
+			Column(buttons, 16, alignItems: ULayout.Alignment.Center);
+			GameObject decline = OfferButton(buttons.transform, "Decline Button", "Decline", "close-colored");
+			GameObject accept = OfferButton(buttons.transform, "Accept Button", "Accept", "check-mark-colored");
+
+			GameObject status = Nested(UiPrefabs + "Label.prefab", footer.transform, "Status Plate");
 			status.GetComponentInChildren<TMP_Text>().text = "Quest accepted";
 			UiBuild.Margins(status.GetComponent<ULayout>(), 0, 0, 25, 26);
 			status.SetActive(false);
@@ -234,7 +253,7 @@ namespace Toolkit.Dev.Editor
 			Set(offer, "_descriptionText", description);
 			Set(offer, "_objectives", objectives);
 			Set(offer, "_rewards", rewards.GetComponent<UiQuestRewardList>());
-			Set(offer, "_buttonsGroup", footer);
+			Set(offer, "_buttonsGroup", buttons);
 			Set(offer, "_acceptButton", accept.GetComponent<UiButton>());
 			Set(offer, "_cancelButton", decline.GetComponent<UiButton>());
 			Set(offer, "_unavailableText", unavailable);
