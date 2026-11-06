@@ -10,7 +10,7 @@ using ULayout = PerfectCore.PerfectUI.uLayout.Layout;
 namespace Toolkit.Dev.Editor
 {
 	/// <summary>
-	/// Builders of the Perfect Quests cards and screens in the Perfect UI style (D-112): cards, tracker, journal,
+	/// Builders of the Perfect Quests cards and screens in the Perfect UI style: cards, tracker, journal,
 	/// offer and board. They nest the blocks, so run <see cref="QuestUiPrefabs.BuildBlocks" /> first. Called from Unity MCP.
 	/// </summary>
 	public static class QuestScreenPrefabs

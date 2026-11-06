@@ -11,7 +11,7 @@ using ULayout = PerfectCore.PerfectUI.uLayout.Layout;
 
 namespace Toolkit.Dev.Editor
 {
-	/// <summary>Builders of Perfect Quests prefabs in the Perfect UI style (D-112). Called from Unity MCP.</summary>
+	/// <summary>Builders of Perfect Quests prefabs in the Perfect UI style. Called from Unity MCP.</summary>
 	public static class QuestUiPrefabs
 	{
 		public const string InventoryPrefabs = "Assets/Packages/PerfectCore.PerfectInventory/Prefabs/";
