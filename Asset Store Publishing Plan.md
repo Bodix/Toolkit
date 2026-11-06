@@ -39,13 +39,12 @@
 |---|---|---|---|
 | Perfect Foundation | 1.0.1 | На проверке | Доделать профиль издателя, потом ждать проверки |
 | Perfect UI | 1.0.0 | Код и медиа готовы | Страница в магазине. Загрузить, когда Foundation появится в магазине. |
-| Perfect Inventory | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
+| Perfect Inventory | 1.0.0 | `unity` 2022.3 указан | Раздел 4 |
 | Perfect Quests | 1.0.0 | Всё ещё на Unity 2019.3 | Перевести на 2022.3 |
 | Evolunity | 4.0.0 | Всё ещё на Unity 2019.3 | Версия 5.0.0 для 2022.3 |
 | Toolkit.InputSystem, Resettables, Styles, Tweens, WContainer | 1.0.x | Всё ещё на Unity 2019.x | Перевести на 2022.3 |
 
 ## 1. Профиль издателя
-
 
 - [ ] Поддержка клиентов: ссылка на поддержку (GitHub Issues).
 - [ ] Ссылки на соцсети: GitHub.
@@ -79,7 +78,8 @@
 
 ## 4. Perfect Inventory и Perfect Quests
 
-- [ ] Указать `unity` 2022.3 в `package.json`. Исправить все ошибки и предупреждения на 2022.3.62f3 и на новейшей Unity.
+- [x] Указать `unity` 2022.3 в `package.json`.
+- [ ] Исправить все ошибки и предупреждения на 2022.3.62f3 и на новейшей Unity.
 - [ ] Perfect Quests: его сборкам интеграции (VContainer, Inventory) нужна либо условная компиляция, либо настоящие зависимости.
 - [ ] Perfect Quests: убрать жёстко заданный путь в `QuestExampleFiller`.
 - [ ] Перенести оба пакета в `Toolkit/Packages/` так же, как Foundation: закрыть Unity, потом сделать `git mv` сабмодуля.
