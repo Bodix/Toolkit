@@ -28,6 +28,8 @@ namespace Toolkit.Dev.Editor
 		private const float CardPadding = 30;
 		private const float CardGap = 24;
 		private const float ListGap = 30;
+		/// <summary>The gap under the title of a reward list, see QuestUiPrefabs.</summary>
+		private const float RewardTitleGap = 12;
 
 		/// <summary>The panel of the tracker over the game: darker than a card, so it reads on a bright sea.</summary>
 		private static readonly Color Shade = Hex("00000080");
@@ -226,15 +228,29 @@ namespace Toolkit.Dev.Editor
 			UiQuestObjectiveList objectives = ObjectiveSection(text);
 			objectives.transform.parent.Find("Title Text").name = "Objectives Title Text";
 
-			// Across the card, right above the buttons it explains.
-			UiText unavailable = TextBlock(root.transform, "Unavailable Text", "Why the quest cannot be accepted", 28, Muted);
-			unavailable.Text.alignment = TextAlignmentOptions.Center;
+			// The title of the rewards shares its line with the reason why the quest cannot be accepted: the reason stands
+			// right above the buttons it explains and takes no room from the body.
+			GameObject header = Child("Footer Header", root.transform);
+			Row(header, 20, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.Center);
+			// The title stays as close to the rewards as in a reward list, not a card gap away.
+			UiBuild.Margins(header.GetComponent<ULayout>(), 0, 0, 0, RewardTitleGap - CardGap);
+			GameObject rewardsTitle = Child("Rewards Title Text", header.transform);
+			Text(rewardsTitle, "Rewards", 32, Muted);
+			Item<LayoutText>(rewardsTitle, SizingMode.FitContent, SizingMode.FitContent);
+			// One line of the title size: a long reason ends with an ellipsis instead of leaving the card.
+			UiText unavailable = TextBlock(header.transform, "Unavailable Text", "Why the quest cannot be accepted", 32, Muted);
+			unavailable.Text.enableWordWrapping = false;
+			unavailable.Text.overflowMode = TextOverflowModes.Ellipsis;
+			unavailable.Text.alignment = TextAlignmentOptions.Right;
 			unavailable.gameObject.SetActive(false);
 
 			// The rewards on the left, the buttons or the status plate on the right.
 			GameObject footer = Child("Footer", root.transform);
 			Row(footer, 20, SizingMode.Grow, SizingMode.FitContent, ULayout.Alignment.End);
 			GameObject rewards = Nested(QuestUiPrefabs.RewardList, footer.transform, "Rewards");
+			rewards.transform.Find("Title Text").gameObject.SetActive(false);
+			// An offer without rewards hides their title on the line of the reason.
+			Set(rewards.GetComponent<UiQuestRewardList>(), "_group", rewardsTitle);
 			// One line: the rewards that do not fit go under the buttons for now.
 			Set(rewards.transform.Find("Rewards").GetComponent<ULayout>(), "m_wrap", false);
 			// One under the other, so the rewards keep the width. The main button is at the bottom right.

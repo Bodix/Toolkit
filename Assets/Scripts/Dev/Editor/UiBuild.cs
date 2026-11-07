@@ -100,6 +100,9 @@ namespace Toolkit.Dev.Editor
 			return go;
 		}
 
+		// TODO: Saving over an existing prefab keeps the IDs of objects by their names only, so a new object can take the ID
+		// of another object of the same name, e.g. one "Background" for another, and the overrides of the variants move to it.
+		// Change an existing prefab in place (LoadPrefabContents) until the IDs are kept by the path. [#bug]
 		public static void Save(GameObject root, string path)
 		{
 			RebuildLayout(root);
