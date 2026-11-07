@@ -212,10 +212,7 @@ namespace Toolkit.Dev.Editor
 			Item<LayoutItem>(body, SizingMode.Grow, SizingMode.Grow);
 			body.GetComponent<ScrollRect>().verticalScrollbarSpacing = 20;
 			body.transform.Find("Viewport").gameObject.AddComponent<NestedScrollDrag>();
-			// Names of their own here and below: a prefab saved over keeps the IDs of its objects by their names,
-			// and two objects of one name under the scroll view swap or lose their IDs.
 			Transform text = body.transform.Find("Viewport/Content");
-			text.name = "Body Content";
 			// The width follows the viewport through Grow, not through the anchors: the layout itself notices that the scrollbar
 			// showed or hid and wraps the text again.
 			RectTransform textRect = Rt(text.gameObject);
@@ -226,7 +223,6 @@ namespace Toolkit.Dev.Editor
 			UiText title = TextBlock(text, "Title Text", "Quest title", 44, White, maxLines: 2);
 			UiText description = TextBlock(text, "Description Text", "Description", 32, Muted);
 			UiQuestObjectiveList objectives = ObjectiveSection(text);
-			objectives.transform.parent.Find("Title Text").name = "Objectives Title Text";
 
 			// The title of the rewards shares its line with the reason why the quest cannot be accepted: the reason stands
 			// right above the buttons it explains and takes no room from the body.

@@ -12,9 +12,10 @@ namespace Toolkit.Dev.Editor
 {
 	/// <summary>
 	/// Helpers for prefab builders: objects, images, texts, uLayout and saving.
-	/// Builders create a prefab from scratch in a preview scene and save it over the old one (the GUID stays).
+	/// Builders create a prefab from scratch in a preview scene and save it over the old one: the GUID stays,
+	/// and the file ids of objects stay by their paths, see UiBuild.Save.cs.
 	/// </summary>
-	public static class UiBuild
+	public static partial class UiBuild
 	{
 		public const string UiFolder = "Packages/net.perfectcore.perfectui/";
 		public const string UiPrefabs = UiFolder + "Prefabs/";
@@ -98,18 +99,6 @@ namespace Toolkit.Dev.Editor
 			var go = (GameObject)PrefabUtility.InstantiatePrefab(Load<GameObject>(basePrefabPath), Holder());
 			go.name = name;
 			return go;
-		}
-
-		// TODO: Saving over an existing prefab keeps the IDs of objects by their names only, so a new object can take the ID
-		// of another object of the same name, e.g. one "Background" for another, and the overrides of the variants move to it.
-		// Change an existing prefab in place (LoadPrefabContents) until the IDs are kept by the path. [#bug]
-		public static void Save(GameObject root, string path)
-		{
-			RebuildLayout(root);
-			PrefabUtility.SaveAsPrefabAsset(root, path, out bool success);
-			Object.DestroyImmediate(root);
-			if (!success)
-				throw new Exception($"Prefab not saved: {path}");
 		}
 
 		/// <summary>Runs uLayout and TMP in the editor, so the saved prefab has its real sizes.</summary>
