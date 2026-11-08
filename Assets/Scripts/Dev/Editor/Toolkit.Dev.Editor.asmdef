@@ -4,6 +4,7 @@
     "references": [
         "PerfectCore.PerfectFoundation",
         "PerfectCore.PerfectUI",
+        "PerfectCore.PerfectUI.Editor",
         "PerfectCore.PerfectUI.uLayout",
         "Unity.TextMeshPro",
         "UnityEngine.UI",

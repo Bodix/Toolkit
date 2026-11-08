@@ -53,7 +53,8 @@ namespace Toolkit.Dev.Editor
 		}
 
 		/// <summary>
-		/// A new prefab root. It lives under a holder RectTransform, because uLayout complains about a layout without a parent.
+		/// A new prefab root. It lives under a holder canvas, as in Prefab Mode: uLayout complains about a layout without
+		/// a parent, and TMP builds no text without a canvas.
 		/// </summary>
 		public static GameObject Root(string name)
 		{
@@ -68,8 +69,9 @@ namespace Toolkit.Dev.Editor
 				_scene = EditorSceneManager.NewPreviewScene();
 			if (_holder == null)
 			{
-				var holder = new GameObject("Holder", typeof(RectTransform));
+				var holder = new GameObject("Holder", typeof(RectTransform), typeof(Canvas));
 				SceneManager.MoveGameObjectToScene(holder, _scene);
+				holder.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
 				((RectTransform)holder.transform).sizeDelta = new Vector2(1920, 1080);
 				_holder = holder.transform;
 			}
@@ -101,17 +103,32 @@ namespace Toolkit.Dev.Editor
 			return go;
 		}
 
-		/// <summary>Runs uLayout and TMP in the editor, so the saved prefab has its real sizes.</summary>
+		/// <summary>
+		/// Runs uLayout and TMP in the editor as Prefab Mode does, so the saved prefab has its real sizes,
+		/// and opening it in Prefab Mode changes nothing.
+		/// </summary>
 		public static void RebuildLayout(GameObject root)
 		{
 			for (int pass = 0; pass < 3; pass++)
 			{
-				foreach (TMP_Text text in root.GetComponentsInChildren<TMP_Text>(true))
+				// As in Prefab Mode, only active objects take part: a layout that was never enabled is not set up.
+				foreach (TMP_Text text in root.GetComponentsInChildren<TMP_Text>())
 					text.ForceMeshUpdate();
-				LayoutItem[] items = root.GetComponentsInChildren<LayoutItem>(true);
+				LayoutItem[] items = root.GetComponentsInChildren<LayoutItem>();
 				for (int i = items.Length - 1; i >= 0; i--)
-					items[i].Update();
+				{
+					if (items[i].isActiveAndEnabled)
+						items[i].Update();
+				}
+
+				Canvas.ForceUpdateCanvases();
 				LayoutRebuilder.ForceRebuildLayoutImmediate(Rt(root));
+				// A layout under an object without layout components is a root of its own: a rebuild of the prefab skips it.
+				foreach (ILayoutController controller in root.GetComponentsInChildren<ILayoutController>())
+					LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)((Component)controller).transform);
+				// Prefab Mode sizes scrollbars by the final layout every frame, in LateUpdate of a scroll rect.
+				foreach (ScrollRect scrollRect in root.GetComponentsInChildren<ScrollRect>())
+					scrollRect.Rebuild(CanvasUpdate.PostLayout);
 			}
 		}
 

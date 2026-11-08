@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using PerfectCore.PerfectUI.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -22,6 +23,8 @@ namespace Toolkit.Dev.Editor
 			try
 			{
 				RebuildLayout(root);
+				// Prefab Mode does the same before a save.
+				AutoSizeFontSizeDriver.DriveFontSizes(root);
 
 				if (File.Exists(path))
 				{
