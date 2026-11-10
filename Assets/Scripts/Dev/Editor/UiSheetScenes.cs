@@ -52,10 +52,10 @@ namespace Toolkit.Dev.Editor
 			return "Sheet scene ready";
 		}
 
-		/// <summary>Play Mode: rewards and labels in all states, three columns in a window.</summary>
+		/// <summary>Play Mode: rewards and badges in all states, three columns in a window.</summary>
 		public static string BlocksRewards()
 		{
-			Transform columns = Columns(OpenWindow("Quest blocks: rewards and labels"));
+			Transform columns = Columns(OpenWindow("Quest blocks: rewards and badges"));
 
 			Transform rewards = Card(columns, "Rewards");
 			ShowRewards(rewards, "Rewards", Gold(250), ItemReward("ExampleItem2", 3), ItemReward("ExampleItem1", 12000),
@@ -69,13 +69,13 @@ namespace Toolkit.Dev.Editor
 			ShowRewards(many, "Bonus", TextReward("Reputation +5"));
 			ShowRewards(many, "Hidden when empty");
 
-			Transform labels = Card(columns, "Labels");
-			GameObject row = Child("Labels", labels);
+			Transform badges = Card(columns, "Badges");
+			GameObject row = Child("Badges", badges);
 			Wrap(Row(row, 12, SizingMode.Grow, SizingMode.FitContent), 12);
-			Label(row.transform, "Label");
-			Label(row.transform, "Optional");
-			Label(row.transform, "Failed").transform.Find("Background").GetComponent<Image>().color = Red;
-			Label(row.transform, "A long label is cut with an ellipsis at its maximum width");
+			Badge(row.transform, "Badge");
+			Badge(row.transform, "Optional");
+			Badge(row.transform, "Failed").Background.color = Red;
+			Badge(row.transform, "A long badge is cut with an ellipsis at its maximum width");
 			return "Rewards shown";
 		}
 
@@ -168,11 +168,13 @@ namespace Toolkit.Dev.Editor
 			states?.Add(new QuestObjectiveState { IsCompleted = completed, IsFailed = failed });
 		}
 
-		private static GameObject Label(Transform parent, string text)
+		private static UiBadge Badge(Transform parent, string text)
 		{
-			GameObject label = Nested(UiPrefabs + "Label.prefab", parent);
-			label.GetComponent<UiText>().Text.text = text;
-			return label;
+			GameObject nested = Nested(UiPrefabs + "Badge.prefab", parent);
+			PerfectUiPrefabs.AddBadgeLayout(nested);
+			var badge = nested.GetComponent<UiBadge>();
+			badge.Text.text = text;
+			return badge;
 		}
 
 		private static QuestReward Gold(int amount) => ItemReward("ExampleItem1", amount);

@@ -10,12 +10,12 @@ namespace Toolkit.Dev.Editor
 	/// <summary>Builders of new Perfect UI prefabs. Called from Unity MCP.</summary>
 	public static class PerfectUiPrefabs
 	{
-		/// <summary>Builds Label and Window. The Perfect Quests builders nest them, so after a change run this first.</summary>
+		/// <summary>Builds Badge and Window. The Perfect Quests builders nest them, so after a change run this first.</summary>
 		public static string BuildAll()
 		{
 			try
 			{
-				Label();
+				Badge();
 				Window();
 			}
 			finally
@@ -23,26 +23,48 @@ namespace Toolkit.Dev.Editor
 				CloseScene();
 			}
 
-			return "Perfect UI prefabs: Label, Window";
+			return "Perfect UI prefabs: Badge, Window";
 		}
 
-		public static void Label()
+		/// <summary>A plate of a fixed size without layout: whoever puts it into a layout adds one, as <see cref="AddBadgeLayout" /> does.</summary>
+		public static void Badge()
 		{
-			GameObject root = Root("Label");
-			Layout row = Row(root);
-			Padding(row, 20, 20, 8, 8);
-			Background(root.transform, Faint);
+			GameObject root = Root("Badge");
+			Size(root, 120, 50);
+
+			GameObject plate = Child("Background", root.transform);
+			Stretch(plate);
+			Image background = Image(plate, Circle, Faint);
 
 			GameObject text = Child("Text", root.transform);
-			TextMeshProUGUI tmp = Text(text, "Label", 28, White, TextAlignmentOptions.Center);
-			var textItem = Item<LayoutText>(text, SizingMode.FitContent, SizingMode.FitContent);
-			Limits(textItem, maxWidth: 360);
-			// Never wider than its container: a narrow column cuts the text with an ellipsis.
-			Set(textItem, "m_fitAvailableWidth", true);
+			Stretch(text, 20, 20, 8, 8);
+			TextMeshProUGUI tmp = Text(text, "Badge", 28, White, TextAlignmentOptions.Center);
 
-			var label = root.AddComponent<UiText>();
-			Set(label, "text", tmp);
-			Save(root, UiPrefabs + "Label.prefab");
+			var badge = root.AddComponent<UiBadge>();
+			Set(badge, "text", tmp);
+			Set(badge, "background", background);
+			Save(root, UiPrefabs + "Badge.prefab");
+		}
+
+		/// <summary>uLayout of a nested Badge: the plate fits the text, at most 360 wide and never wider than its container.</summary>
+		public static void AddBadgeLayout(GameObject badge)
+		{
+			Layout row = Row(badge);
+			Padding(row, 20, 20, 8, 8);
+
+			var plate = badge.transform.Find("Background").gameObject.AddComponent<LayoutItem>();
+			Set(plate, "m_ignoreLayout", true);
+			Sizing(plate, SizingMode.Fixed, SizingMode.Fixed);
+
+			// uLayout sizes the text from a point: the stretch of the bare badge would stay in its size.
+			var text = (RectTransform)badge.transform.Find("Text");
+			text.anchorMin = text.anchorMax = new Vector2(0, 0.5f);
+			text.sizeDelta = Vector2.zero;
+			text.anchoredPosition = Vector2.zero;
+			var textItem = Item<LayoutText>(text.gameObject, SizingMode.FitContent, SizingMode.FitContent);
+			Limits(textItem, maxWidth: 360);
+			// A narrow column cuts the text with an ellipsis.
+			Set(textItem, "m_fitAvailableWidth", true);
 		}
 
 		public static void Window()

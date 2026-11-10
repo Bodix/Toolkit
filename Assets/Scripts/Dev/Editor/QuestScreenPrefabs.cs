@@ -255,7 +255,8 @@ namespace Toolkit.Dev.Editor
 			GameObject decline = OfferButton(buttons.transform, "Decline Button", "Decline", "close-colored");
 			GameObject accept = OfferButton(buttons.transform, "Accept Button", "Accept", "check-mark-colored");
 
-			GameObject status = Nested(UiPrefabs + "Label.prefab", footer.transform, "Status Plate");
+			GameObject status = Nested(UiPrefabs + "Badge.prefab", footer.transform, "Status Plate");
+			PerfectUiPrefabs.AddBadgeLayout(status);
 			status.GetComponentInChildren<TMP_Text>().text = "Quest accepted";
 			UiBuild.Margins(status.GetComponent<ULayout>(), 0, 0, 25, 26);
 			status.SetActive(false);

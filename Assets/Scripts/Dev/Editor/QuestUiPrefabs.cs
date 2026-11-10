@@ -160,7 +160,8 @@ namespace Toolkit.Dev.Editor
 			var descriptionView = description.AddComponent<UiText>();
 			Set(descriptionView, "text", descriptionText);
 
-			GameObject optional = Nested(UiPrefabs + "Label.prefab", header.transform, "Optional Mark");
+			GameObject optional = Nested(UiPrefabs + "Badge.prefab", header.transform, "Optional Mark");
+			PerfectUiPrefabs.AddBadgeLayout(optional);
 			optional.GetComponentInChildren<TMP_Text>().text = "Optional";
 
 			var view = root.AddComponent<UiQuestObjective>();
