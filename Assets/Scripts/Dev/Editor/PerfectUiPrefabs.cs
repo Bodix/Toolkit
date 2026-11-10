@@ -30,7 +30,7 @@ namespace Toolkit.Dev.Editor
 		public static void Badge()
 		{
 			GameObject root = Root("Badge");
-			Size(root, 120, 50);
+			Size(root, 130, 50);
 
 			GameObject plate = Child("Background", root.transform);
 			Stretch(plate);
@@ -83,7 +83,12 @@ namespace Toolkit.Dev.Editor
 			var backgroundButton = background.AddComponent<UiButton>();
 			Set(backgroundButton, "button", button);
 
-			GameObject panel = Child("Panel", root.transform);
+			// The background dims the whole screen, the panel stays away from the notch.
+			GameObject safeArea = Child("Safe Area", root.transform);
+			Stretch(safeArea);
+			safeArea.AddComponent<SafeArea>();
+
+			GameObject panel = Child("Panel", safeArea.transform);
 			Stretch(panel, 40, 40, 40, 40);
 			Layout column = Column(panel, 30, SizingMode.Fixed, SizingMode.Fixed);
 			Padding(column, 40);

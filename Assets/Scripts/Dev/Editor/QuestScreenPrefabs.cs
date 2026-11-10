@@ -163,8 +163,8 @@ namespace Toolkit.Dev.Editor
 		private static void BuildJournal()
 		{
 			GameObject root = VariantRoot(UiPrefabs + "Window.prefab", "Quest Journal");
-			root.transform.Find("Panel/Header/Title Text").GetComponent<TMP_Text>().text = "Journal";
-			Transform content = root.transform.Find("Panel/Content");
+			root.transform.Find("Safe Area/Panel/Header/Title Text").GetComponent<TMP_Text>().text = "Journal";
+			Transform content = root.transform.Find("Safe Area/Panel/Content");
 
 			// The list and the card share the width: the list takes more of a narrow screen, so titles stay readable.
 			GameObject list = ScrollView(content, "List Scroll View");
@@ -277,8 +277,8 @@ namespace Toolkit.Dev.Editor
 		private static void BuildBoard()
 		{
 			GameObject root = VariantRoot(UiPrefabs + "Window.prefab", "Quest Board");
-			root.transform.Find("Panel/Header/Title Text").GetComponent<TMP_Text>().text = "Quest Board";
-			Transform content = root.transform.Find("Panel/Content");
+			root.transform.Find("Safe Area/Panel/Header/Title Text").GetComponent<TMP_Text>().text = "Quest Board";
+			Transform content = root.transform.Find("Safe Area/Panel/Content");
 
 			// Equal columns: as many offers in a row as fit at the minimum width.
 			GameObject scroll = ScrollView(content, "Offers Scroll View");

@@ -132,7 +132,7 @@ namespace Toolkit.Dev.Editor
 			GameObject windowObject = Nested(UiPrefabs + "Window.prefab", canvas);
 			var window = windowObject.GetComponent<UiWindow>();
 			window.Title = title;
-			return windowObject.transform.Find("Panel/Content");
+			return windowObject.transform.Find("Safe Area/Panel/Content");
 		}
 
 		private static Transform Card(Transform parent, string title)
