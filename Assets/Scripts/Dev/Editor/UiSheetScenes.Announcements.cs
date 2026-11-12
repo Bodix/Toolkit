@@ -6,7 +6,6 @@ namespace Toolkit.Dev.Editor
 {
 	/// <summary>
 	/// Pages of the sheet for the announcements of Perfect UI: every kind with a short and a long text.
-	/// Same order as the other pages: NewScene() in Edit Mode, then Play Mode, then a page, then UiShots.Capture.
 	/// </summary>
 	public static partial class UiSheetScenes
 	{

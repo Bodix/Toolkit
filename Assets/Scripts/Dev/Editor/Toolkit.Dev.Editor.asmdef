@@ -13,7 +13,8 @@
         "PerfectCore.PerfectQuests",
         "PerfectCore.PerfectQuests.UI",
         "PerfectCore.PerfectQuests.Inventory",
-        "PerfectCore.PerfectQuests.Inventory.UI"
+        "PerfectCore.PerfectQuests.Inventory.UI",
+        "Toolkit.Mcp.Editor"
     ],
     "includePlatforms": [
         "Editor"

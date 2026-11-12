@@ -1,3 +1,5 @@
+using Toolkit.Mcp;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 using PerfectCore.PerfectFoundation;
@@ -13,97 +15,102 @@ namespace Toolkit.Dev.Editor
 {
 	/// <summary>
 	/// Pages of the sheet for the cards and screens of step 7.2.2: cards, tracker, journal and board, each also empty.
-	/// Same order as the other pages: NewScene() in Edit Mode, then Play Mode, then a page, then UiShots.Capture.
+	/// Here is also the list of all pages and the command that captures them, <see cref="Check" />.
 	/// </summary>
 	public static partial class UiSheetScenes
 	{
 		private const string LockedReason = "Up to 3 quests at once";
 
-		private static readonly Queue<string> _pages = new Queue<string>();
-		private static readonly List<string> _shot = new List<string>();
+		private const string ShotsFolder = "Screenshots/UiShots";
+		private static readonly string[] ShotSizes = { "2520x1080", "1440x1080" };
+		// Nested uLayout layouts settle one level per frame.
+		private const int SettleFrames = 15;
+		// Perfect Quests prefabs nest Perfect UI ones, and the screens nest the blocks.
+		private const string BuildSteps =
+			"Do:PerfectUiPrefabs.BuildAll; Do:QuestUiPrefabs.BuildBlocks; Do:QuestScreenPrefabs.BuildScreens; NoErrors";
+
+		// The name of a page is the name of its files.
+		private static readonly (string name, Func<string> open)[] Pages =
+		{
+			("blocks_rewards", BlocksRewards),
+			("blocks_objectives", BlocksObjectives),
+			("screens_cards", Cards),
+			("screens_tracker", Tracker),
+			("screens_journal", () => Journal()),
+			("screens_journal_empty", () => Journal(true)),
+			("screens_board", () => Board()),
+			("screens_board_empty", () => Board(true)),
+			("announcement_base", () => Announcement("")),
+			("announcement_banner", () => Announcement("Banner")),
+			("announcement_banner_long", () => Announcement("Banner", LongAnnouncementMessage)),
+			("announcement_plaque", () => Announcement("Plaque")),
+			("announcement_plaque_long", () => Announcement("Plaque", LongAnnouncementMessage)),
+			("announcement_plaque_title", () => Announcement("Plaque", null)),
+			("announcement_toast", () => Announcement("Toast")),
+			("announcement_toast_long", () => Announcement("Toast", LongAnnouncementMessage)),
+			("announcement_toast_title", () => Announcement("Toast", null))
+		};
 
 		/// <summary>
-		/// Play Mode: opens each page and captures it, one after another, e.g. "blocks_rewards,screens_board".
-		/// The name of a page is the name of its files, the list of names is in <see cref="OpenPage" />. Poll <see cref="CaptureAllStatus" /> until it says done.
+		/// A whole pass over the UI of the packages in one command: compiles the code, rebuilds the prefabs of Perfect UI
+		/// and Perfect Quests, opens the sheet scene, starts Play Mode, captures the pages at every size and stops Play Mode.
+		/// Pages are names separated by commas, e.g. "blocks_rewards,screens_board", or "all". A wrong name is answered
+		/// with the list of names.
+		/// Steps are played after the pages, still in Play Mode, to check logic: steps of <see cref="McpScenario" />,
+		/// where "Do" calls a method of this class.
+		/// Then run in the shell of the computer, from the project folder:
+		/// <c>python3 Assets/Scripts/Dev/Sheet~/ui_sheet.py Screenshots/UiShots Screenshots/UiShots/sheet.png "Title"</c>
+		/// It waits for the report of the run and prints it: the errors of compilation or of the build, or the screenshots.
+		/// From the screenshots of the pages it builds the sheet image. No report after the wait: run it again.
 		/// </summary>
-		public static string CaptureAll(string pages)
+		public static string Check(string pages, string steps = "")
 		{
-			if (!Application.isPlaying)
-				return "CaptureAll needs Play Mode";
+			List<string> names = pages.Trim() == "all"
+				? Pages.Select(page => page.name).ToList()
+				: pages.Split(',').Select(page => page.Trim()).Where(page => page.Length > 0).ToList();
+			List<string> unknown = names.Where(name => Pages.All(page => page.name != name)).ToList();
 
-			_pages.Clear();
-			_shot.Clear();
-			foreach (string page in pages.Split(','))
-				if (OpenPage(page.Trim()) != null)
-					_pages.Enqueue(page.Trim());
+			if (unknown.Count > 0)
+				return $"Unknown pages: {string.Join(", ", unknown)}. Pages: {string.Join(", ", Pages.Select(page => page.name))}";
 
-			EditorApplicationUpdate(true);
-			return $"Pages queued: {_pages.Count}";
-		}
+			if (!Application.isPlaying && UnsavedScene() is string unsaved)
+				return unsaved;
 
-		/// <summary>"busy N left" or "done" with the captured pages.</summary>
-		public static string CaptureAllStatus()
-		{
-			return _pages.Count > 0 || UiShots.IsBusy ? $"busy {_pages.Count} left" : "done: " + string.Join(", ", _shot);
-		}
+			var list = new List<string> { "Stop", "Compile", BuildSteps, "Do:NewScene", "Play" };
 
-		/// <summary>Opens a page by the name of its files, or checks the name when only checking. Null for an unknown name.</summary>
-		private static string OpenPage(string page, bool open = false)
-		{
-			Func<string> action;
-			switch (page)
+			foreach (string name in names)
 			{
-				case "blocks_rewards": action = BlocksRewards; break;
-				case "blocks_objectives": action = BlocksObjectives; break;
-				case "screens_cards": action = Cards; break;
-				case "screens_tracker": action = Tracker; break;
-				case "screens_journal": action = () => Journal(); break;
-				case "screens_journal_empty": action = () => Journal(true); break;
-				case "screens_board": action = () => Board(); break;
-				case "screens_board_empty": action = () => Board(true); break;
-				case "announcement_base": action = () => Announcement(""); break;
-				case "announcement_banner": action = () => Announcement("Banner"); break;
-				case "announcement_banner_long": action = () => Announcement("Banner", LongAnnouncementMessage); break;
-				case "announcement_plaque": action = () => Announcement("Plaque"); break;
-				case "announcement_plaque_long": action = () => Announcement("Plaque", LongAnnouncementMessage); break;
-				case "announcement_plaque_title": action = () => Announcement("Plaque", null); break;
-				case "announcement_toast": action = () => Announcement("Toast"); break;
-				case "announcement_toast_long": action = () => Announcement("Toast", LongAnnouncementMessage); break;
-				case "announcement_toast_title": action = () => Announcement("Toast", null); break;
-				default: return null;
+				list.Add($"Do:Page({name})");
+
+				foreach (string size in ShotSizes)
+				{
+					list.Add($"Size:{size}");
+					list.Add($"Shot:{name}_{size}");
+				}
 			}
 
-			return open ? action() : page;
+			if (steps.Trim().Length > 0)
+				list.Add(steps);
+
+			// The console keeps the errors of Play Mode after it stops.
+			list.Add("Stop");
+			list.Add("NoErrors");
+			return McpScenario.Run(string.Join("; ", list), typeof(UiSheetScenes), ShotsFolder, 1f, SettleFrames);
 		}
 
-		private static void EditorApplicationUpdate(bool subscribe)
+		/// <summary>Play Mode: opens a page of the sheet by its name.</summary>
+		public static void Page(string name)
 		{
-			UnityEditor.EditorApplication.update -= NextPage;
-			if (subscribe)
-				UnityEditor.EditorApplication.update += NextPage;
-		}
-
-		private static void NextPage()
-		{
-			if (!Application.isPlaying)
+			foreach ((string page, Func<string> open) in Pages)
 			{
-				_pages.Clear();
-				EditorApplicationUpdate(false);
+				if (page != name)
+					continue;
+
+				open();
 				return;
 			}
 
-			if (UiShots.IsBusy)
-				return;
-			if (_pages.Count == 0)
-			{
-				EditorApplicationUpdate(false);
-				return;
-			}
-
-			string page = _pages.Dequeue();
-			OpenPage(page, true);
-			UiShots.Capture(page);
-			_shot.Add(page);
+			throw new ArgumentException($"Unknown page {name}");
 		}
 
 		/// <summary>Play Mode: a full card, compact cards and journal entries: normal, selected and with a long title.</summary>

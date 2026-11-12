@@ -1,0 +1,13 @@
+{
+    "name": "com.bodix.toolkit.mcp",
+    "version": "1.0.0",
+    "description": "Editor actions for an AI agent that drives the Unity editor through Unity MCP",
+    "displayName": "Toolkit.Mcp",
+    "unity": "2022.3",
+    "author": {
+        "name": "Bodix"
+    },
+    "dependencies": {
+        "com.unity.ugui": "1.0.0"
+    }
+}

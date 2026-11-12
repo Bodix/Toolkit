@@ -20,21 +20,18 @@ using ULayout = PerfectCore.PerfectUI.uLayout.Layout;
 namespace Toolkit.Dev.Editor
 {
 	/// <summary>
-	/// Scenes for the UI sheet: every element in all its states. NewScene() in Edit Mode, then Play Mode,
-	/// then a scene method, then <see cref="UiShots.Capture"/>. Called from Unity MCP.
-	/// The sheet image is built from the shots by Sheet~/ui_sheet.py.
+	/// Pages of the UI sheet: every element in all its states. One command, <see cref="Check" />, rebuilds
+	/// the prefabs and captures the pages, then Sheet~/ui_sheet.py builds the sheet image. Called from Unity MCP.
 	/// </summary>
 	public static partial class UiSheetScenes
 	{
 		private const string ExampleConfigs = QuestFolder + "Example/Configs/";
 
-		/// <summary>A new unsaved scene with a canvas like in a game: 1920 x 1080, fitted by height.</summary>
+		/// <summary>Edit Mode: a new unsaved scene with a canvas like in a game: 1920 x 1080, fitted by height.</summary>
 		public static string NewScene()
 		{
-			var active = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-			// An untitled scene is an earlier sheet scene: it is never saved.
-			if (active.isDirty && !string.IsNullOrEmpty(active.path))
-				return $"Scene {active.path} has unsaved changes";
+			if (UnsavedScene() is string unsaved)
+				throw new InvalidOperationException(unsaved);
 
 			EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
 			var canvasObject = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
@@ -50,6 +47,13 @@ namespace Toolkit.Dev.Editor
 
 			new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
 			return "Sheet scene ready";
+		}
+
+		// An untitled scene is an earlier sheet scene: it is never saved.
+		private static string UnsavedScene()
+		{
+			var active = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+			return active.isDirty && !string.IsNullOrEmpty(active.path) ? $"Scene {active.path} has unsaved changes" : null;
 		}
 
 		/// <summary>Play Mode: rewards and badges in all states, three columns in a window.</summary>
