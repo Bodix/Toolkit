@@ -20,6 +20,7 @@ namespace Toolkit.Dev.Editor
 		public const string RewardList = QuestPrefabs + "Quest Reward List.prefab";
 		public const string Objective = QuestPrefabs + "Quest Objective.prefab";
 		public const string ObjectiveList = QuestPrefabs + "Quest Objective List.prefab";
+		public const string Announcer = QuestPrefabs + "Quest Announcer.prefab";
 
 		/// <summary>Builds the reward and objective blocks. They nest Perfect UI prefabs: see <see cref="PerfectUiPrefabs.BuildAll" />.</summary>
 		public static string BuildBlocks()
@@ -38,6 +39,30 @@ namespace Toolkit.Dev.Editor
 			}
 
 			return "Quest blocks: rewards, reward list, objective, objective list";
+		}
+
+		/// <summary>
+		/// Builds the announcer of completed quests. It links the toast of Perfect UI: see <see cref="PerfectUiPrefabs.BuildAll" />.
+		/// </summary>
+		public static string BuildAnnouncer()
+		{
+			try
+			{
+				// Covers its parent: the announcement is created under it and places itself on the screen.
+				GameObject root = Root("Quest Announcer");
+				Stretch(root);
+				var announcer = root.AddComponent<UiAnnouncer>();
+				Set(announcer, "announcementPrefab",
+					Load<GameObject>(UiPrefabs + "Announcement (Toast).prefab").GetComponent<UiAnnouncement>());
+				Set(root.AddComponent<UiQuestAnnouncer>(), "_announcer", announcer);
+				Save(root, Announcer);
+			}
+			finally
+			{
+				CloseScene();
+			}
+
+			return "Quest announcer";
 		}
 
 		private static void BuildRewardText()

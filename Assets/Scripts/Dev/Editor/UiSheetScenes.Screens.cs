@@ -27,7 +27,8 @@ namespace Toolkit.Dev.Editor
 		private const int SettleFrames = 15;
 		// Perfect Quests prefabs nest Perfect UI ones, and the screens nest the blocks.
 		private const string BuildSteps =
-			"Do:PerfectUiPrefabs.BuildAll; Do:QuestUiPrefabs.BuildBlocks; Do:QuestScreenPrefabs.BuildScreens; NoErrors";
+			"Do:PerfectUiPrefabs.BuildAll; Do:QuestUiPrefabs.BuildBlocks; Do:QuestScreenPrefabs.BuildScreens; " +
+			"Do:QuestUiPrefabs.BuildAnnouncer; NoErrors";
 
 		// The name of a page is the name of its files.
 		private static readonly (string name, Func<string> open)[] Pages =
@@ -48,7 +49,8 @@ namespace Toolkit.Dev.Editor
 			("announcement_plaque_title", () => Announcement("Plaque", null)),
 			("announcement_toast", () => Announcement("Toast")),
 			("announcement_toast_long", () => Announcement("Toast", LongAnnouncementMessage)),
-			("announcement_toast_title", () => Announcement("Toast", null))
+			("announcement_toast_title", () => Announcement("Toast", null)),
+			("quest_announcer", () => QuestAnnouncer())
 		};
 
 		/// <summary>
