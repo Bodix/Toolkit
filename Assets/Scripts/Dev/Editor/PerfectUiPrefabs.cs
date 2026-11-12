@@ -18,7 +18,7 @@ namespace Toolkit.Dev.Editor
 
 		private static readonly Color DarkGray = Hex("333333");
 
-		private static Sprite EdgeFade => Load<Sprite>(UiFolder + "Textures/Gradients/Horizontal_Edge_Fade.png");
+		internal static Sprite EdgeFade => Load<Sprite>(UiFolder + "Textures/Gradients/Horizontal_Edge_Fade.png");
 
 		/// <summary>
 		/// Builds Badge, Window and the announcements. The Perfect Quests builders nest Badge and Window,
