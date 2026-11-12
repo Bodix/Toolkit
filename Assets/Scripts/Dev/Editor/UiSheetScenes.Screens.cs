@@ -61,6 +61,15 @@ namespace Toolkit.Dev.Editor
 				case "screens_journal_empty": action = () => Journal(true); break;
 				case "screens_board": action = () => Board(); break;
 				case "screens_board_empty": action = () => Board(true); break;
+				case "announcement_base": action = () => Announcement(""); break;
+				case "announcement_banner": action = () => Announcement("Banner"); break;
+				case "announcement_banner_long": action = () => Announcement("Banner", LongAnnouncementMessage); break;
+				case "announcement_plaque": action = () => Announcement("Plaque"); break;
+				case "announcement_plaque_long": action = () => Announcement("Plaque", LongAnnouncementMessage); break;
+				case "announcement_plaque_title": action = () => Announcement("Plaque", null); break;
+				case "announcement_toast": action = () => Announcement("Toast"); break;
+				case "announcement_toast_long": action = () => Announcement("Toast", LongAnnouncementMessage); break;
+				case "announcement_toast_title": action = () => Announcement("Toast", null); break;
 				default: return null;
 			}
 
