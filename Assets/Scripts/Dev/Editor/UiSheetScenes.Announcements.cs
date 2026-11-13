@@ -17,7 +17,7 @@ namespace Toolkit.Dev.Editor
 			"Deliver Forty Barrels of the Finest Caribbean Rum to the Governor of Port Royal Before the Storm Season Begins";
 
 		/// <summary>
-		/// Play Mode: one announcement shown at once, without the announcer.
+		/// Play Mode: one announcement shown at once, without the announcement service.
 		/// Kind: "Banner", "Plaque", "Toast" or "" for the base. A null message leaves only the title.
 		/// </summary>
 		public static string Announcement(string kind, string message = "Rum Run", string title = AnnouncementTitle)

@@ -51,10 +51,10 @@ namespace Toolkit.Dev.Editor
 				// Covers its parent: the announcement is created under it and places itself on the screen.
 				GameObject root = Root("Quest Announcer");
 				Stretch(root);
-				var announcer = root.AddComponent<UiAnnouncer>();
-				Set(announcer, "announcementPrefab",
+				var announcementService = root.AddComponent<UiAnnouncementService>();
+				Set(announcementService, "announcementPrefab",
 					Load<GameObject>(UiPrefabs + "Announcement (Toast).prefab").GetComponent<UiAnnouncement>());
-				Set(root.AddComponent<UiQuestAnnouncer>(), "_announcer", announcer);
+				Set(root.AddComponent<UiQuestAnnouncer>(), "_announcementService", announcementService);
 				Save(root, Announcer);
 			}
 			finally
